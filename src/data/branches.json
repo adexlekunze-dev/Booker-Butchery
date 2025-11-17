@@ -1,0 +1,50 @@
+[
+  {
+    "id": "branch-man001",
+    "branch_code": "MAN001",
+    "name": "Manchester Central",
+    "address": {
+      "line1": "Unit 5, Ashburton Trading Estate",
+      "line2": "Trafford Park",
+      "city": "Manchester",
+      "county": "Greater Manchester",
+      "postcode": "M17 1RY"
+    },
+    "coordinates": { "latitude": 53.4669, "longitude": -2.3094 },
+    "contact": {
+      "phone": "0161 234 5678",
+      "email": "manchester.central@booker.co.uk",
+      "manager": { "name": "Sarah Johnson", "phone": "0161 234 5679" }
+    },
+    "services": {
+      "cash_carry": {
+        "available": true,
+        "hours": {
+          "weekday": { "open": "06:00", "close": "20:00" },
+          "saturday": { "open": "07:00", "close": "18:00" },
+          "sunday": { "open": "08:00", "close": "16:00" }
+        }
+      },
+      "delivery": {
+        "available": true,
+        "delivery_days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        "cutoff_time": "15:00",
+        "coverage_postcodes": ["M1", "M2", "M3", "M4", "M5", "M17", "M20", "M21", "M22", "M23", "M24", "M25"],
+        "delivery_charge_threshold": 50,
+        "minimum_order": 25,
+        "free_delivery_threshold": 100
+      },
+      "click_collect": { "available": true, "ready_time_hours": 2 }
+    },
+    "facilities": { "parking": true, "loading_bay": true, "cafe": true, "atm": true, "cold_storage": true, "freezer_storage": true },
+    "images": [],
+    "status": "active",
+    "description": "Our flagship butchery wholesale depot serving Greater Manchester. Specializing in premium British and international meat products. Dedicated cold chain facilities, expert butchers on-site, and same-day click & collect service.",
+    "specialties": [
+      "Premium aged beef specialist",
+      "Halal certified range",
+      "Custom butchery service",
+      "Chef consultations available"
+    ]
+  }
+]

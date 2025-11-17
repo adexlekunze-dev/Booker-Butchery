@@ -1,0 +1,220 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Primary Orange */
+  --color-primary: #FF6F00;
+
+  /* Basic Colors */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  /* Semantic Colors for UI States */
+  --color-success: #4CAF50;    /* Green for success states */
+  --color-warning: #FFC107;    /* Amber for warnings */
+  --color-error: #F44336;      /* Red for errors */
+  --color-info: #2196F3;       /* Blue for informational */
+
+  /* Essential Grays (for borders, backgrounds, text) */
+  --color-gray-50: #FAFAFA;
+  --color-gray-100: #F5F5F5;
+  --color-gray-200: #EEEEEE;
+  --color-gray-300: #E0E0E0;
+  --color-gray-400: #BDBDBD;
+  --color-gray-500: #9E9E9E;
+  --color-gray-600: #757575;
+  --color-gray-700: #616161;
+  --color-gray-800: #424242;
+  --color-gray-900: #212121;
+
+  /* Typography */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  --font-size-6xl: 3.75rem;   /* 60px */
+
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Spacing (8px base unit) */
+  --space-0: 0;
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-20: 5rem;    /* 80px */
+  --space-24: 6rem;    /* 96px */
+  --space-32: 8rem;    /* 128px */
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* Z-Index */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 1000;
+  --z-modal: 1001;
+  --z-toast: 2000;
+  --z-tooltip: 2001;
+
+  /* Layout */
+  --container-max-width: 80rem; /* 1280px */
+  --header-height-mobile: 64px;
+  --header-height-desktop: 80px;
+
+  /* Easing */
+  --ease-linear: cubic-bezier(0, 0, 1, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Mobile Optimizations */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Scrollbar hiding for mobile horizontal scrolls */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile-first responsive text */
+@media (max-width: 640px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
+/* Ensure minimum touch target size (44x44px) for interactive elements on mobile */
+@media (max-width: 639px) {
+  button:not([class*="min-h-"]):not([class*="min-w-"]),
+  a.button:not([class*="min-h-"]):not([class*="min-w-"]),
+  input[type="button"]:not([class*="min-h-"]):not([class*="min-w-"]),
+  input[type="submit"]:not([class*="min-h-"]):not([class*="min-w-"]) {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@theme inline {
+  /* Colors */
+  --color-primary: #FF6F00;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-success: #4CAF50;
+  --color-warning: #FFC107;
+  --color-error: #F44336;
+  --color-info: #2196F3;
+  
+  --color-gray-50: #FAFAFA;
+  --color-gray-100: #F5F5F5;
+  --color-gray-200: #EEEEEE;
+  --color-gray-300: #E0E0E0;
+  --color-gray-400: #BDBDBD;
+  --color-gray-500: #9E9E9E;
+  --color-gray-600: #757575;
+  --color-gray-700: #616161;
+  --color-gray-800: #424242;
+  --color-gray-900: #212121;
+  
+  --color-background: var(--color-gray-50);
+  --color-foreground: var(--color-gray-900);
+  --font-sans: var(--font-family-primary);
+  --font-mono: var(--font-family-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-gray-50);
+  color: var(--color-gray-700);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Default text colors for common elements */
+p {
+  color: var(--color-gray-700);
+}
+
+/* Headings default to gray-900, but can be overridden with Tailwind classes */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-gray-900);
+}
+
+/* Allow Tailwind text color classes to override heading colors */
+h1.text-primary,
+h2.text-primary,
+h3.text-primary,
+h4.text-primary,
+h5.text-primary,
+h6.text-primary {
+  color: var(--color-primary) !important;
+}
+
+a {
+  transition: color 150ms var(--ease-in-out);
+  /* Default link color removed - use explicit classes in components */
+}
+
+button {
+  transition: all 150ms var(--ease-in-out);
+}
+
+/* Hide scrollbars for carousels */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
