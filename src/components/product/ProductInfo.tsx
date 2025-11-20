@@ -400,16 +400,15 @@ export function ProductInfo({ product, reviewsSummary, availabilityPanel }: Prod
             onChange={setQuantity}
           />
 
-          {/* Portion Calculator Button - Secondary Tool (Hidden on mobile) */}
-          <div className="hidden md:block">
-            <button
-              onClick={() => setIsCalculatorModalOpen(true)}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-50 border border-blue-200 text-blue-700 rounded-md hover:bg-blue-100 transition-colors text-sm font-medium"
-            >
-              <Calculator className="w-4 h-4" />
-              <span>Need help calculating portions?</span>
-            </button>
-          </div>
+          {/* Portion Calculator Button - Available on all devices */}
+          <button
+            onClick={() => setIsCalculatorModalOpen(true)}
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-50 border border-blue-200 text-blue-700 rounded-md hover:bg-blue-100 active:bg-blue-200 transition-colors text-sm md:text-base font-medium"
+          >
+            <Calculator className="w-4 h-4 md:w-5 md:h-5" />
+            <span className="hidden sm:inline">Need help calculating portions?</span>
+            <span className="sm:hidden">Calculate Portions</span>
+          </button>
 
           {/* Free Delivery Indicator - Above Add to Cart */}
           {finalPrice < 100 && (
