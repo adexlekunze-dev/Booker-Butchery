@@ -17,25 +17,25 @@ const sausageTypes = [
     name: 'Traditional British Sausages',
     description: 'Perfect for full English breakfast & pub menus',
     image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Sausages',
+    href: '/butchery/shop?category=SAUSAGES&subcategory=General',
   },
   {
     name: 'Gourmet & Specialty Sausages',
     description: 'Premium varieties for gastropubs',
     image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Sausages&quality_tier=Premium',
+    href: '/butchery/shop?category=SAUSAGES&subcategory=General&quality_tier=Premium',
   },
   {
     name: 'Continental Sausages',
     description: 'Chorizo, Italian, merguez for diverse menus',
     image: 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Sausages',
+    href: '/butchery/shop?category=SAUSAGES&subcategory=General',
   },
   {
     name: 'Vegetarian & Alternative',
     description: 'Plant-based and poultry sausages',
     image: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Sausages',
+    href: '/butchery/shop?category=SAUSAGES&subcategory=General',
   },
 ];
 
@@ -84,7 +84,7 @@ export default function SausagesCategoryPage() {
       <section className="relative text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1612161019796-3f6f1f7e6e1f?w=1600&q=80"
+            src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=1600&q=80"
             alt="Premium British Sausages"
             fill
             className="object-cover"

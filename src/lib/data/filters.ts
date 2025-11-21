@@ -18,6 +18,7 @@ type FilterOptions = {
   best_seller: { count: number };
   on_offer: { count: number };
   price_ranges: Array<{ label: string; value: string; min?: number; max?: number; count: number }>;
+  stock_levels?: Array<{ label: string; value: string; count: number }>;
 };
 
 type FilterParams = {
@@ -38,6 +39,7 @@ type FilterParams = {
   aging_method?: string;
   aging_days?: number;
   storage_type?: string;
+  stock_level?: string;
 };
 
 export function getFilterOptions(
@@ -68,7 +70,7 @@ export function getFilterOptions(
   
   // Apply current filters to get the filtered product set
   // But we'll calculate each filter type excluding itself
-  const getFilteredProducts = (excludeFilter?: 'brands' | 'attributes' | 'price' | 'on_offer' | 'best_seller' | 'meat_type' | 'category' | 'subcategory' | 'quality_tier' | 'halal' | 'origin' | 'aging_method' | 'aging_days' | 'storage_type') => {
+  const getFilteredProducts = (excludeFilter?: 'brands' | 'attributes' | 'price' | 'on_offer' | 'best_seller' | 'meat_type' | 'category' | 'subcategory' | 'quality_tier' | 'halal' | 'origin' | 'aging_method' | 'aging_days' | 'storage_type' | 'stock_level') => {
     let filtered = [...baseProducts];
     
     // Apply sector filter (already done in baseProducts, but keep for consistency)
@@ -167,15 +169,20 @@ export function getFilterOptions(
       filtered = filtered.filter(p => (p as any).storage_info === currentFilters.storage_type);
     }
 
-    // Apply branch inventory filtering
-    // For filters, we show all products available at the branch (including out of stock)
-    // so filter counts reflect what's available in the branch catalog
-    if (branchCode) {
+    // Apply stock_level filter (unless we're calculating stock_level counts)
+    if (currentFilters?.stock_level && excludeFilter !== 'stock_level') {
       filtered = filtered.filter(p => {
-        const branchInventory = p.inventory[branchCode];
-        return branchInventory !== undefined; // Product exists at branch (even if out of stock)
+        const inventory = p.inventory || {};
+        const inventoryEntry = Object.values(inventory)[0];
+        if (!inventoryEntry) {
+          return currentFilters.stock_level === 'out';
+        }
+        return inventoryEntry.stock_level === currentFilters.stock_level;
       });
     }
+
+    // Note: Branch inventory filtering removed for single-branch prototype
+    // All products have MAN001 inventory, so no filtering needed
 
     return filtered;
   };
@@ -468,11 +475,37 @@ export function getFilterOptions(
       return order.indexOf(a.value) - order.indexOf(b.value);
     });
 
+  // Stock level counts
+  const stockLevelProducts = getFilteredProducts('stock_level' as any);
+  const stockLevelCounts: Record<string, number> = {
+    high: 0,
+    medium: 0,
+    low: 0,
+    out: 0,
+  };
+
+  stockLevelProducts.forEach(p => {
+    const inventory = p.inventory || {};
+    const inventoryEntry = Object.values(inventory)[0];
+    const stockLevel = inventoryEntry?.stock_level || 'out';
+    if (stockLevel in stockLevelCounts) {
+      stockLevelCounts[stockLevel]++;
+    }
+  });
+
+  const stockLevels = [
+    { label: 'High Stock', value: 'high', count: stockLevelCounts.high },
+    { label: 'Medium Stock', value: 'medium', count: stockLevelCounts.medium },
+    { label: 'Low Stock', value: 'low', count: stockLevelCounts.low },
+    { label: 'Out of Stock', value: 'out', count: stockLevelCounts.out },
+  ].filter(level => level.count > 0);
+
   return {
     brands,
     attributes,
     ...(meatTypes.length > 0 && { meat_types: meatTypes }),
     ...(categories.length > 0 && { categories }),
+    ...(stockLevels.length > 0 && { stock_levels: stockLevels }),
     ...(subcategories.length > 0 && { subcategories }),
     ...(qualityTiers.length > 0 && { quality_tiers: qualityTiers }),
     ...(halalOptions.length > 0 && { halal_options: halalOptions }),

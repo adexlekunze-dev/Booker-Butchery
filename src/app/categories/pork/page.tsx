@@ -17,25 +17,25 @@ const porkCuts = [
     name: 'Pork Belly',
     description: 'Perfect for crackling, roasting & Asian cuisine',
     image: 'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Pork',
+    href: '/butchery/shop?category=PORK&subcategory=Belly',
   },
   {
     name: 'Pork Loin & Tenderloin',
     description: 'Lean, tender cuts for quick cooking',
     image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Pork',
+    href: '/butchery/shop?category=PORK&subcategory=Loin',
   },
   {
     name: 'Pork Shoulder',
     description: 'Ideal for pulled pork & slow cooking',
     image: 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Pork',
+    href: '/butchery/shop?category=PORK&subcategory=Shoulder',
   },
   {
     name: 'Pork Chops & Ribs',
     description: 'Great for grilling and BBQ',
     image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Pork',
+    href: '/butchery/shop?category=PORK&subcategory=Ribs',
   },
 ];
 

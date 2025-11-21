@@ -17,25 +17,25 @@ const burgerTypes = [
     name: 'British Beef Burgers',
     description: 'Classic & premium beef burgers (4oz-12oz)',
     image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=80',
-    href: '/butchery/shop?subcategory=BURGERS',
+    href: '/butchery/shop?category=BURGERS&subcategory=General',
   },
   {
     name: 'Gourmet Burger Patties',
     description: 'Aged beef, specialty blends & premium varieties',
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80',
-    href: '/butchery/shop?subcategory=BURGERS&quality_tier=Premium',
+    href: '/butchery/shop?category=BURGERS&subcategory=General&quality_tier=Premium',
   },
   {
     name: 'Chicken Burgers',
     description: 'Breaded, grilled & buttermilk varieties',
     image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=800&q=80',
-    href: '/butchery/shop?subcategory=BURGERS',
+    href: '/butchery/shop?category=BURGERS&subcategory=General',
   },
   {
     name: 'Plant-Based Burgers',
     description: 'Vegan & vegetarian burger options',
     image: 'https://images.unsplash.com/photo-1520072959219-c595dc870360?w=800&q=80',
-    href: '/butchery/shop?subcategory=BURGERS',
+    href: '/butchery/shop?category=BURGERS&subcategory=General',
   },
 ];
 

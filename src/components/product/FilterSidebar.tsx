@@ -31,6 +31,7 @@ export function FilterSidebar() {
     "attributes": true,
     "brand": true,
     "price_range": true,
+    "stock_level": true,
   });
 
   const [showMore, setShowMore] = useState<Record<string, boolean>>({});
@@ -48,6 +49,7 @@ export function FilterSidebar() {
     bestSellerCount?: number;
     onOfferCount?: number;
     priceRanges?: Array<{ label: string; value: string; min?: number; max?: number; count: number }>;
+    stockLevels?: { label: string; value: string; count: number }[];
   } | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -155,6 +157,7 @@ export function FilterSidebar() {
           bestSeller: searchParams.get("best_seller") === "true" ? true : undefined,
           minPrice: searchParams.get("min_price") ? parseFloat(searchParams.get("min_price")!) : undefined,
           maxPrice: searchParams.get("max_price") ? parseFloat(searchParams.get("max_price")!) : undefined,
+          stock_level: searchParams.get("stock_level") || undefined,
         };
 
         // Clean up undefined values
@@ -182,6 +185,7 @@ export function FilterSidebar() {
           bestSellerCount: options.best_seller.count,
           onOfferCount: options.on_offer.count,
           priceRanges: options.price_ranges || [],
+          stockLevels: options.stock_levels || [],
         });
 
         setLoading(false);
@@ -331,6 +335,17 @@ export function FilterSidebar() {
           multiple: false,
         });
       }
+    }
+
+    // Stock Level filter
+    if (filterOptions.stockLevels && filterOptions.stockLevels.length > 0) {
+      filterSections.push({
+        title: "Stock Level",
+        key: "stock_level",
+        options: filterOptions.stockLevels,
+        type: "checkbox",
+        multiple: true,
+      });
     }
   }
 

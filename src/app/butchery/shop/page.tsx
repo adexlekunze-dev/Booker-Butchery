@@ -118,9 +118,58 @@ function ButcheryListingContent() {
     setSession(currentSession);
     setUser(currentUser);
 
-    // Parse search params
-    const selectedCategory = searchParams.get("category") || undefined;
-    const subcategory = searchParams.get("subcategory") || undefined;
+    // Fix incorrect brand=Halal filter (Halal is an attribute, not a brand)
+    const brandParam = searchParams.get("brand");
+    if (brandParam && brandParam.toLowerCase() === "halal") {
+      // Redirect to correct halal filter
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("brand");
+      params.set("halal", "true");
+      router.replace(`/butchery/shop?${params.toString()}`);
+      return;
+    }
+
+    // Parse search params - normalize category to uppercase for consistency
+    // Handle categories with & character (e.g., "POULTRY & GAME", "EGGS & FATS")
+    let rawCategory = searchParams.get("category") || undefined;
+    const originalCategory = rawCategory;
+    
+    // If category was split by & (wrong encoding), try to reconstruct it
+    // When URL is ?category=POULTRY%20&%20GAME, browser parses as category=POULTRY & GAME=
+    // Check if there's a "GAME" or "FATS" parameter that might be part of the category
+    if (rawCategory) {
+      const gameParam = searchParams.get("GAME");
+      const fatsParam = searchParams.get("FATS");
+      
+      // If category ends with space and GAME exists as empty param, reconstruct POULTRY & GAME
+      if ((rawCategory.trim().toUpperCase() === "POULTRY" || rawCategory.toUpperCase().endsWith("POULTRY ")) && (gameParam === "" || gameParam === null)) {
+        rawCategory = "POULTRY & GAME";
+      }
+      // If category ends with space and FATS exists as empty param, reconstruct EGGS & FATS
+      else if ((rawCategory.trim().toUpperCase() === "EGGS" || rawCategory.toUpperCase().endsWith("EGGS ")) && (fatsParam === "" || fatsParam === null)) {
+        rawCategory = "EGGS & FATS";
+      }
+      // Normalize simple categories to uppercase (e.g., "beef" -> "BEEF")
+      // Compound categories like "POULTRY & GAME" and "EGGS & FATS" should stay as-is
+      else if (!rawCategory.includes("&")) {
+        const normalized = rawCategory.toUpperCase();
+        
+        // If normalized category differs from URL param, redirect to uppercase version for consistency
+        if (normalized !== originalCategory) {
+          const params = new URLSearchParams(searchParams.toString());
+          params.set("category", normalized);
+          router.replace(`/butchery/shop?${params.toString()}`);
+          return;
+        }
+        
+        rawCategory = normalized;
+      }
+    }
+    
+    const selectedCategory = rawCategory;
+    // Decode subcategory from URL (searchParams.get already decodes, but ensure it's trimmed)
+    const subcategoryParam = searchParams.get("subcategory");
+    const subcategory = subcategoryParam ? decodeURIComponent(subcategoryParam).trim() : undefined;
     const qualityTier = searchParams.get("quality_tier") || undefined;
     const halal = searchParams.get("halal") === "true" || undefined;
     const origin = searchParams.get("origin") || undefined;
@@ -132,6 +181,7 @@ function ButcheryListingContent() {
     const bestSeller = searchParams.get("best_seller") === "true";
     const onOffer = searchParams.get("on_offer") === "true";
     const inStockOnly = searchParams.get("in_stock") === "true";
+    const stockLevel = searchParams.get("stock_level") || undefined;
     const sortBy = searchParams.get("sort") || "name_az";
     const page = parseInt(searchParams.get("page") || "1");
     const minPrice = searchParams.get("min_price") ? parseFloat(searchParams.get("min_price")!) : undefined;
@@ -155,6 +205,7 @@ function ButcheryListingContent() {
       minPrice,
       maxPrice,
       inStockOnly,
+      stock_level: stockLevel,
       branchCode,
       sortBy,
       page,

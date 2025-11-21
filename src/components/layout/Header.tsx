@@ -270,7 +270,7 @@ export function Header() {
                             <ul className="space-y-1">
                               <li>
                                 <Link
-                                  href="/butchery/shop?category=BEEF"
+                                  href={`/butchery/shop?category=${encodeURIComponent("BEEF")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >
@@ -279,7 +279,7 @@ export function Header() {
                               </li>
                               <li>
                                 <Link
-                                  href="/butchery/shop?category=PORK"
+                                  href={`/butchery/shop?category=${encodeURIComponent("PORK")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >
@@ -288,7 +288,7 @@ export function Header() {
                               </li>
                               <li>
                                 <Link
-                                  href="/butchery/shop?category=LAMB"
+                                  href={`/butchery/shop?category=${encodeURIComponent("LAMB")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >
@@ -297,7 +297,7 @@ export function Header() {
                               </li>
                               <li>
                                 <Link
-                                  href="/butchery/shop?category=CHICKEN"
+                                  href={`/butchery/shop?category=${encodeURIComponent("CHICKEN")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >
@@ -306,7 +306,34 @@ export function Header() {
                               </li>
                               <li>
                                 <Link
-                                  href="/butchery/shop?category=SAUSAGES"
+                                  href={`/butchery/shop?category=${encodeURIComponent("POULTRY & GAME")}`}
+                                  className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
+                                  onClick={() => setCategoriesDropdownOpen(false)}
+                                >
+                                  Poultry & Game (23)
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={`/butchery/shop?category=${encodeURIComponent("VEAL")}`}
+                                  className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
+                                  onClick={() => setCategoriesDropdownOpen(false)}
+                                >
+                                  Veal (15)
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={`/butchery/shop?category=${encodeURIComponent("MUTTON")}`}
+                                  className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
+                                  onClick={() => setCategoriesDropdownOpen(false)}
+                                >
+                                  Mutton (10)
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={`/butchery/shop?category=${encodeURIComponent("SAUSAGES")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >
@@ -315,11 +342,38 @@ export function Header() {
                               </li>
                               <li>
                                 <Link
-                                  href="/butchery/shop?category=BURGERS"
+                                  href={`/butchery/shop?category=${encodeURIComponent("BURGERS")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >
                                   Burgers (21)
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={`/butchery/shop?category=${encodeURIComponent("ADDED VALUE")}`}
+                                  className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
+                                  onClick={() => setCategoriesDropdownOpen(false)}
+                                >
+                                  Added Value (23)
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={`/butchery/shop?category=${encodeURIComponent("EGGS & FATS")}`}
+                                  className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
+                                  onClick={() => setCategoriesDropdownOpen(false)}
+                                >
+                                  Eggs & Fats (12)
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  href={`/butchery/shop?category=${encodeURIComponent("FISH")}`}
+                                  className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
+                                  onClick={() => setCategoriesDropdownOpen(false)}
+                                >
+                                  Fish (6)
                                 </Link>
                               </li>
                             </ul>
@@ -333,7 +387,7 @@ export function Header() {
                             <ul className="space-y-1">
                               <li>
                                 <Link
-                                  href="/butchery/shop?brand=Booker"
+                                  href={`/butchery/shop?brand=${encodeURIComponent("Booker")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >
@@ -342,7 +396,7 @@ export function Header() {
                               </li>
                               <li>
                                 <Link
-                                  href="/butchery/shop?brand=Chef's Larder"
+                                  href={`/butchery/shop?brand=${encodeURIComponent("Chef's Larder")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >
@@ -351,7 +405,7 @@ export function Header() {
                               </li>
                               <li>
                                 <Link
-                                  href="/butchery/shop?brand=Blackgate"
+                                  href={`/butchery/shop?brand=${encodeURIComponent("Blackgate")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >
@@ -360,7 +414,7 @@ export function Header() {
                               </li>
                               <li>
                                 <Link
-                                  href="/butchery/shop?brand=Ihsaan"
+                                  href={`/butchery/shop?brand=${encodeURIComponent("Ihsaan")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >
@@ -369,7 +423,7 @@ export function Header() {
                               </li>
                               <li>
                                 <Link
-                                  href="/butchery/shop?brand=Blakemans"
+                                  href={`/butchery/shop?brand=${encodeURIComponent("Blakemans")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >
@@ -378,7 +432,7 @@ export function Header() {
                               </li>
                               <li>
                                 <Link
-                                  href="/butchery/shop?brand=Chef's Essentials"
+                                  href={`/butchery/shop?brand=${encodeURIComponent("Chef's Essentials")}`}
                                   className="block px-2 py-2 text-sm text-gray-900 hover:bg-primary hover:text-white transition-colors rounded"
                                   onClick={() => setCategoriesDropdownOpen(false)}
                                 >

@@ -17,25 +17,25 @@ const beefCuts = [
     name: 'Premium Steaks',
     description: 'Ribeye, sirloin, fillet for fine dining',
     image: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Beef&quality_tier=Premium',
+    href: '/butchery/shop?category=BEEF&subcategory=Steaks&quality_tier=Premium',
   },
   {
     name: 'Roasting Joints',
     description: 'Topside, silverside, rib roasts',
     image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Beef',
+    href: '/butchery/shop?category=BEEF&subcategory=Roasts',
   },
   {
     name: 'Slow-Cook Cuts',
     description: 'Brisket, short rib, chuck, shin',
     image: 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Beef',
+    href: '/butchery/shop?category=BEEF&subcategory=Shoulder',
   },
   {
     name: 'Mince & Burgers',
     description: 'Premium beef mince and burger patties',
     image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Beef',
+    href: '/butchery/shop?category=BEEF&subcategory=Mince%20%26%20Diced',
   },
 ];
 

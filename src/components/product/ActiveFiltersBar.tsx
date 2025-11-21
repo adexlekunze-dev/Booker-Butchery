@@ -22,6 +22,12 @@ const filterLabels: Record<string, Record<string, string>> = {
     halal: "Halal",
     premium: "Premium",
   },
+  stock_level: {
+    high: "High Stock",
+    medium: "Medium Stock",
+    low: "Low Stock",
+    out: "Out of Stock",
+  },
 };
 
 export function ActiveFiltersBar() {
@@ -63,10 +69,20 @@ export function ActiveFiltersBar() {
   const activeFilters: { key: string; value: string; label: string }[] = [];
   
   searchParams.forEach((value, key) => {
+    // Skip stock_level in forEach - handle it separately as multi-value
+    if (key === "stock_level") return;
+    
     if (!["category", "branch_code", "page", "per_page", "in_stock"].includes(key)) {
       const label = filterLabels[key]?.[value] || value;
       activeFilters.push({ key, value, label });
     }
+  });
+  
+  // Handle stock_level as multi-value filter
+  const stockLevels = searchParams.getAll("stock_level");
+  stockLevels.forEach(level => {
+    const label = filterLabels.stock_level?.[level] || level;
+    activeFilters.push({ key: "stock_level", value: level, label });
   });
 
   if (activeFilters.length === 0) return null;

@@ -305,7 +305,7 @@ export default function HalalCertificationPage() {
           <div className="mt-8 text-center">
             <p className="text-gray-600 mb-4">All products clearly marked with HMC certification</p>
             <Link
-              href="/products?filter=halal"
+              href="/butchery/shop?halal=true"
               className="inline-block px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors"
             >
               Browse Halal Products
@@ -382,7 +382,7 @@ export default function HalalCertificationPage() {
             HMC-certified halal meats you can trust. Complete traceability, rigorous standards, and uncompromising quality.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/products?filter=halal">
+            <Link href="/butchery/shop?halal=true">
               <Button variant="secondary" size="lg">
                 Browse Halal Products
               </Button>

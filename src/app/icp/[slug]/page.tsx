@@ -220,7 +220,7 @@ export default async function ICPPage({ params }: Props) {
             {icp.productCategories.map((category) => (
               <Link
                 key={category}
-                href={`/butchery/shop?category=${category}`}
+                href={`/butchery/shop?category=${encodeURIComponent(category)}`}
                 className="group bg-gradient-to-br from-gray-50 to-white rounded-lg p-6 border-2 border-gray-200 hover:border-orange-500 transition-all text-center hover:shadow-lg"
               >
                 <div className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">

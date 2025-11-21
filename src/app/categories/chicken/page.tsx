@@ -17,25 +17,25 @@ const chickenCuts = [
     name: 'Chicken Breast',
     description: 'Lean, versatile & quick-cooking',
     image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Poultry',
+    href: '/butchery/shop?category=CHICKEN&subcategory=Breast',
   },
   {
     name: 'Chicken Thighs',
     description: 'Flavorful, forgiving & budget-friendly',
     image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Poultry',
+    href: '/butchery/shop?category=CHICKEN&subcategory=Leg%20Meat',
   },
   {
     name: 'Chicken Wings & Drumsticks',
     description: 'Perfect for pubs, bars & casual dining',
     image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Poultry',
+    href: '/butchery/shop?category=CHICKEN&subcategory=Wings',
   },
   {
     name: 'Whole Chickens',
     description: 'Economical for roasting & stock',
     image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Poultry',
+    href: '/butchery/shop?category=CHICKEN&subcategory=Whole%20Birds',
   },
 ];
 

@@ -313,33 +313,33 @@ export default function BritishBeefPage() {
         <section className="bg-gradient-to-br from-green-600 to-teal-600 text-white rounded-xl p-8 md:p-12">
           <div className="text-center mb-8">
             <Leaf className="w-16 h-16 mx-auto mb-4" />
-            <h2 className="text-3xl font-bold mb-4">Sustainable British Beef</h2>
-            <p className="text-green-100 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4" style={{ color: '#FFFFFF' }}>Sustainable British Beef</h2>
+            <p className="max-w-3xl mx-auto" style={{ color: '#FFFFFF' }}>
               British beef farming is among the most sustainable in the world. Our grass-based systems, strict environmental regulations, and continuous improvement programs ensure responsible production.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h4 className="font-bold mb-3">Grass-Fed Heritage</h4>
-              <p className="text-sm text-green-100">
+              <h4 className="font-bold mb-3" style={{ color: '#FFFFFF' }}>Grass-Fed Heritage</h4>
+              <p className="text-sm" style={{ color: '#FFFFFF' }}>
                 British cattle are predominantly grass-fed, grazing on pastures for much of the year. This natural diet requires no imported feed crops and maintains carbon-sequestering grasslands that support biodiversity.
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h4 className="font-bold mb-3">Lower Food Miles</h4>
-              <p className="text-sm text-green-100">
+              <h4 className="font-bold mb-3" style={{ color: '#FFFFFF' }}>Lower Food Miles</h4>
+              <p className="text-sm" style={{ color: '#FFFFFF' }}>
                 Sourcing from British farms means dramatically reduced transport distances compared to imported beef. Less transport means lower carbon emissions and fresher products.
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h4 className="font-bold mb-3">Environmental Stewardship</h4>
-              <p className="text-sm text-green-100">
+              <h4 className="font-bold mb-3" style={{ color: '#FFFFFF' }}>Environmental Stewardship</h4>
+              <p className="text-sm" style={{ color: '#FFFFFF' }}>
                 UK farmers manage hedgerows, woodlands, and wetlands that provide habitats for wildlife. Rotational grazing improves soil health and prevents erosion. Strict regulations on waste and water usage protect the environment.
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h4 className="font-bold mb-3">Continuous Improvement</h4>
-              <p className="text-sm text-green-100">
+              <h4 className="font-bold mb-3" style={{ color: '#FFFFFF' }}>Continuous Improvement</h4>
+              <p className="text-sm" style={{ color: '#FFFFFF' }}>
                 UK beef farmers have reduced greenhouse gas emissions intensity by 29% since 1990. Ongoing research and innovation continue to improve efficiency and reduce environmental impact.
               </p>
             </div>

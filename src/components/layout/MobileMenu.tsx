@@ -102,7 +102,7 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     Range
                   </div>
                   <Link
-                    href="/butchery/shop?category=BEEF"
+                    href={`/butchery/shop?category=${encodeURIComponent("BEEF")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >
@@ -110,7 +110,7 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
                   <Link
-                    href="/butchery/shop?category=PORK"
+                    href={`/butchery/shop?category=${encodeURIComponent("PORK")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >
@@ -118,7 +118,7 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
                   <Link
-                    href="/butchery/shop?category=LAMB"
+                    href={`/butchery/shop?category=${encodeURIComponent("LAMB")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >
@@ -126,7 +126,7 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
                   <Link
-                    href="/butchery/shop?category=CHICKEN"
+                    href={`/butchery/shop?category=${encodeURIComponent("CHICKEN")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >
@@ -134,7 +134,31 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
                   <Link
-                    href="/butchery/shop?category=SAUSAGES"
+                    href={`/butchery/shop?category=${encodeURIComponent("POULTRY & GAME")}`}
+                    className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+                    onClick={handleLinkClick}
+                  >
+                    <span>Poultry & Game (23)</span>
+                    <ChevronRight className="w-4 h-4 text-gray-400" />
+                  </Link>
+                  <Link
+                    href={`/butchery/shop?category=${encodeURIComponent("VEAL")}`}
+                    className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+                    onClick={handleLinkClick}
+                  >
+                    <span>Veal (15)</span>
+                    <ChevronRight className="w-4 h-4 text-gray-400" />
+                  </Link>
+                  <Link
+                    href={`/butchery/shop?category=${encodeURIComponent("MUTTON")}`}
+                    className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+                    onClick={handleLinkClick}
+                  >
+                    <span>Mutton (10)</span>
+                    <ChevronRight className="w-4 h-4 text-gray-400" />
+                  </Link>
+                  <Link
+                    href={`/butchery/shop?category=${encodeURIComponent("SAUSAGES")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >
@@ -142,11 +166,35 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
                   <Link
-                    href="/butchery/shop?category=BURGERS"
+                    href={`/butchery/shop?category=${encodeURIComponent("BURGERS")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >
                     <span>Burgers (21)</span>
+                    <ChevronRight className="w-4 h-4 text-gray-400" />
+                  </Link>
+                  <Link
+                    href={`/butchery/shop?category=${encodeURIComponent("ADDED VALUE")}`}
+                    className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+                    onClick={handleLinkClick}
+                  >
+                    <span>Added Value (23)</span>
+                    <ChevronRight className="w-4 h-4 text-gray-400" />
+                  </Link>
+                  <Link
+                    href={`/butchery/shop?category=${encodeURIComponent("EGGS & FATS")}`}
+                    className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+                    onClick={handleLinkClick}
+                  >
+                    <span>Eggs & Fats (12)</span>
+                    <ChevronRight className="w-4 h-4 text-gray-400" />
+                  </Link>
+                  <Link
+                    href={`/butchery/shop?category=${encodeURIComponent("FISH")}`}
+                    className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+                    onClick={handleLinkClick}
+                  >
+                    <span>Fish (6)</span>
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
 
@@ -154,7 +202,7 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     Brands
                   </div>
                   <Link
-                    href="/butchery/shop?brand=Booker"
+                    href={`/butchery/shop?brand=${encodeURIComponent("Booker")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >
@@ -162,7 +210,7 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
                   <Link
-                    href="/butchery/shop?brand=Chef's Larder"
+                    href={`/butchery/shop?brand=${encodeURIComponent("Chef's Larder")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >
@@ -170,7 +218,7 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
                   <Link
-                    href="/butchery/shop?brand=Blackgate"
+                    href={`/butchery/shop?brand=${encodeURIComponent("Blackgate")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >
@@ -178,7 +226,7 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
                   <Link
-                    href="/butchery/shop?brand=Ihsaan"
+                    href={`/butchery/shop?brand=${encodeURIComponent("Ihsaan")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >
@@ -186,7 +234,7 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
                   <Link
-                    href="/butchery/shop?brand=Blakemans"
+                    href={`/butchery/shop?brand=${encodeURIComponent("Blakemans")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >
@@ -194,7 +242,7 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </Link>
                   <Link
-                    href="/butchery/shop?brand=Chef's Essentials"
+                    href={`/butchery/shop?brand=${encodeURIComponent("Chef's Essentials")}`}
                     className="flex items-center justify-between px-4 pl-8 py-2.5 text-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors"
                     onClick={handleLinkClick}
                   >

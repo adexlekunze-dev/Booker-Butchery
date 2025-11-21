@@ -83,6 +83,7 @@ type ProductQueryParams = {
   aging_method?: string;
   aging_days?: number;
   storage_type?: string;
+  stock_level?: string;
 };
 
 function getStockLevel(count: number): 'high' | 'medium' | 'low' | 'out' {
@@ -141,18 +142,28 @@ export function getProducts(params: ProductQueryParams = {}) {
     aging_method,
     aging_days,
     storage_type,
+    stock_level,
   } = params;
 
   let filtered = (productsData as Product[]).filter(p => p.active);
 
-  // Category filter
+  // Category filter (case-insensitive matching)
   if (category) {
-    filtered = filtered.filter(p => p.category === category);
+    // Case-insensitive matching - all categories exist in data, no normalization needed
+    filtered = filtered.filter(p => 
+      p.category.toUpperCase() === category.toUpperCase()
+    );
   }
 
-  // Subcategory filter
+  // Subcategory filter (case-insensitive, handle URL decoding)
   if (subcategory) {
-    filtered = filtered.filter(p => p.subcategory === subcategory);
+    // Decode URL-encoded subcategory and normalize
+    const normalizedSubcategory = decodeURIComponent(subcategory).trim();
+    filtered = filtered.filter(p => {
+      if (!p.subcategory) return false;
+      // Case-insensitive comparison
+      return p.subcategory.trim().toLowerCase() === normalizedSubcategory.toLowerCase();
+    });
   }
 
   // Sector filter
@@ -241,6 +252,19 @@ export function getProducts(params: ProductQueryParams = {}) {
   }
   if (maxPrice !== undefined) {
     filtered = filtered.filter(p => p.base_price <= maxPrice);
+  }
+
+  // Stock level filter
+  if (stock_level) {
+    filtered = filtered.filter(p => {
+      const inventory = p.inventory || {};
+      // Get the first (and only) inventory entry
+      const inventoryEntry = Object.values(inventory)[0];
+      if (!inventoryEntry) {
+        return stock_level === 'out';
+      }
+      return inventoryEntry.stock_level === stock_level;
+    });
   }
 
   // Apply inventory filtering and attach availability

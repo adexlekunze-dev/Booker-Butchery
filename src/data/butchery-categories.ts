@@ -94,7 +94,7 @@ export const butcheryCategories = [
     slug: 'sausages',
     description: 'Traditional and specialty sausages',
     icon: '🌭',
-    image: 'https://images.unsplash.com/photo-1612161019796-3f6f1f7e6e1f?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=1200&q=80',
     subcategories: [
       { id: 'pork', name: 'Pork Sausages', slug: 'pork', description: 'Traditional pork sausages' },
       { id: 'beef', name: 'Beef Sausages', slug: 'beef', description: 'Beef sausages' },

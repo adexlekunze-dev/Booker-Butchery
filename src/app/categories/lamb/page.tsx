@@ -17,25 +17,25 @@ const lambCuts = [
     name: 'Lamb Rack',
     description: 'Premium cut for fine dining & French trimming',
     image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Lamb&quality_tier=Premium',
+    href: '/butchery/shop?category=LAMB&subcategory=Loin&quality_tier=Premium',
   },
   {
     name: 'Lamb Leg',
     description: 'Perfect for roasting & carving stations',
     image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Lamb',
+    href: '/butchery/shop?category=LAMB&subcategory=Leg',
   },
   {
     name: 'Lamb Shoulder',
     description: 'Ideal for slow cooking & Middle Eastern cuisine',
     image: 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Lamb',
+    href: '/butchery/shop?category=LAMB&subcategory=Shoulder',
   },
   {
     name: 'Lamb Chops & Cutlets',
     description: 'Quick-cook cuts for grilling & pan-frying',
     image: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=800&q=80',
-    href: '/butchery/shop?subcategory=Fresh%20Lamb',
+    href: '/butchery/shop?category=LAMB&subcategory=Loin',
   },
 ];
 

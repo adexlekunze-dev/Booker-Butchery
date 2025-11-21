@@ -63,7 +63,7 @@ export default function Home() {
     { name: "PORK", count: 61, image: "https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=800&q=80" },
     { name: "LAMB", count: 46, image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&q=80" },
     { name: "CHICKEN", count: 49, image: "https://images.unsplash.com/photo-1587593810167-a84920ea0781?w=800&q=80" },
-    { name: "SAUSAGES", count: 53, image: "https://images.unsplash.com/photo-1612161019796-3f6f1f7e6e1f?w=800&q=80" },
+    { name: "SAUSAGES", count: 53, image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&q=80" },
     { name: "BURGERS", count: 21, image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80" },
   ];
 
