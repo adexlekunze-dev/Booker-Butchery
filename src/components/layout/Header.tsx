@@ -407,6 +407,12 @@ export function Header() {
 
               {/* Other navigation links */}
               <Link
+                href="/recipes"
+                className="text-white hover:opacity-80 transition-colors"
+              >
+                Recipes
+              </Link>
+              <Link
                 href="/best-sellers"
                 className="text-white hover:opacity-80 transition-colors"
               >

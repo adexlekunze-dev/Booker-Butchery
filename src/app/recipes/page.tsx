@@ -1,15 +1,22 @@
+"use client";
+
+import { useState } from "react";
 import { categoryRecipes } from "@/data/category-recipes";
 import Image from "next/image";
 import Link from "next/link";
 import { ChefHat, ChevronRight } from "lucide-react";
-
-export const metadata = {
-  title: "Butchery Recipes | Chef Inspiration | Premium Butchery",
-  description: "Professional recipes for beef, pork, lamb, chicken, and sausages. From classic roasts to gourmet creations. Perfect for your menu.",
-  keywords: "butchery recipes, beef recipes, pork recipes, lamb recipes, chicken recipes, chef recipes, professional cooking",
-};
+import { RecipeFilterTabs } from "@/components/recipes/RecipeFilterTabs";
+import { SEOContentSection } from "@/components/sectors/SEOContentSection";
+import { getRecipesLandingPageSEO } from "@/data/recipes-seo-content";
 
 export default function RecipesPage() {
+  const [filteredRecipes, setFilteredRecipes] = useState(categoryRecipes);
+  const [activeFilter, setActiveFilter] = useState("All Recipes");
+
+  const handleFilterChange = (recipes: typeof categoryRecipes) => {
+    setFilteredRecipes(recipes);
+  };
+
   return (
     <main className="min-h-screen bg-white">
       {/* Header Section */}
@@ -29,11 +36,28 @@ export default function RecipesPage() {
         </div>
       </section>
 
+      {/* Filter Tabs */}
+      <section className="py-8 bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RecipeFilterTabs recipes={categoryRecipes} onFilterChange={handleFilterChange} />
+        </div>
+      </section>
+
+      {/* Results Count */}
+      <section className="py-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-lg text-gray-700">
+            Showing <span className="font-semibold">{filteredRecipes.length}</span> recipe{filteredRecipes.length !== 1 ? 's' : ''}
+          </p>
+        </div>
+      </section>
+
       {/* Recipes Grid */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {categoryRecipes.map((recipe) => (
+          {filteredRecipes.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {filteredRecipes.map((recipe) => (
               <Link
                 key={recipe.id}
                 href={recipe.link}
@@ -98,9 +122,19 @@ export default function RecipesPage() {
                 </div>
               </Link>
             ))}
-          </div>
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <ChefHat className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2">No recipes found</h3>
+              <p className="text-gray-600">Try adjusting your filters to see more recipes.</p>
+            </div>
+          )}
         </div>
       </section>
+
+      {/* SEO Content Section */}
+      <SEOContentSection content={getRecipesLandingPageSEO()} />
     </main>
   );
 }

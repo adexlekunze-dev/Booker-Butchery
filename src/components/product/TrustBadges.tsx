@@ -101,16 +101,16 @@ export function TrustBadges({ product }: TrustBadgesProps) {
 
   return (
     <section className="bg-gray-50 border border-gray-200 rounded-lg p-6 md:p-8">
-      <div className={`grid grid-cols-2 gap-6 ${displayBadges.length <= 3 ? 'md:grid-cols-3' : displayBadges.length === 4 ? 'md:grid-cols-4' : 'md:grid-cols-5'}`}>
+      <div className={`flex md:grid gap-4 md:gap-6 overflow-x-auto md:overflow-visible ${displayBadges.length <= 3 ? 'md:grid-cols-3' : displayBadges.length === 4 ? 'md:grid-cols-4' : 'md:grid-cols-5'}`}>
         {displayBadges.map((badge) => {
           const Icon = badge.icon;
           return (
-            <div key={badge.id} className="text-center">
-              <Icon className="w-8 h-8 text-primary mx-auto mb-3" />
-              <div className="font-semibold text-sm text-gray-900 mb-1">
+            <div key={badge.id} className="text-center flex-shrink-0 min-w-[140px] md:min-w-0">
+              <Icon className="w-8 h-8 md:w-10 md:h-10 text-primary mx-auto mb-3" />
+              <div className="font-semibold text-base md:text-sm text-gray-900 mb-1">
                 {badge.title}
               </div>
-              <div className="text-xs text-gray-600">{badge.description}</div>
+              <div className="text-sm md:text-xs text-gray-600">{badge.description}</div>
             </div>
           );
         })}
