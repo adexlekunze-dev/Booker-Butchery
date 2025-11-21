@@ -61,10 +61,10 @@ export function getFilterOptions(
   
   // Apply category filter if specified
   if (category) {
-    baseProducts = baseProducts.filter(p => p.category === category);
+    baseProducts = baseProducts.filter(p => p.category.toUpperCase() === category.toUpperCase());
   } else if (currentFilters?.category) {
     // If no category param but currentFilters has category, use that
-    baseProducts = baseProducts.filter(p => p.category === currentFilters.category);
+    baseProducts = baseProducts.filter(p => p.category.toUpperCase() === currentFilters.category.toUpperCase());
   }
   // If category is null and no category in currentFilters, include all categories
   
