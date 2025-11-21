@@ -235,12 +235,12 @@ export default function QualityPage() {
             Browse our premium selection of British meats, aged to perfection and certified to the highest standards.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/products">
+            <Link href="/butchery/shop">
               <Button variant="secondary" size="lg">
                 Browse All Products
               </Button>
             </Link>
-            <Link href="/products?filter=blackgate">
+            <Link href="/butchery/shop?brand=Blackgate">
               <Button
                 variant="secondary"
                 size="lg"

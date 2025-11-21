@@ -167,7 +167,7 @@ export default function ResourcesPage() {
             Source premium meats and cook them to perfection with our professional resources and expert guidance.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/products">
+            <Link href="/butchery/shop">
               <Button variant="secondary" size="lg">
                 Browse All Products
               </Button>

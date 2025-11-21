@@ -223,12 +223,12 @@ export default function BeefCutsPage() {
             From premium Blackgate dry-aged ribeye to value-packed chuck for braising. 100% British beef with full traceability.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/products?category=beef">
+            <Link href="/butchery/shop?category=BEEF">
               <Button variant="secondary" size="lg">
                 View All Beef Products
               </Button>
             </Link>
-            <Link href="/products?filter=blackgate">
+            <Link href="/butchery/shop?brand=Blackgate">
               <Button
                 variant="secondary"
                 size="lg"
