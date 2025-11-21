@@ -21,7 +21,7 @@ export type MockUser = {
 export const MOCK_USERS: MockUser[] = [
   {
     id: 'user-test-001',
-    email: 'test@booker.com',
+    email: 'test@bookerwebdemo.xyz',
     password: 'Test123!',
     full_name: 'Sarah Bailey',
     business_name: 'The Red Lion Restaurant',

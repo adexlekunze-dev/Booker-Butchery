@@ -24,7 +24,7 @@ npm run dev
 The app uses mock authentication with predefined test users (see `src/lib/mock-users.ts`). You can sign in with either of these accounts:
 
 **Primary Test User:**
-- Email: `test@booker.com`
+- Email: `test@bookerwebdemo.xyz`
 - Password: `Test123!`
 - Business: Test Business
 
