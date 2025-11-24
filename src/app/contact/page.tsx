@@ -14,27 +14,27 @@ export default function ContactPage() {
             <div className="space-y-6 text-gray-700">
               <div>
                 <p className="font-semibold text-gray-900 mb-1">General Enquiries</p>
-                <p className="text-lg">01933 371000</p>
+                <p className="text-lg">0800 123 4567</p>
               </div>
               
               <div>
                 <p className="font-semibold text-gray-900 mb-1">VAT Number</p>
-                <p>220 4302 31</p>
+                <p>GB 123 456 789</p>
               </div>
               
               <div>
                 <p className="font-semibold text-gray-900 mb-1">Registered in London</p>
-                <p>197380</p>
+                <p>12345678</p>
               </div>
               
               <div>
                 <p className="font-semibold text-gray-900 mb-1">Postal Address</p>
                 <div className="space-y-1">
-                  <p>Booker Ltd</p>
-                  <p>Irthlingborough Road</p>
-                  <p>Wellingborough</p>
-                  <p>Northants</p>
-                  <p>NN8 1LT</p>
+                  <p>Demo Wholesale Ltd</p>
+                  <p>123 Business Park Avenue</p>
+                  <p>London</p>
+                  <p>Greater London</p>
+                  <p>SW1A 1AA</p>
                 </div>
               </div>
             </div>

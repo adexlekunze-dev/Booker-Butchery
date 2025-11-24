@@ -8,7 +8,7 @@ export function ContactActionCards() {
       <div className="bg-gray-100 rounded-lg p-6">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Website Support</h2>
         <p className="text-gray-700 mb-6">
-          If you are experiencing any difficulty using our website, or need assistance with setting up or accessing your account you can call our Website Support Desk on <strong>0345 602 3108</strong>. Lines are open from Monday - Sunday 7am to 7pm.
+          If you are experiencing any difficulty using our website, or need assistance with setting up or accessing your account you can call our Website Support Desk on <strong>0800 555 1234</strong>. Lines are open from Monday - Sunday 7am to 7pm.
         </p>
         <Link href="/contact/website-support">
           <Button variant="primary" size="lg" block>
@@ -34,7 +34,7 @@ export function ContactActionCards() {
       <div className="bg-gray-100 rounded-lg p-6">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Export Enquiries</h2>
         <p className="text-gray-700 mb-6">
-          If you are interested in buying stock to export outside of the UK, please call 0044 (0)208 595 8634, or click the link below to send us an email
+          If you are interested in buying stock to export outside of the UK, please call +44 (0)20 1234 5678, or click the link below to send us an email
         </p>
         <Link href="/contact/export-enquiries">
           <Button variant="primary" size="lg" block>

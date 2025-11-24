@@ -14,6 +14,7 @@ import { MobileFilterDrawer } from "@/components/product/MobileFilterDrawer";
 import { MobileFilterButton } from "@/components/product/MobileFilterButton";
 import { ContentInjection } from "@/components/product/ContentInjection";
 import { ProductCard } from "@/components/product/ProductCard";
+import { getCategoryDescription } from "@/data/category-short-descriptions";
 import Link from "next/link";
 import { ArrowLeft, Grid, List } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -329,7 +330,7 @@ function ButcheryListingContent() {
             Showing {data.products.length} of {data.total} products {locationText}
           </p>
           <p className="text-gray-600 mt-2">
-            Browse our complete range of premium butchery products at wholesale prices. Order by 3pm for next-day delivery {session?.user && branchName ? `from ${branchName.replace('at ', '')}` : 'across all branches'}.
+            {getCategoryDescription(category, branchName, !!session?.user)}
           </p>
         </div>
       </div>
