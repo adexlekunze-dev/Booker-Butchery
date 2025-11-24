@@ -22,7 +22,7 @@ export const categoryShortDescriptions: Record<string, string> = {
 /**
  * Get category description with branch personalization
  */
-export function getCategoryDescription(category: string | null, branchName: string | null, isAuthenticated: boolean): string {
+export function getCategoryDescription(category: string | null | undefined, branchName: string | null, isAuthenticated: boolean): string {
   if (!category || !categoryShortDescriptions[category]) {
     return `Browse our complete range of premium butchery products at wholesale prices. Order by 3pm for next-day delivery ${isAuthenticated && branchName ? `from ${branchName.replace('at ', '')}` : 'across all branches'}.`;
   }
