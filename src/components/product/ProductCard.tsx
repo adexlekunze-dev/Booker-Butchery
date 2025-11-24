@@ -28,6 +28,8 @@ type Product = {
 
 export function ProductCard({ product }: { product: Product }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showSecondImage, setShowSecondImage] = useState(false);
+  const [touchStartTime, setTouchStartTime] = useState<number | null>(null);
 
   useEffect(() => {
     const session = getSession();
@@ -48,23 +50,121 @@ export function ProductCard({ product }: { product: Product }) {
     };
   }, []);
 
+  // Handle touch events for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!product.images?.[1]) return; // No second image to show
+    
+    const touchTime = Date.now();
+    setTouchStartTime(touchTime);
+    
+    // Show second image on first tap
+    if (!showSecondImage) {
+      e.preventDefault(); // Prevent immediate navigation on first tap
+      setShowSecondImage(true);
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStartTime) return;
+    
+    const touchDuration = Date.now() - touchStartTime;
+    
+    // If second image is already showing, allow navigation
+    if (showSecondImage) {
+      // Quick tap (< 200ms) on second image = navigate
+      if (touchDuration < 200) {
+        // Navigation will proceed via Link
+        setShowSecondImage(false);
+        return;
+      }
+      // Longer tap = user viewing image, reset after delay
+      setTimeout(() => {
+        setShowSecondImage(false);
+      }, 2000);
+    }
+  };
+
+  const handleTouchCancel = () => {
+    // Reset on touch cancel (e.g., user scrolls)
+    setShowSecondImage(false);
+    setTouchStartTime(null);
+  };
+
+  // Handle click for when second image is showing (second tap = navigate)
+  const handleClick = (e: React.MouseEvent) => {
+    if (showSecondImage && product.images?.[1]) {
+      // Second image is showing, allow navigation
+      setShowSecondImage(false);
+      // Link will handle navigation
+    }
+  };
+
+  // Reset second image when user scrolls
+  useEffect(() => {
+    const handleClickOutside = () => {
+      if (showSecondImage) {
+        setTimeout(() => setShowSecondImage(false), 100);
+      }
+    };
+
+    const handleScroll = () => {
+      if (showSecondImage) {
+        setShowSecondImage(false);
+      }
+    };
+
+    if (showSecondImage) {
+      document.addEventListener('click', handleClickOutside);
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [showSecondImage]);
+
   const productLink = `/products/${product.sku ?? product.id}`;
   const rating = product.rating ?? 4.8;
   const reviewCount = product.review_count ?? 156;
   const savePercent = product.save_percent;
   
   return (
-    <div className="group bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-150 border border-gray-200 overflow-hidden flex flex-col">
-      <Link href={productLink} className="block relative">
+    <div className="group bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-150 border border-gray-200 overflow-hidden flex flex-col h-full">
+      <Link 
+        href={productLink} 
+        className="block relative"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchCancel}
+        onClick={handleClick}
+      >
         <div className="aspect-square bg-gray-100 relative overflow-hidden">
           {product.images?.[0] ? (
-            <Image
-              src={product.images[0]}
-              alt={product.name}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-200"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+            <>
+              {/* First Image - Always visible, hidden on hover/touch */}
+              <Image
+                src={product.images[0]}
+                alt={product.name}
+                fill
+                className={`object-cover group-hover:scale-105 transition-all duration-300 ${
+                  showSecondImage ? 'opacity-0' : 'group-hover:opacity-0'
+                }`}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+              {/* Second Image - Shows on hover (desktop) or touch (mobile) */}
+              {product.images?.[1] ? (
+                <Image
+                  src={product.images[1]}
+                  alt={product.name}
+                  fill
+                  className={`object-cover group-hover:scale-105 transition-all duration-300 absolute inset-0 ${
+                    showSecondImage ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  }`}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              ) : null}
+            </>
           ) : (
             <div className="absolute inset-0 flex items-center justify-center text-gray-400">
               <Package className="w-12 h-12" strokeWidth={1.5} />
@@ -91,14 +191,14 @@ export function ProductCard({ product }: { product: Product }) {
             <Heart className="w-4 h-4 text-gray-600" strokeWidth={2} fill="none" />
           </button>
           {product.on_offer && (
-            <div className="absolute bottom-2 left-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded uppercase tracking-wide flex items-center gap-1">
+            <div className="absolute bottom-2 right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded uppercase tracking-wide flex items-center gap-1">
               <Tag className="w-3 h-3" strokeWidth={2} />
               ON OFFER
             </div>
           )}
         </div>
       </Link>
-      <div className="p-3 sm:p-4 flex flex-col gap-2 sm:gap-2.5 flex-1">
+      <div className="p-3 sm:p-4 flex flex-col gap-2 sm:gap-2.5 flex-1 min-h-0">
         {/* Brand */}
         <div className="text-xs text-gray-500 uppercase tracking-wide font-semibold">
           {product.brand}

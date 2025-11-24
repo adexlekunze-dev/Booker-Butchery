@@ -103,7 +103,7 @@ export function Header() {
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 hover:opacity-90 transition-opacity">
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">BOOKER</h1>
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">BOOKER DEMO</h1>
           </Link>
 
           {/* Search bar - Hidden on mobile, show on tablet+ */}

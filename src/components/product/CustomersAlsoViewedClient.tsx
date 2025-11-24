@@ -71,9 +71,11 @@ export function CustomersAlsoViewedClient({ currentProductId }: CustomersAlsoVie
         Customers Also Viewed
       </h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 items-stretch">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <div key={product.id} className="h-full">
+            <ProductCard product={product} />
+          </div>
         ))}
       </div>
     </section>

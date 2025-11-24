@@ -78,9 +78,9 @@ export function FrequentlyBoughtTogether({
         {/* Products */}
         <div className="flex-1 flex flex-wrap items-center gap-4">
           {/* Current Product + Related Products */}
-          <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 items-stretch">
             {currentProduct && (
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 h-full">
                 <ProductCard product={{
                   ...currentProduct,
                   brand: currentProduct.brand || '',
@@ -90,7 +90,7 @@ export function FrequentlyBoughtTogether({
               </div>
             )}
             {products.slice(0, currentProduct ? 3 : 4).map((product) => (
-              <div key={product.id} className="flex-shrink-0">
+              <div key={product.id} className="flex-shrink-0 h-full">
                 <ProductCard product={product} />
               </div>
             ))}

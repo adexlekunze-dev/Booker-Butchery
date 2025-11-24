@@ -37,6 +37,66 @@ export function RecipeDetailClient({ recipe }: { recipe: CategoryRecipe }) {
     };
   }, []);
 
+  // Helper function to parse pack_size and convert weight to packs
+  const parsePackSize = (packSize: string | null | undefined): number | null => {
+    if (!packSize) return 1;
+
+    const lower = packSize.toLowerCase().trim();
+    
+    // Check for "Per Kg" or variable weight - these are sold by weight, not by pack
+    if (lower.includes('per kg') || lower === 'variable' || lower === '-') {
+      return null; // Indicates weight-based pricing
+    }
+    
+    // Try to extract kg (handles "2.5kg", "Av 6kg", etc.)
+    const kgMatch = lower.match(/([\d.]+)\s*kg/);
+    if (kgMatch) {
+      return parseFloat(kgMatch[1]);
+    }
+    
+    // Try to extract grams
+    const gMatch = lower.match(/([\d.]+)\s*g/);
+    if (gMatch) {
+      return parseFloat(gMatch[1]) / 1000;
+    }
+    
+    // Check for pieces/units (no weight) - treat as 1 unit per pack
+    if (lower.includes('piece') || lower.includes('unit') || lower.includes('each')) {
+      return 1;
+    }
+    
+    return 1; // Default to 1kg if unparseable
+  };
+
+  // Convert recipe quantity to basket quantity (packs)
+  const convertQuantityToPacks = (ingredient: any, product: any): number => {
+    const recipeQuantity = ingredient.quantity || 1;
+    const recipeUnit = ingredient.unit?.toLowerCase() || '';
+    
+    // If unit is not weight-based (pieces, units, etc.), use quantity directly
+    if (!recipeUnit.includes('kg') && !recipeUnit.includes('g') && !recipeUnit.includes('gram')) {
+      return Math.ceil(recipeQuantity);
+    }
+    
+    // Parse product pack_size
+    const packSizeKg = parsePackSize(product.pack_size);
+    
+    // If pack_size is null (Per Kg or variable), use quantity directly (it's already in packs)
+    if (packSizeKg === null) {
+      return Math.ceil(recipeQuantity);
+    }
+    
+    // Convert recipe quantity to kg if needed
+    let recipeQuantityKg = recipeQuantity;
+    if (recipeUnit.includes('g') || recipeUnit.includes('gram')) {
+      recipeQuantityKg = recipeQuantity / 1000;
+    }
+    
+    // Calculate packs needed
+    const packsNeeded = Math.ceil(recipeQuantityKg / packSizeKg);
+    return packsNeeded;
+  };
+
   const handleAddAllToBasket = async () => {
     if (!isAuthenticated) {
       window.location.href = "/login";
@@ -57,29 +117,116 @@ export function RecipeDetailClient({ recipe }: { recipe: CategoryRecipe }) {
 
     try {
       const { addToBasket } = await import("@/lib/basket-localstorage");
+      const { getProductBySku } = await import("@/lib/data/products");
       const { getUser } = await import("@/lib/mock-auth");
 
       const user = getUser();
       const branchCode = user?.primary_branch_code;
 
       let successCount = 0;
+      const failedIngredients: Array<{ name: string; sku: string; reason: string }> = [];
+      const successfulProducts: Array<{ name: string; price: number; quantity: number; packs: number }> = [];
 
       for (const ingredient of ingredientsWithSku) {
-        if (ingredient.sku) {
-          const result = addToBasket(ingredient.sku, 1, { method: "delivery", branch_code: branchCode });
-          if (result.success) {
-            successCount++;
+        if (!ingredient.sku) {
+          continue;
+        }
+
+        // First, validate the product exists
+        const product = getProductBySku(ingredient.sku, branchCode);
+        if (!product) {
+          failedIngredients.push({
+            name: ingredient.name,
+            sku: ingredient.sku,
+            reason: 'Product not found in catalog'
+          });
+          continue;
+        }
+
+        // Check if product is available
+        if (branchCode && product.availability && !product.availability.in_stock) {
+          failedIngredients.push({
+            name: ingredient.name,
+            sku: ingredient.sku,
+            reason: 'Out of stock at your branch'
+          });
+          continue;
+        }
+
+        // Convert recipe quantity to packs
+        const packsNeeded = convertQuantityToPacks(ingredient, product);
+
+        // Calculate price using actual product price and bulk pricing if applicable
+        const bulkPricing = product.bulk_pricing;
+        let pricePerPack = product.base_price;
+        
+        if (bulkPricing && Array.isArray(bulkPricing)) {
+          const applicableTier = bulkPricing
+            .sort((a: any, b: any) => b.min_quantity - a.min_quantity)
+            .find((tier: any) => packsNeeded >= tier.min_quantity);
+          
+          if (applicableTier) {
+            pricePerPack = applicableTier.price_per_unit;
           }
+        }
+        
+        const totalPrice = pricePerPack * packsNeeded;
+
+        // Try to add to basket with correct quantity (packs)
+        const result = addToBasket(ingredient.sku, packsNeeded, { method: "delivery", branch_code: branchCode });
+        if (result.success) {
+          successCount++;
+          // Track successful products with actual product price
+          successfulProducts.push({
+            name: product.name, // Use actual product name from catalog
+            price: totalPrice,
+            quantity: ingredient.quantity, // Keep original recipe quantity for display
+            packs: packsNeeded
+          });
+        } else {
+          failedIngredients.push({
+            name: ingredient.name,
+            sku: ingredient.sku,
+            reason: result.error || 'Failed to add to basket'
+          });
         }
       }
 
+      // Show detailed feedback
       if (successCount > 0) {
         window.dispatchEvent(new Event('storage'));
-        alert(`✓ Added ${successCount} ingredient${successCount > 1 ? 's' : ''} to basket! Total: £${recipe.ingredients?.reduce((sum, ing) => sum + (ing.price || 0), 0).toFixed(2)}`);
+        
+        let message = `✓ Added ${successCount} ingredient${successCount > 1 ? 's' : ''} to basket!`;
+        
+        if (failedIngredients.length > 0) {
+          message += `\n\n⚠️ Could not add ${failedIngredients.length} ingredient${failedIngredients.length > 1 ? 's' : ''}:`;
+          failedIngredients.slice(0, 3).forEach(failed => {
+            message += `\n  • ${failed.name} (${failed.reason})`;
+          });
+          if (failedIngredients.length > 3) {
+            message += `\n  ... and ${failedIngredients.length - 3} more`;
+          }
+        }
+        
+        // Calculate total using actual product prices from cart
+        const totalPrice = successfulProducts.reduce((sum, item) => sum + item.price, 0);
+        
+        if (totalPrice > 0) {
+          message += `\n\nTotal: £${totalPrice.toFixed(2)}`;
+        }
+        
+        alert(message);
+      } else {
+        // All failed
+        let errorMessage = `Could not add any ingredients to basket.\n\nIssues found:`;
+        failedIngredients.forEach(failed => {
+          errorMessage += `\n  • ${failed.name}: ${failed.reason}`;
+        });
+        alert(errorMessage);
       }
     } catch (error) {
       console.error("Error adding ingredients:", error);
-      alert("Failed to add ingredients. Please try again.");
+      alert(`Failed to add ingredients. Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   };
 
@@ -103,29 +250,116 @@ export function RecipeDetailClient({ recipe }: { recipe: CategoryRecipe }) {
 
     try {
       const { addToBasket } = await import("@/lib/basket-localstorage");
+      const { getProductBySku } = await import("@/lib/data/products");
       const { getUser } = await import("@/lib/mock-auth");
 
       const user = getUser();
       const branchCode = user?.primary_branch_code;
 
       let successCount = 0;
+      const failedIngredients: Array<{ name: string; sku: string; reason: string }> = [];
+      const successfulProducts: Array<{ name: string; price: number; quantity: number; packs: number }> = [];
 
       for (const ingredient of ingredientsWithSku) {
-        if (ingredient.sku) {
-          const result = addToBasket(ingredient.sku, 1, { method: "delivery", branch_code: branchCode });
-          if (result.success) {
-            successCount++;
+        if (!ingredient.sku) {
+          continue;
+        }
+
+        // First, validate the product exists
+        const product = getProductBySku(ingredient.sku, branchCode);
+        if (!product) {
+          failedIngredients.push({
+            name: ingredient.name,
+            sku: ingredient.sku,
+            reason: 'Product not found in catalog'
+          });
+          continue;
+        }
+
+        // Check if product is available
+        if (branchCode && product.availability && !product.availability.in_stock) {
+          failedIngredients.push({
+            name: ingredient.name,
+            sku: ingredient.sku,
+            reason: 'Out of stock at your branch'
+          });
+          continue;
+        }
+
+        // Convert adjusted recipe quantity to packs
+        const packsNeeded = convertQuantityToPacks(ingredient, product);
+
+        // Calculate price using actual product price and bulk pricing if applicable
+        const bulkPricing = product.bulk_pricing;
+        let pricePerPack = product.base_price;
+        
+        if (bulkPricing && Array.isArray(bulkPricing)) {
+          const applicableTier = bulkPricing
+            .sort((a: any, b: any) => b.min_quantity - a.min_quantity)
+            .find((tier: any) => packsNeeded >= tier.min_quantity);
+          
+          if (applicableTier) {
+            pricePerPack = applicableTier.price_per_unit;
           }
+        }
+        
+        const totalPrice = pricePerPack * packsNeeded;
+
+        // Try to add to basket with correct quantity (packs)
+        const result = addToBasket(ingredient.sku, packsNeeded, { method: "delivery", branch_code: branchCode });
+        if (result.success) {
+          successCount++;
+          // Track successful products with actual product price
+          successfulProducts.push({
+            name: product.name, // Use actual product name from catalog
+            price: totalPrice,
+            quantity: ingredient.quantity, // Keep original recipe quantity for display
+            packs: packsNeeded
+          });
+        } else {
+          failedIngredients.push({
+            name: ingredient.name,
+            sku: ingredient.sku,
+            reason: result.error || 'Failed to add to basket'
+          });
         }
       }
 
+      // Show detailed feedback
       if (successCount > 0) {
         window.dispatchEvent(new Event('storage'));
-        alert(`✓ Added ${successCount} scaled ingredient${successCount > 1 ? 's' : ''} to basket! Total: £${adjustedIngredients.reduce((sum, ing) => sum + (ing.price || 0), 0).toFixed(2)}`);
+        
+        let message = `✓ Added ${successCount} scaled ingredient${successCount > 1 ? 's' : ''} to basket!`;
+        
+        if (failedIngredients.length > 0) {
+          message += `\n\n⚠️ Could not add ${failedIngredients.length} ingredient${failedIngredients.length > 1 ? 's' : ''}:`;
+          failedIngredients.slice(0, 3).forEach(failed => {
+            message += `\n  • ${failed.name} (${failed.reason})`;
+          });
+          if (failedIngredients.length > 3) {
+            message += `\n  ... and ${failedIngredients.length - 3} more`;
+          }
+        }
+        
+        // Calculate total using actual product prices from cart
+        const totalPrice = successfulProducts.reduce((sum, item) => sum + item.price, 0);
+        
+        if (totalPrice > 0) {
+          message += `\n\nTotal: £${totalPrice.toFixed(2)}`;
+        }
+        
+        alert(message);
+      } else {
+        // All failed
+        let errorMessage = `Could not add any ingredients to basket.\n\nIssues found:`;
+        failedIngredients.forEach(failed => {
+          errorMessage += `\n  • ${failed.name}: ${failed.reason}`;
+        });
+        alert(errorMessage);
       }
     } catch (error) {
       console.error("Error adding ingredients:", error);
-      alert("Failed to add ingredients. Please try again.");
+      alert(`Failed to add ingredients. Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   };
 

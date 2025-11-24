@@ -15,14 +15,62 @@
     "chef_notes": "The key to perfect Wellington is ensuring the beef is at room temperature and the pastry is well-chilled before baking.",
     "video_url": null,
     "ingredients": [
-      { "name": "Beef fillet", "quantity": "1.2kg", "sku": "M297834", "price": 29.99, "notes": "Center-cut, trimmed" },
-      { "name": "Button mushrooms", "quantity": "500g", "sku": null, "price": 3.99, "notes": "Finely chopped" },
-      { "name": "Pâté", "quantity": "200g", "sku": null, "price": 4.99, "notes": "Smooth chicken or duck" },
-      { "name": "Puff pastry", "quantity": "500g", "sku": null, "price": 2.99, "notes": "All-butter" },
-      { "name": "Parma ham", "quantity": "12 slices", "sku": null, "price": 3.99, "notes": "Thinly sliced" },
-      { "name": "Egg yolks", "quantity": "2", "sku": null, "price": 0.50, "notes": "For egg wash" },
-      { "name": "Dijon mustard", "quantity": "2 tbsp", "sku": null, "price": 0.30, "notes": null },
-      { "name": "Olive oil", "quantity": "2 tbsp", "sku": null, "price": 0.20, "notes": null }
+      {
+        "name": "Beef fillet",
+        "quantity": "1.2kg",
+        "sku": "M297834",
+        "price": 29.99,
+        "notes": "Center-cut, trimmed"
+      },
+      {
+        "name": "Button mushrooms",
+        "quantity": "500g",
+        "sku": "REC-BEE-001",
+        "price": 3.99,
+        "notes": "Finely chopped"
+      },
+      {
+        "name": "Pâté",
+        "quantity": "200g",
+        "sku": "REC-BEE-002",
+        "price": 4.99,
+        "notes": "Smooth chicken or duck"
+      },
+      {
+        "name": "Puff pastry",
+        "quantity": "500g",
+        "sku": "REC-BEE-003",
+        "price": 2.99,
+        "notes": "All-butter"
+      },
+      {
+        "name": "Parma ham",
+        "quantity": "12 slices",
+        "sku": "REC-BEE-004",
+        "price": 3.99,
+        "notes": "Thinly sliced"
+      },
+      {
+        "name": "Egg yolks",
+        "quantity": "2",
+        "sku": "REC-BEE-005",
+        "price": 0.5,
+        "notes": "For egg wash"
+      },
+      {
+        "name": "Dijon mustard",
+        "quantity": "2 tbsp",
+        "sku": "REC-BEE-006",
+        "price": 0.3,
+        "notes": null
+      },
+      {
+        "name": "Olive oil",
+        "quantity": "2 tbsp",
+        "sku": "REC-BEE-007",
+        "price": 0.2,
+        "notes": null
+      }
     ],
     "instructions": [
       "Season beef fillet generously with salt and pepper. Heat oil in a large pan until smoking.",
@@ -49,7 +97,12 @@
       "carbs": "32g",
       "fat": "42g"
     },
-    "tags": ["special-occasion", "dinner-party", "british-classic", "premium"]
+    "tags": [
+      "special-occasion",
+      "dinner-party",
+      "british-classic",
+      "premium"
+    ]
   },
   {
     "id": "rec-002",
@@ -67,14 +120,62 @@
     "chef_notes": "The secret is high heat and pressing the patties hard to create maximum surface area for that crispy crust.",
     "video_url": null,
     "ingredients": [
-      { "name": "Beef mince (20% fat)", "quantity": "800g", "sku": "M229224", "price": 12.99, "notes": "80/20 ratio essential" },
-      { "name": "Burger buns", "quantity": "4", "sku": null, "price": 2.49, "notes": "Brioche or sesame" },
-      { "name": "American cheese slices", "quantity": "8", "sku": null, "price": 2.99, "notes": null },
-      { "name": "White onion", "quantity": "1 large", "sku": null, "price": 0.50, "notes": "Thinly sliced" },
-      { "name": "Pickles", "quantity": "12 slices", "sku": null, "price": 1.99, "notes": "Dill pickles" },
-      { "name": "Lettuce", "quantity": "4 leaves", "sku": null, "price": 0.80, "notes": "Iceberg or romaine" },
-      { "name": "Tomato", "quantity": "2 medium", "sku": null, "price": 1.20, "notes": "Sliced" },
-      { "name": "Burger sauce", "quantity": "4 tbsp", "sku": null, "price": 1.50, "notes": "Mayo, ketchup, mustard mix" }
+      {
+        "name": "Beef mince (20% fat)",
+        "quantity": "800g",
+        "sku": "M229224",
+        "price": 12.99,
+        "notes": "80/20 ratio essential"
+      },
+      {
+        "name": "Burger buns",
+        "quantity": "4",
+        "sku": "REC-BUR-008",
+        "price": 2.49,
+        "notes": "Brioche or sesame"
+      },
+      {
+        "name": "American cheese slices",
+        "quantity": "8",
+        "sku": "REC-BUR-009",
+        "price": 2.99,
+        "notes": null
+      },
+      {
+        "name": "White onion",
+        "quantity": "1 large",
+        "sku": "REC-BUR-010",
+        "price": 0.5,
+        "notes": "Thinly sliced"
+      },
+      {
+        "name": "Pickles",
+        "quantity": "12 slices",
+        "sku": "REC-BUR-011",
+        "price": 1.99,
+        "notes": "Dill pickles"
+      },
+      {
+        "name": "Lettuce",
+        "quantity": "4 leaves",
+        "sku": "REC-BUR-012",
+        "price": 0.8,
+        "notes": "Iceberg or romaine"
+      },
+      {
+        "name": "Tomato",
+        "quantity": "2 medium",
+        "sku": "REC-BUR-013",
+        "price": 1.2,
+        "notes": "Sliced"
+      },
+      {
+        "name": "Burger sauce",
+        "quantity": "4 tbsp",
+        "sku": "REC-BUR-014",
+        "price": 1.5,
+        "notes": "Mayo, ketchup, mustard mix"
+      }
     ],
     "instructions": [
       "Divide beef mince into 8 equal balls (100g each). Do not overwork or season the meat.",
@@ -100,7 +201,12 @@
       "carbs": "48g",
       "fat": "38g"
     },
-    "tags": ["quick-meal", "american-classic", "crowd-pleaser", "comfort-food"]
+    "tags": [
+      "quick-meal",
+      "american-classic",
+      "crowd-pleaser",
+      "comfort-food"
+    ]
   },
   {
     "id": "rec-003",
@@ -118,15 +224,69 @@
     "chef_notes": "Low and slow is the motto here. The long cook time transforms tough shoulder into incredibly tender, flavorful meat.",
     "video_url": null,
     "ingredients": [
-      { "name": "Lamb shoulder", "quantity": "2.5kg", "sku": "M253974", "price": 42.99, "notes": "Bone-in" },
-      { "name": "Garlic cloves", "quantity": "12", "sku": null, "price": 0.80, "notes": "Peeled, whole" },
-      { "name": "Fresh rosemary", "quantity": "6 sprigs", "sku": null, "price": 1.20, "notes": null },
-      { "name": "Fresh thyme", "quantity": "6 sprigs", "sku": null, "price": 1.20, "notes": null },
-      { "name": "White wine", "quantity": "250ml", "sku": null, "price": 3.50, "notes": "Dry" },
-      { "name": "Chicken stock", "quantity": "500ml", "sku": null, "price": 1.50, "notes": null },
-      { "name": "Red onions", "quantity": "3 large", "sku": null, "price": 1.50, "notes": "Quartered" },
-      { "name": "Carrots", "quantity": "4 large", "sku": null, "price": 1.20, "notes": "Roughly chopped" },
-      { "name": "Olive oil", "quantity": "3 tbsp", "sku": null, "price": 0.30, "notes": null }
+      {
+        "name": "Lamb shoulder",
+        "quantity": "2.5kg",
+        "sku": "M253974",
+        "price": 42.99,
+        "notes": "Bone-in"
+      },
+      {
+        "name": "Garlic cloves",
+        "quantity": "12",
+        "sku": "REC-LAM-015",
+        "price": 0.8,
+        "notes": "Peeled, whole"
+      },
+      {
+        "name": "Fresh rosemary",
+        "quantity": "6 sprigs",
+        "sku": "REC-LAM-016",
+        "price": 1.2,
+        "notes": null
+      },
+      {
+        "name": "Fresh thyme",
+        "quantity": "6 sprigs",
+        "sku": "REC-LAM-017",
+        "price": 1.2,
+        "notes": null
+      },
+      {
+        "name": "White wine",
+        "quantity": "250ml",
+        "sku": "REC-LAM-018",
+        "price": 3.5,
+        "notes": "Dry"
+      },
+      {
+        "name": "Chicken stock",
+        "quantity": "500ml",
+        "sku": "REC-CHI-019",
+        "price": 1.5,
+        "notes": null
+      },
+      {
+        "name": "Red onions",
+        "quantity": "3 large",
+        "sku": "REC-LAM-020",
+        "price": 1.5,
+        "notes": "Quartered"
+      },
+      {
+        "name": "Carrots",
+        "quantity": "4 large",
+        "sku": "REC-LAM-021",
+        "price": 1.2,
+        "notes": "Roughly chopped"
+      },
+      {
+        "name": "Olive oil",
+        "quantity": "3 tbsp",
+        "sku": "REC-BEE-007",
+        "price": 0.3,
+        "notes": null
+      }
     ],
     "instructions": [
       "Preheat oven to 160°C (140°C fan). Score the lamb fat in a diamond pattern.",
@@ -153,7 +313,12 @@
       "carbs": "8g",
       "fat": "30g"
     },
-    "tags": ["sunday-roast", "slow-cooked", "crowd-pleaser", "special-occasion"]
+    "tags": [
+      "sunday-roast",
+      "slow-cooked",
+      "crowd-pleaser",
+      "special-occasion"
+    ]
   },
   {
     "id": "rec-004",
@@ -171,13 +336,55 @@
     "chef_notes": "The secret to perfect crackling is dry skin and high heat. Start prep 24 hours ahead for best results.",
     "video_url": null,
     "ingredients": [
-      { "name": "Pork belly", "quantity": "2kg", "sku": "M229248", "price": 18.99, "notes": "Skin-on, scored" },
-      { "name": "Fennel seeds", "quantity": "2 tsp", "sku": null, "price": 0.30, "notes": "Crushed" },
-      { "name": "Sea salt (coarse)", "quantity": "3 tbsp", "sku": null, "price": 0.20, "notes": "For crackling" },
-      { "name": "Garlic cloves", "quantity": "6", "sku": null, "price": 0.40, "notes": "Crushed" },
-      { "name": "Fresh sage", "quantity": "8 leaves", "sku": null, "price": 0.80, "notes": null },
-      { "name": "Apple cider", "quantity": "250ml", "sku": null, "price": 2.50, "notes": null },
-      { "name": "Apples", "quantity": "3", "sku": null, "price": 1.50, "notes": "Granny Smith, quartered" }
+      {
+        "name": "Pork belly",
+        "quantity": "2kg",
+        "sku": "M229248",
+        "price": 18.99,
+        "notes": "Skin-on, scored"
+      },
+      {
+        "name": "Fennel seeds",
+        "quantity": "2 tsp",
+        "sku": "REC-POR-022",
+        "price": 0.3,
+        "notes": "Crushed"
+      },
+      {
+        "name": "Sea salt (coarse)",
+        "quantity": "3 tbsp",
+        "sku": "REC-POR-023",
+        "price": 0.2,
+        "notes": "For crackling"
+      },
+      {
+        "name": "Garlic cloves",
+        "quantity": "6",
+        "sku": "REC-LAM-015",
+        "price": 0.4,
+        "notes": "Crushed"
+      },
+      {
+        "name": "Fresh sage",
+        "quantity": "8 leaves",
+        "sku": "REC-POR-024",
+        "price": 0.8,
+        "notes": null
+      },
+      {
+        "name": "Apple cider",
+        "quantity": "250ml",
+        "sku": "REC-POR-025",
+        "price": 2.5,
+        "notes": null
+      },
+      {
+        "name": "Apples",
+        "quantity": "3",
+        "sku": "REC-POR-026",
+        "price": 1.5,
+        "notes": "Granny Smith, quartered"
+      }
     ],
     "instructions": [
       "24 hours before: Pat pork skin completely dry with paper towels. Score skin deeply.",
@@ -204,7 +411,12 @@
       "carbs": "12g",
       "fat": "52g"
     },
-    "tags": ["sunday-roast", "comfort-food", "crackling", "special-occasion"]
+    "tags": [
+      "sunday-roast",
+      "comfort-food",
+      "crackling",
+      "special-occasion"
+    ]
   },
   {
     "id": "rec-005",
@@ -222,15 +434,69 @@
     "chef_notes": "Keep chicken skin-side down for most of the cooking to get that beautiful golden crispy skin.",
     "video_url": null,
     "ingredients": [
-      { "name": "Chicken breast supremes", "quantity": "4 (200g each)", "sku": "M253975", "price": 16.99, "notes": "Skin-on" },
-      { "name": "Chestnut mushrooms", "quantity": "400g", "sku": null, "price": 3.99, "notes": "Sliced" },
-      { "name": "Shallots", "quantity": "3", "sku": null, "price": 0.90, "notes": "Finely chopped" },
-      { "name": "Garlic cloves", "quantity": "3", "sku": null, "price": 0.30, "notes": "Minced" },
-      { "name": "White wine", "quantity": "150ml", "sku": null, "price": 2.00, "notes": "Dry" },
-      { "name": "Double cream", "quantity": "300ml", "sku": null, "price": 2.50, "notes": null },
-      { "name": "Chicken stock", "quantity": "200ml", "sku": null, "price": 0.80, "notes": null },
-      { "name": "Fresh tarragon", "quantity": "Small bunch", "sku": null, "price": 1.20, "notes": "Chopped" },
-      { "name": "Butter", "quantity": "50g", "sku": null, "price": 1.20, "notes": null }
+      {
+        "name": "Chicken breast supremes",
+        "quantity": "4 (200g each)",
+        "sku": "M253975",
+        "price": 16.99,
+        "notes": "Skin-on"
+      },
+      {
+        "name": "Chestnut mushrooms",
+        "quantity": "400g",
+        "sku": "REC-CHI-027",
+        "price": 3.99,
+        "notes": "Sliced"
+      },
+      {
+        "name": "Shallots",
+        "quantity": "3",
+        "sku": "REC-CHI-028",
+        "price": 0.9,
+        "notes": "Finely chopped"
+      },
+      {
+        "name": "Garlic cloves",
+        "quantity": "3",
+        "sku": "REC-LAM-015",
+        "price": 0.3,
+        "notes": "Minced"
+      },
+      {
+        "name": "White wine",
+        "quantity": "150ml",
+        "sku": "REC-LAM-018",
+        "price": 2,
+        "notes": "Dry"
+      },
+      {
+        "name": "Double cream",
+        "quantity": "300ml",
+        "sku": "REC-CHI-029",
+        "price": 2.5,
+        "notes": null
+      },
+      {
+        "name": "Chicken stock",
+        "quantity": "200ml",
+        "sku": "REC-CHI-019",
+        "price": 0.8,
+        "notes": null
+      },
+      {
+        "name": "Fresh tarragon",
+        "quantity": "Small bunch",
+        "sku": "REC-CHI-030",
+        "price": 1.2,
+        "notes": "Chopped"
+      },
+      {
+        "name": "Butter",
+        "quantity": "50g",
+        "sku": "REC-CHI-031",
+        "price": 1.2,
+        "notes": null
+      }
     ],
     "instructions": [
       "Season chicken supremes generously with salt and pepper on both sides.",
@@ -257,7 +523,12 @@
       "carbs": "8g",
       "fat": "38g"
     },
-    "tags": ["quick-meal", "french-classic", "dinner-party", "creamy"]
+    "tags": [
+      "quick-meal",
+      "french-classic",
+      "dinner-party",
+      "creamy"
+    ]
   },
   {
     "id": "rec-006",
@@ -275,14 +546,62 @@
     "chef_notes": "The key is proper caramelization of the onions for a deeply flavored gravy.",
     "video_url": null,
     "ingredients": [
-      { "name": "Pork sausages", "quantity": "8 (premium)", "sku": "M272299", "price": 9.99, "notes": "Best quality you can find" },
-      { "name": "Maris Piper potatoes", "quantity": "1.5kg", "sku": null, "price": 2.50, "notes": "For mash" },
-      { "name": "Large onions", "quantity": "3", "sku": null, "price": 1.20, "notes": "Thinly sliced" },
-      { "name": "Butter", "quantity": "100g", "sku": null, "price": 2.40, "notes": "For mash" },
-      { "name": "Whole milk", "quantity": "150ml", "sku": null, "price": 0.60, "notes": "Warm" },
-      { "name": "Beef stock", "quantity": "500ml", "sku": null, "price": 1.50, "notes": null },
-      { "name": "Plain flour", "quantity": "2 tbsp", "sku": null, "price": 0.10, "notes": "For gravy" },
-      { "name": "Worcestershire sauce", "quantity": "2 tsp", "sku": null, "price": 0.30, "notes": null }
+      {
+        "name": "Pork sausages",
+        "quantity": "8 (premium)",
+        "sku": "M272299",
+        "price": 9.99,
+        "notes": "Best quality you can find"
+      },
+      {
+        "name": "Maris Piper potatoes",
+        "quantity": "1.5kg",
+        "sku": "REC-SAU-032",
+        "price": 2.5,
+        "notes": "For mash"
+      },
+      {
+        "name": "Large onions",
+        "quantity": "3",
+        "sku": "REC-SAU-033",
+        "price": 1.2,
+        "notes": "Thinly sliced"
+      },
+      {
+        "name": "Butter",
+        "quantity": "100g",
+        "sku": "REC-CHI-031",
+        "price": 2.4,
+        "notes": "For mash"
+      },
+      {
+        "name": "Whole milk",
+        "quantity": "150ml",
+        "sku": "REC-SAU-034",
+        "price": 0.6,
+        "notes": "Warm"
+      },
+      {
+        "name": "Beef stock",
+        "quantity": "500ml",
+        "sku": "REC-BEE-035",
+        "price": 1.5,
+        "notes": null
+      },
+      {
+        "name": "Plain flour",
+        "quantity": "2 tbsp",
+        "sku": "REC-SAU-036",
+        "price": 0.1,
+        "notes": "For gravy"
+      },
+      {
+        "name": "Worcestershire sauce",
+        "quantity": "2 tsp",
+        "sku": "REC-SAU-037",
+        "price": 0.3,
+        "notes": null
+      }
     ],
     "instructions": [
       "Peel and chop potatoes into even chunks. Boil in salted water for 15-20 minutes until tender.",
@@ -308,7 +627,12 @@
       "carbs": "68g",
       "fat": "45g"
     },
-    "tags": ["comfort-food", "british-classic", "family-favorite", "budget-friendly"]
+    "tags": [
+      "comfort-food",
+      "british-classic",
+      "family-favorite",
+      "budget-friendly"
+    ]
   },
   {
     "id": "rec-007",
@@ -326,15 +650,69 @@
     "chef_notes": "Rest the beef for at least 30 minutes - this is crucial for tender, juicy slices.",
     "video_url": null,
     "ingredients": [
-      { "name": "Topside of beef", "quantity": "2kg", "sku": "M297842", "price": 42.99, "notes": "At room temperature" },
-      { "name": "Maris Piper potatoes", "quantity": "2kg", "sku": null, "price": 3.00, "notes": "For roasting" },
-      { "name": "Carrots", "quantity": "8 large", "sku": null, "price": 2.00, "notes": "Peeled" },
-      { "name": "Parsnips", "quantity": "6", "sku": null, "price": 2.50, "notes": "Quartered" },
-      { "name": "Beef dripping", "quantity": "200g", "sku": null, "price": 3.50, "notes": "Or goose fat" },
-      { "name": "Plain flour", "quantity": "140g", "sku": null, "price": 0.30, "notes": "For Yorkshire pudding" },
-      { "name": "Eggs", "quantity": "4 large", "sku": null, "price": 1.60, "notes": null },
-      { "name": "Milk", "quantity": "200ml", "sku": null, "price": 0.50, "notes": null },
-      { "name": "Fresh horseradish", "quantity": "50g", "sku": null, "price": 2.00, "notes": "Grated (optional)" }
+      {
+        "name": "Topside of beef",
+        "quantity": "2kg",
+        "sku": "M297842",
+        "price": 42.99,
+        "notes": "At room temperature"
+      },
+      {
+        "name": "Maris Piper potatoes",
+        "quantity": "2kg",
+        "sku": "REC-SAU-032",
+        "price": 3,
+        "notes": "For roasting"
+      },
+      {
+        "name": "Carrots",
+        "quantity": "8 large",
+        "sku": "REC-LAM-021",
+        "price": 2,
+        "notes": "Peeled"
+      },
+      {
+        "name": "Parsnips",
+        "quantity": "6",
+        "sku": "REC-BEE-038",
+        "price": 2.5,
+        "notes": "Quartered"
+      },
+      {
+        "name": "Beef dripping",
+        "quantity": "200g",
+        "sku": "REC-BEE-039",
+        "price": 3.5,
+        "notes": "Or goose fat"
+      },
+      {
+        "name": "Plain flour",
+        "quantity": "140g",
+        "sku": "REC-SAU-036",
+        "price": 0.3,
+        "notes": "For Yorkshire pudding"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "4 large",
+        "sku": "REC-BEE-040",
+        "price": 1.6,
+        "notes": null
+      },
+      {
+        "name": "Milk",
+        "quantity": "200ml",
+        "sku": "REC-BEE-041",
+        "price": 0.5,
+        "notes": null
+      },
+      {
+        "name": "Fresh horseradish",
+        "quantity": "50g",
+        "sku": "REC-BEE-042",
+        "price": 2,
+        "notes": "Grated (optional)"
+      }
     ],
     "instructions": [
       "Remove beef from fridge 2 hours before cooking. Preheat oven to 220°C (200°C fan).",
@@ -362,7 +740,12 @@
       "carbs": "62g",
       "fat": "28g"
     },
-    "tags": ["sunday-roast", "traditional", "family-feast", "british-classic"]
+    "tags": [
+      "sunday-roast",
+      "traditional",
+      "family-feast",
+      "british-classic"
+    ]
   },
   {
     "id": "rec-008",
@@ -380,15 +763,69 @@
     "chef_notes": "Low and slow is essential. The pork is done when it's so tender it pulls apart with just a fork.",
     "video_url": null,
     "ingredients": [
-      { "name": "Pork shoulder", "quantity": "3kg", "sku": "M283328", "price": 24.99, "notes": "Bone-in for flavor" },
-      { "name": "Brown sugar", "quantity": "100g", "sku": null, "price": 0.80, "notes": "For rub" },
-      { "name": "Smoked paprika", "quantity": "3 tbsp", "sku": null, "price": 1.20, "notes": null },
-      { "name": "Garlic powder", "quantity": "2 tbsp", "sku": null, "price": 0.60, "notes": null },
-      { "name": "Onion powder", "quantity": "2 tbsp", "sku": null, "price": 0.60, "notes": null },
-      { "name": "Mustard powder", "quantity": "1 tbsp", "sku": null, "price": 0.40, "notes": null },
-      { "name": "BBQ sauce", "quantity": "500ml", "sku": null, "price": 3.50, "notes": "Your favorite brand" },
-      { "name": "Apple cider vinegar", "quantity": "100ml", "sku": null, "price": 1.20, "notes": null },
-      { "name": "Burger buns", "quantity": "12", "sku": null, "price": 3.00, "notes": "For serving" }
+      {
+        "name": "Pork shoulder",
+        "quantity": "3kg",
+        "sku": "M283328",
+        "price": 24.99,
+        "notes": "Bone-in for flavor"
+      },
+      {
+        "name": "Brown sugar",
+        "quantity": "100g",
+        "sku": "REC-POR-043",
+        "price": 0.8,
+        "notes": "For rub"
+      },
+      {
+        "name": "Smoked paprika",
+        "quantity": "3 tbsp",
+        "sku": "REC-POR-044",
+        "price": 1.2,
+        "notes": null
+      },
+      {
+        "name": "Garlic powder",
+        "quantity": "2 tbsp",
+        "sku": "REC-POR-045",
+        "price": 0.6,
+        "notes": null
+      },
+      {
+        "name": "Onion powder",
+        "quantity": "2 tbsp",
+        "sku": "REC-POR-046",
+        "price": 0.6,
+        "notes": null
+      },
+      {
+        "name": "Mustard powder",
+        "quantity": "1 tbsp",
+        "sku": "REC-POR-047",
+        "price": 0.4,
+        "notes": null
+      },
+      {
+        "name": "BBQ sauce",
+        "quantity": "500ml",
+        "sku": "REC-POR-048",
+        "price": 3.5,
+        "notes": "Your favorite brand"
+      },
+      {
+        "name": "Apple cider vinegar",
+        "quantity": "100ml",
+        "sku": "REC-POR-049",
+        "price": 1.2,
+        "notes": null
+      },
+      {
+        "name": "Burger buns",
+        "quantity": "12",
+        "sku": "REC-BUR-008",
+        "price": 3,
+        "notes": "For serving"
+      }
     ],
     "instructions": [
       "Mix brown sugar, smoked paprika, garlic powder, onion powder, mustard powder, salt, and pepper for the rub.",
@@ -415,7 +852,12 @@
       "carbs": "38g",
       "fat": "22g"
     },
-    "tags": ["slow-cooked", "bbq", "crowd-pleaser", "make-ahead"]
+    "tags": [
+      "slow-cooked",
+      "bbq",
+      "crowd-pleaser",
+      "make-ahead"
+    ]
   },
   {
     "id": "rec-009",
@@ -433,16 +875,76 @@
     "chef_notes": "Marinate the chicken for at least 2 hours, but overnight is even better for maximum flavor.",
     "video_url": null,
     "ingredients": [
-      { "name": "Chicken thighs", "quantity": "1kg", "sku": "M018188", "price": 12.99, "notes": "Boneless, skinless, diced" },
-      { "name": "Greek yogurt", "quantity": "200g", "sku": null, "price": 2.50, "notes": "Full-fat" },
-      { "name": "Garam masala", "quantity": "2 tbsp", "sku": null, "price": 1.20, "notes": null },
-      { "name": "Ground cumin", "quantity": "1 tbsp", "sku": null, "price": 0.50, "notes": null },
-      { "name": "Paprika", "quantity": "1 tbsp", "sku": null, "price": 0.40, "notes": null },
-      { "name": "Tomato passata", "quantity": "400ml", "sku": null, "price": 1.50, "notes": null },
-      { "name": "Double cream", "quantity": "200ml", "sku": null, "price": 2.00, "notes": null },
-      { "name": "Fresh ginger", "quantity": "5cm piece", "sku": null, "price": 0.60, "notes": "Grated" },
-      { "name": "Garlic cloves", "quantity": "6", "sku": null, "price": 0.40, "notes": "Minced" },
-      { "name": "Fresh coriander", "quantity": "Large bunch", "sku": null, "price": 0.80, "notes": "Chopped" }
+      {
+        "name": "Chicken thighs",
+        "quantity": "1kg",
+        "sku": "M018188",
+        "price": 12.99,
+        "notes": "Boneless, skinless, diced"
+      },
+      {
+        "name": "Greek yogurt",
+        "quantity": "200g",
+        "sku": "REC-CHI-050",
+        "price": 2.5,
+        "notes": "Full-fat"
+      },
+      {
+        "name": "Garam masala",
+        "quantity": "2 tbsp",
+        "sku": "REC-CHI-051",
+        "price": 1.2,
+        "notes": null
+      },
+      {
+        "name": "Ground cumin",
+        "quantity": "1 tbsp",
+        "sku": "REC-CHI-052",
+        "price": 0.5,
+        "notes": null
+      },
+      {
+        "name": "Paprika",
+        "quantity": "1 tbsp",
+        "sku": "REC-CHI-053",
+        "price": 0.4,
+        "notes": null
+      },
+      {
+        "name": "Tomato passata",
+        "quantity": "400ml",
+        "sku": "REC-CHI-054",
+        "price": 1.5,
+        "notes": null
+      },
+      {
+        "name": "Double cream",
+        "quantity": "200ml",
+        "sku": "REC-CHI-029",
+        "price": 2,
+        "notes": null
+      },
+      {
+        "name": "Fresh ginger",
+        "quantity": "5cm piece",
+        "sku": "REC-CHI-055",
+        "price": 0.6,
+        "notes": "Grated"
+      },
+      {
+        "name": "Garlic cloves",
+        "quantity": "6",
+        "sku": "REC-LAM-015",
+        "price": 0.4,
+        "notes": "Minced"
+      },
+      {
+        "name": "Fresh coriander",
+        "quantity": "Large bunch",
+        "sku": "REC-CHI-056",
+        "price": 0.8,
+        "notes": "Chopped"
+      }
     ],
     "instructions": [
       "Mix yogurt, half the garam masala, cumin, paprika, ginger, garlic, and salt.",
@@ -469,7 +971,12 @@
       "carbs": "12g",
       "fat": "24g"
     },
-    "tags": ["curry", "indian", "crowd-pleaser", "make-ahead"]
+    "tags": [
+      "curry",
+      "indian",
+      "crowd-pleaser",
+      "make-ahead"
+    ]
   },
   {
     "id": "rec-010",
@@ -487,15 +994,69 @@
     "chef_notes": "Keep your hands wet when shaping koftas to prevent sticking and ensure smooth kebabs.",
     "video_url": null,
     "ingredients": [
-      { "name": "Lamb mince", "quantity": "600g", "sku": "M270117", "price": 13.99, "notes": "20% fat" },
-      { "name": "Red onion", "quantity": "1 small", "sku": null, "price": 0.40, "notes": "Very finely chopped" },
-      { "name": "Fresh parsley", "quantity": "Large bunch", "sku": null, "price": 0.80, "notes": "Finely chopped" },
-      { "name": "Fresh mint", "quantity": "Small bunch", "sku": null, "price": 0.80, "notes": "Finely chopped" },
-      { "name": "Ground cumin", "quantity": "2 tsp", "sku": null, "price": 0.40, "notes": null },
-      { "name": "Ground coriander", "quantity": "2 tsp", "sku": null, "price": 0.40, "notes": null },
-      { "name": "Greek yogurt", "quantity": "200g", "sku": null, "price": 2.00, "notes": "For sauce" },
-      { "name": "Lemon", "quantity": "1", "sku": null, "price": 0.50, "notes": "Juice and zest" },
-      { "name": "Pitta breads", "quantity": "4", "sku": null, "price": 1.50, "notes": "To serve" }
+      {
+        "name": "Lamb mince",
+        "quantity": "600g",
+        "sku": "M270117",
+        "price": 13.99,
+        "notes": "20% fat"
+      },
+      {
+        "name": "Red onion",
+        "quantity": "1 small",
+        "sku": "REC-LAM-057",
+        "price": 0.4,
+        "notes": "Very finely chopped"
+      },
+      {
+        "name": "Fresh parsley",
+        "quantity": "Large bunch",
+        "sku": "REC-LAM-058",
+        "price": 0.8,
+        "notes": "Finely chopped"
+      },
+      {
+        "name": "Fresh mint",
+        "quantity": "Small bunch",
+        "sku": "REC-LAM-059",
+        "price": 0.8,
+        "notes": "Finely chopped"
+      },
+      {
+        "name": "Ground cumin",
+        "quantity": "2 tsp",
+        "sku": "REC-CHI-052",
+        "price": 0.4,
+        "notes": null
+      },
+      {
+        "name": "Ground coriander",
+        "quantity": "2 tsp",
+        "sku": "REC-LAM-060",
+        "price": 0.4,
+        "notes": null
+      },
+      {
+        "name": "Greek yogurt",
+        "quantity": "200g",
+        "sku": "REC-CHI-050",
+        "price": 2,
+        "notes": "For sauce"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1",
+        "sku": "REC-LAM-061",
+        "price": 0.5,
+        "notes": "Juice and zest"
+      },
+      {
+        "name": "Pitta breads",
+        "quantity": "4",
+        "sku": "REC-LAM-062",
+        "price": 1.5,
+        "notes": "To serve"
+      }
     ],
     "instructions": [
       "Mix lamb mince, onion, half the parsley, half the mint, cumin, coriander, salt, and pepper.",
@@ -521,7 +1082,12 @@
       "carbs": "32g",
       "fat": "24g"
     },
-    "tags": ["quick-meal", "middle-eastern", "grilling", "healthy"]
+    "tags": [
+      "quick-meal",
+      "middle-eastern",
+      "grilling",
+      "healthy"
+    ]
   },
   {
     "id": "rec-011",
@@ -539,15 +1105,69 @@
     "chef_notes": "The secret to tender beef is slicing against the grain and not overcrowding the wok.",
     "video_url": null,
     "ingredients": [
-      { "name": "Beef sirloin", "quantity": "500g", "sku": "M281806", "price": 18.99, "notes": "Thinly sliced against grain" },
-      { "name": "Soy sauce", "quantity": "4 tbsp", "sku": null, "price": 1.20, "notes": "Dark soy" },
-      { "name": "Oyster sauce", "quantity": "2 tbsp", "sku": null, "price": 2.50, "notes": null },
-      { "name": "Cornflour", "quantity": "2 tsp", "sku": null, "price": 0.20, "notes": "For velvet beef" },
-      { "name": "Bell peppers", "quantity": "2", "sku": null, "price": 2.00, "notes": "Mixed colors, sliced" },
-      { "name": "Broccoli florets", "quantity": "200g", "sku": null, "price": 1.50, "notes": null },
-      { "name": "Spring onions", "quantity": "4", "sku": null, "price": 0.80, "notes": "Cut into 3cm pieces" },
-      { "name": "Fresh ginger", "quantity": "3cm piece", "sku": null, "price": 0.40, "notes": "Julienned" },
-      { "name": "Garlic cloves", "quantity": "4", "sku": null, "price": 0.30, "notes": "Sliced" }
+      {
+        "name": "Beef sirloin",
+        "quantity": "500g",
+        "sku": "M281806",
+        "price": 18.99,
+        "notes": "Thinly sliced against grain"
+      },
+      {
+        "name": "Soy sauce",
+        "quantity": "4 tbsp",
+        "sku": "REC-BEE-063",
+        "price": 1.2,
+        "notes": "Dark soy"
+      },
+      {
+        "name": "Oyster sauce",
+        "quantity": "2 tbsp",
+        "sku": "REC-BEE-064",
+        "price": 2.5,
+        "notes": null
+      },
+      {
+        "name": "Cornflour",
+        "quantity": "2 tsp",
+        "sku": "REC-BEE-065",
+        "price": 0.2,
+        "notes": "For velvet beef"
+      },
+      {
+        "name": "Bell peppers",
+        "quantity": "2",
+        "sku": "REC-BEE-066",
+        "price": 2,
+        "notes": "Mixed colors, sliced"
+      },
+      {
+        "name": "Broccoli florets",
+        "quantity": "200g",
+        "sku": "REC-BEE-067",
+        "price": 1.5,
+        "notes": null
+      },
+      {
+        "name": "Spring onions",
+        "quantity": "4",
+        "sku": "REC-BEE-068",
+        "price": 0.8,
+        "notes": "Cut into 3cm pieces"
+      },
+      {
+        "name": "Fresh ginger",
+        "quantity": "3cm piece",
+        "sku": "REC-CHI-055",
+        "price": 0.4,
+        "notes": "Julienned"
+      },
+      {
+        "name": "Garlic cloves",
+        "quantity": "4",
+        "sku": "REC-LAM-015",
+        "price": 0.3,
+        "notes": "Sliced"
+      }
     ],
     "instructions": [
       "Marinate beef slices with 1 tbsp soy sauce, cornflour, and dash of oil. Set aside for 10 minutes.",
@@ -572,7 +1192,12 @@
       "carbs": "18g",
       "fat": "16g"
     },
-    "tags": ["quick-meal", "weeknight-dinner", "chinese", "healthy"]
+    "tags": [
+      "quick-meal",
+      "weeknight-dinner",
+      "chinese",
+      "healthy"
+    ]
   },
   {
     "id": "rec-012",
@@ -590,13 +1215,55 @@
     "chef_notes": "Chill the assembled rolls before baking for the flakiest pastry.",
     "video_url": null,
     "ingredients": [
-      { "name": "Pork sausages", "quantity": "800g", "sku": "M270119", "price": 8.99, "notes": "Best quality" },
-      { "name": "Puff pastry", "quantity": "2 sheets (640g)", "sku": null, "price": 3.50, "notes": "All-butter" },
-      { "name": "Dried sage", "quantity": "1 tsp", "sku": null, "price": 0.30, "notes": null },
-      { "name": "Dried thyme", "quantity": "1 tsp", "sku": null, "price": 0.30, "notes": null },
-      { "name": "Egg", "quantity": "1", "sku": null, "price": 0.40, "notes": "Beaten for egg wash" },
-      { "name": "Sesame seeds", "quantity": "2 tbsp", "sku": null, "price": 0.40, "notes": "Optional topping" },
-      { "name": "Fennel seeds", "quantity": "1 tsp", "sku": null, "price": 0.30, "notes": "Optional" }
+      {
+        "name": "Pork sausages",
+        "quantity": "800g",
+        "sku": "M270119",
+        "price": 8.99,
+        "notes": "Best quality"
+      },
+      {
+        "name": "Puff pastry",
+        "quantity": "2 sheets (640g)",
+        "sku": "REC-BEE-003",
+        "price": 3.5,
+        "notes": "All-butter"
+      },
+      {
+        "name": "Dried sage",
+        "quantity": "1 tsp",
+        "sku": "REC-SAU-069",
+        "price": 0.3,
+        "notes": null
+      },
+      {
+        "name": "Dried thyme",
+        "quantity": "1 tsp",
+        "sku": "REC-SAU-070",
+        "price": 0.3,
+        "notes": null
+      },
+      {
+        "name": "Egg",
+        "quantity": "1",
+        "sku": "REC-SAU-071",
+        "price": 0.4,
+        "notes": "Beaten for egg wash"
+      },
+      {
+        "name": "Sesame seeds",
+        "quantity": "2 tbsp",
+        "sku": "REC-SAU-072",
+        "price": 0.4,
+        "notes": "Optional topping"
+      },
+      {
+        "name": "Fennel seeds",
+        "quantity": "1 tsp",
+        "sku": "REC-POR-022",
+        "price": 0.3,
+        "notes": "Optional"
+      }
     ],
     "instructions": [
       "Squeeze sausage meat from casings into a bowl. Discard skins.",
@@ -624,7 +1291,12 @@
       "carbs": "24g",
       "fat": "26g"
     },
-    "tags": ["party-food", "make-ahead", "british-classic", "batch-cooking"]
+    "tags": [
+      "party-food",
+      "make-ahead",
+      "british-classic",
+      "batch-cooking"
+    ]
   },
   {
     "id": "rec-013",
@@ -642,15 +1314,69 @@
     "chef_notes": "Make your own croutons and dressing - they're so much better than store-bought.",
     "video_url": null,
     "ingredients": [
-      { "name": "Chicken breasts", "quantity": "4 (150g each)", "sku": "M270123", "price": 12.99, "notes": "Skinless" },
-      { "name": "Romaine lettuce", "quantity": "2 heads", "sku": null, "price": 2.50, "notes": "Washed and chopped" },
-      { "name": "Ciabatta bread", "quantity": "1/2 loaf", "sku": null, "price": 1.50, "notes": "For croutons" },
-      { "name": "Parmesan cheese", "quantity": "100g", "sku": null, "price": 3.50, "notes": "Freshly grated" },
-      { "name": "Mayonnaise", "quantity": "150g", "sku": null, "price": 2.00, "notes": "For dressing" },
-      { "name": "Garlic cloves", "quantity": "2", "sku": null, "price": 0.20, "notes": "Crushed" },
-      { "name": "Lemon", "quantity": "1", "sku": null, "price": 0.50, "notes": "Juice only" },
-      { "name": "Worcestershire sauce", "quantity": "1 tsp", "sku": null, "price": 0.20, "notes": null },
-      { "name": "Anchovies", "quantity": "4 fillets", "sku": null, "price": 1.50, "notes": "Finely chopped (optional)" }
+      {
+        "name": "Chicken breasts",
+        "quantity": "4 (150g each)",
+        "sku": "M270123",
+        "price": 12.99,
+        "notes": "Skinless"
+      },
+      {
+        "name": "Romaine lettuce",
+        "quantity": "2 heads",
+        "sku": "REC-CHI-073",
+        "price": 2.5,
+        "notes": "Washed and chopped"
+      },
+      {
+        "name": "Ciabatta bread",
+        "quantity": "1/2 loaf",
+        "sku": "REC-CHI-074",
+        "price": 1.5,
+        "notes": "For croutons"
+      },
+      {
+        "name": "Parmesan cheese",
+        "quantity": "100g",
+        "sku": "REC-CHI-075",
+        "price": 3.5,
+        "notes": "Freshly grated"
+      },
+      {
+        "name": "Mayonnaise",
+        "quantity": "150g",
+        "sku": "REC-CHI-076",
+        "price": 2,
+        "notes": "For dressing"
+      },
+      {
+        "name": "Garlic cloves",
+        "quantity": "2",
+        "sku": "REC-LAM-015",
+        "price": 0.2,
+        "notes": "Crushed"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1",
+        "sku": "REC-LAM-061",
+        "price": 0.5,
+        "notes": "Juice only"
+      },
+      {
+        "name": "Worcestershire sauce",
+        "quantity": "1 tsp",
+        "sku": "REC-SAU-037",
+        "price": 0.2,
+        "notes": null
+      },
+      {
+        "name": "Anchovies",
+        "quantity": "4 fillets",
+        "sku": "REC-CHI-077",
+        "price": 1.5,
+        "notes": "Finely chopped (optional)"
+      }
     ],
     "instructions": [
       "Preheat oven to 200°C (180°C fan). Cut ciabatta into cubes.",
@@ -676,7 +1402,12 @@
       "carbs": "28g",
       "fat": "32g"
     },
-    "tags": ["salad", "healthy", "quick-meal", "lunch"]
+    "tags": [
+      "salad",
+      "healthy",
+      "quick-meal",
+      "lunch"
+    ]
   },
   {
     "id": "rec-014",
@@ -694,15 +1425,69 @@
     "chef_notes": "Don't press burgers while cooking - you'll squeeze out all the delicious juices.",
     "video_url": null,
     "ingredients": [
-      { "name": "Beef mince (20% fat)", "quantity": "800g", "sku": "M203974", "price": 13.99, "notes": "Premium quality" },
-      { "name": "Streaky bacon", "quantity": "8 rashers", "sku": null, "price": 3.50, "notes": null },
-      { "name": "Mature cheddar", "quantity": "100g", "sku": null, "price": 2.50, "notes": "Sliced" },
-      { "name": "Brioche buns", "quantity": "4", "sku": null, "price": 2.99, "notes": "Toasted" },
-      { "name": "Red onions", "quantity": "2 large", "sku": null, "price": 1.00, "notes": "Sliced" },
-      { "name": "Beef tomatoes", "quantity": "2", "sku": null, "price": 1.50, "notes": "Sliced thick" },
-      { "name": "Butter lettuce", "quantity": "1 head", "sku": null, "price": 1.00, "notes": null },
-      { "name": "Burger relish", "quantity": "4 tbsp", "sku": null, "price": 2.00, "notes": null },
-      { "name": "Brown sugar", "quantity": "1 tbsp", "sku": null, "price": 0.10, "notes": "For onions" }
+      {
+        "name": "Beef mince (20% fat)",
+        "quantity": "800g",
+        "sku": "M203974",
+        "price": 13.99,
+        "notes": "Premium quality"
+      },
+      {
+        "name": "Streaky bacon",
+        "quantity": "8 rashers",
+        "sku": "REC-POR-078",
+        "price": 3.5,
+        "notes": null
+      },
+      {
+        "name": "Mature cheddar",
+        "quantity": "100g",
+        "sku": "REC-BUR-079",
+        "price": 2.5,
+        "notes": "Sliced"
+      },
+      {
+        "name": "Brioche buns",
+        "quantity": "4",
+        "sku": "REC-BUR-080",
+        "price": 2.99,
+        "notes": "Toasted"
+      },
+      {
+        "name": "Red onions",
+        "quantity": "2 large",
+        "sku": "REC-LAM-020",
+        "price": 1,
+        "notes": "Sliced"
+      },
+      {
+        "name": "Beef tomatoes",
+        "quantity": "2",
+        "sku": "REC-BEE-081",
+        "price": 1.5,
+        "notes": "Sliced thick"
+      },
+      {
+        "name": "Butter lettuce",
+        "quantity": "1 head",
+        "sku": "REC-BUR-082",
+        "price": 1,
+        "notes": null
+      },
+      {
+        "name": "Burger relish",
+        "quantity": "4 tbsp",
+        "sku": "REC-BUR-083",
+        "price": 2,
+        "notes": null
+      },
+      {
+        "name": "Brown sugar",
+        "quantity": "1 tbsp",
+        "sku": "REC-POR-043",
+        "price": 0.1,
+        "notes": "For onions"
+      }
     ],
     "instructions": [
       "Caramelize onions: Cook sliced onions in butter with brown sugar over low heat for 20 minutes until soft and sweet.",
@@ -729,7 +1514,12 @@
       "carbs": "52g",
       "fat": "46g"
     },
-    "tags": ["burgers", "comfort-food", "dinner-party", "indulgent"]
+    "tags": [
+      "burgers",
+      "comfort-food",
+      "dinner-party",
+      "indulgent"
+    ]
   },
   {
     "id": "rec-015",
@@ -747,18 +1537,90 @@
     "chef_notes": "The longer this cooks, the better it gets. Make a day ahead and reheat for even deeper flavors.",
     "video_url": null,
     "ingredients": [
-      { "name": "Lamb shoulder", "quantity": "1.5kg", "sku": "M244508", "price": 28.99, "notes": "Diced into chunks" },
-      { "name": "Dried apricots", "quantity": "200g", "sku": null, "price": 2.50, "notes": "Halved" },
-      { "name": "Chickpeas", "quantity": "1 tin (400g)", "sku": null, "price": 0.80, "notes": "Drained" },
-      { "name": "Red onions", "quantity": "2 large", "sku": null, "price": 1.00, "notes": "Diced" },
-      { "name": "Ground cumin", "quantity": "2 tsp", "sku": null, "price": 0.40, "notes": null },
-      { "name": "Ground coriander", "quantity": "2 tsp", "sku": null, "price": 0.40, "notes": null },
-      { "name": "Cinnamon stick", "quantity": "1", "sku": null, "price": 0.30, "notes": null },
-      { "name": "Saffron threads", "quantity": "Pinch", "sku": null, "price": 1.50, "notes": "Optional" },
-      { "name": "Lamb stock", "quantity": "500ml", "sku": null, "price": 1.50, "notes": null },
-      { "name": "Honey", "quantity": "2 tbsp", "sku": null, "price": 1.00, "notes": null },
-      { "name": "Fresh coriander", "quantity": "Large bunch", "sku": null, "price": 0.80, "notes": "Chopped" },
-      { "name": "Flaked almonds", "quantity": "50g", "sku": null, "price": 1.50, "notes": "Toasted" }
+      {
+        "name": "Lamb shoulder",
+        "quantity": "1.5kg",
+        "sku": "M244508",
+        "price": 28.99,
+        "notes": "Diced into chunks"
+      },
+      {
+        "name": "Dried apricots",
+        "quantity": "200g",
+        "sku": "REC-LAM-084",
+        "price": 2.5,
+        "notes": "Halved"
+      },
+      {
+        "name": "Chickpeas",
+        "quantity": "1 tin (400g)",
+        "sku": "REC-LAM-085",
+        "price": 0.8,
+        "notes": "Drained"
+      },
+      {
+        "name": "Red onions",
+        "quantity": "2 large",
+        "sku": "REC-LAM-020",
+        "price": 1,
+        "notes": "Diced"
+      },
+      {
+        "name": "Ground cumin",
+        "quantity": "2 tsp",
+        "sku": "REC-CHI-052",
+        "price": 0.4,
+        "notes": null
+      },
+      {
+        "name": "Ground coriander",
+        "quantity": "2 tsp",
+        "sku": "REC-LAM-060",
+        "price": 0.4,
+        "notes": null
+      },
+      {
+        "name": "Cinnamon stick",
+        "quantity": "1",
+        "sku": "REC-LAM-086",
+        "price": 0.3,
+        "notes": null
+      },
+      {
+        "name": "Saffron threads",
+        "quantity": "Pinch",
+        "sku": "REC-LAM-087",
+        "price": 1.5,
+        "notes": "Optional"
+      },
+      {
+        "name": "Lamb stock",
+        "quantity": "500ml",
+        "sku": "REC-LAM-088",
+        "price": 1.5,
+        "notes": null
+      },
+      {
+        "name": "Honey",
+        "quantity": "2 tbsp",
+        "sku": "REC-LAM-089",
+        "price": 1,
+        "notes": null
+      },
+      {
+        "name": "Fresh coriander",
+        "quantity": "Large bunch",
+        "sku": "REC-CHI-056",
+        "price": 0.8,
+        "notes": "Chopped"
+      },
+      {
+        "name": "Flaked almonds",
+        "quantity": "50g",
+        "sku": "REC-LAM-090",
+        "price": 1.5,
+        "notes": "Toasted"
+      }
     ],
     "instructions": [
       "Heat oil in large casserole or tagine. Brown lamb in batches. Set aside.",
@@ -784,6 +1646,11 @@
       "carbs": "38g",
       "fat": "28g"
     },
-    "tags": ["slow-cooked", "moroccan", "exotic", "make-ahead"]
+    "tags": [
+      "slow-cooked",
+      "moroccan",
+      "exotic",
+      "make-ahead"
+    ]
   }
 ]

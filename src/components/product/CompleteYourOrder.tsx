@@ -69,13 +69,13 @@ export function CompleteYourOrder({
         {/* Product Carousel */}
         <div
           ref={scrollContainerRef}
-          className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4"
+          className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 items-stretch"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {products.slice(0, 8).map((product) => (
             <div
               key={product.id}
-              className="flex-shrink-0 w-64 snap-start"
+              className="flex-shrink-0 w-64 snap-start h-full"
             >
               <ProductCard product={product} />
             </div>

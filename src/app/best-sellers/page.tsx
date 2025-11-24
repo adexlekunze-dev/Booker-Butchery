@@ -11,7 +11,6 @@ import { ActiveFiltersBar } from "@/components/product/ActiveFiltersBar";
 import { NoResultsState } from "@/components/product/NoResultsState";
 import { SortDropdown } from "@/components/product/SortDropdown";
 import { MobileFilterButton } from "@/components/product/MobileFilterButton";
-import { ContentInjection } from "@/components/product/ContentInjection";
 import Link from "next/link";
 import { Grid, List } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -43,8 +42,17 @@ function BestSellersContent() {
     setSession(currentSession);
     setUser(currentUser);
 
-    // Auto-add best_seller=true to URL if not present
-    if (searchParams.get("best_seller") !== "true") {
+    // Auto-add best_seller=true to URL if not present (but only if it wasn't explicitly removed)
+    // Check if best_seller was explicitly set to false (user unselected it)
+    const bestSellerParam = searchParams.get("best_seller");
+    if (bestSellerParam === "false") {
+      // User explicitly unselected, redirect to main shop
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("best_seller");
+      router.replace(`/butchery/shop?${params.toString()}`);
+      return;
+    }
+    if (bestSellerParam !== "true") {
       const params = new URLSearchParams(searchParams.toString());
       params.set("best_seller", "true");
       router.replace(`/best-sellers?${params.toString()}`);
@@ -73,7 +81,7 @@ function BestSellersContent() {
       branchCode,
       sortBy,
       page,
-      perPage: 24,
+      perPage: 40,
     });
 
     setData(result);
@@ -169,22 +177,9 @@ function BestSellersContent() {
             {hasResults ? (
               <>
                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
-                  {data.products.map((product: any, idx: number) => {
-                    const showInjection = idx > 0 && idx % 24 === 0;
-                    const injectionType = idx % 72 === 0 ? "educational" : idx % 48 === 0 ? "promotional" : "cross-category";
-                    
-                    return (
-                      <div key={product.id || product.sku} className="contents">
-                        {showInjection && (
-                          <ContentInjection
-                            type={injectionType}
-                            index={Math.floor(idx / 24)}
-                          />
-                        )}
-                        <ProductCard product={product} />
-                      </div>
-                    );
-                  })}
+                  {data.products.map((product: any) => (
+                    <ProductCard key={product.id || product.sku} product={product} />
+                  ))}
                 </div>
                 
                 {totalPages > 1 && (

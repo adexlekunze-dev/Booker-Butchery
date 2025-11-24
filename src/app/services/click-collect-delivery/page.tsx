@@ -8,7 +8,8 @@ import { SectorHero } from "@/components/sectors/SectorHero";
 import { FAQAccordion } from "@/components/help/FAQAccordion";
 import { SEOContentSection } from "@/components/sectors/SEOContentSection";
 import { getSEOContentForService } from "@/data/service-seo-content";
-import { getSession } from "@/lib/mock-auth";
+import { getSession, getUser } from "@/lib/mock-auth";
+import { getBranchByCode } from "@/lib/data/branches";
 import {
   ShoppingCart,
   Store,
@@ -21,10 +22,12 @@ import {
 
 export default function ClickCollectDeliveryPage() {
   const [session, setSession] = useState<any>(null);
+  const [user, setUser] = useState<any>(null);
   const [openFaqCategory, setOpenFaqCategory] = useState<string | null>(null);
 
   useEffect(() => {
     setSession(getSession());
+    setUser(getUser());
   }, []);
 
   const clickCollectFAQs = [
@@ -365,13 +368,22 @@ export default function ClickCollectDeliveryPage() {
           <div className="max-w-2xl mx-auto bg-gray-50 rounded-xl p-8 border border-gray-200">
             <div className="flex items-center gap-3 mb-6">
               <MapPin className="w-6 h-6 text-primary" />
-              <h3 className="text-xl font-semibold text-gray-900">YOUR NEAREST BRANCH:</h3>
+              <h3 className="text-xl font-semibold text-gray-900">
+                {session?.user && user?.primary_branch_code ? "YOUR NEAREST BRANCH:" : "FIND YOUR NEAREST BRANCH:"}
+              </h3>
             </div>
             <div className="bg-white rounded-lg p-6 mb-6">
               <div className="flex items-center gap-3 mb-3">
                 <MapPin className="w-5 h-5 text-primary" />
                 <span className="font-semibold text-gray-900">
-                  Booker Manchester Central (2.3 miles)
+                  {session?.user && user?.primary_branch_code ? (
+                    (() => {
+                      const branch = getBranchByCode(user.primary_branch_code);
+                      return branch ? `Booker ${branch.name}` : "Booker Manchester Central";
+                    })()
+                  ) : (
+                    "Use our branch finder to locate your nearest branch"
+                  )}
                 </span>
               </div>
               <div className="space-y-2 mb-4">

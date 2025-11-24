@@ -45,10 +45,10 @@ export const categoryRecipes: CategoryRecipe[] = [
     useCase: "fine-dining",
     season: "winter",
     ingredients: [
-      { name: "Beef Fillet", sku: "BEEF-FILLET-2KG", quantity: 8, unit: "kg", price: 89.99, brand: "Blackgate Dry-Aged" },
-      { name: "Puff Pastry", sku: "PASTRY-PUFF-3KG", quantity: 12, unit: "kg", price: 15.99, brand: "Jus-Rol" },
-      { name: "Chestnut Mushrooms", sku: "MUSHROOM-CHEST-1KG", quantity: 4, unit: "kg", price: 12.99, brand: "Fresh Select" },
-      { name: "Prosciutto", sku: "PROSCIUTTO-500G", quantity: 2, unit: "kg", price: 24.99, brand: "Parma" },
+      { name: "Beef Fillet", sku: "M297834", quantity: 8, unit: "kg", price: 89.99, brand: "Blackgate Dry-Aged" },
+      { name: "Puff Pastry", sku: "REC-BEE-003", quantity: 12, unit: "kg", price: 15.99, brand: "Jus-Rol" },
+      { name: "Chestnut Mushrooms", sku: "REC-CHI-027", quantity: 4, unit: "kg", price: 12.99, brand: "Fresh Select" },
+      { name: "Prosciutto", sku: "REC-BEE-004", quantity: 2, unit: "kg", price: 24.99, brand: "Parma" },
       { name: "Dijon Mustard", quantity: 400, unit: "g", price: 8.99 },
       { name: "Egg Yolks (for egg wash)", quantity: 12, unit: "pieces", price: 3.50 },
     ],
@@ -81,7 +81,7 @@ export const categoryRecipes: CategoryRecipe[] = [
     useCase: "pub-casual",
     season: "summer",
     ingredients: [
-      { name: "Chicken Pieces (Thighs & Drumsticks)", sku: "CHICKEN-PIECES-10KG", quantity: 20, unit: "kg", price: 45.99, brand: "Oakham" },
+      { name: "Chicken Pieces (Thighs & Drumsticks)", sku: "M150167", quantity: 20, unit: "kg", price: 45.99, brand: "Oakham" },
       { name: "Buttermilk", quantity: 8, unit: "litres", price: 12.99 },
       { name: "Plain Flour", quantity: 4, unit: "kg", price: 6.99 },
       { name: "Paprika", quantity: 200, unit: "g", price: 8.99 },
@@ -116,7 +116,7 @@ export const categoryRecipes: CategoryRecipe[] = [
     useCase: "large-events",
     season: "summer",
     ingredients: [
-      { name: "Pork Shoulder (Bone-in)", sku: "PORK-SHOULDER-5KG", quantity: 20, unit: "kg", price: 32.99, brand: "Premium Pork" },
+      { name: "Pork Shoulder (Bone-in)", sku: "M959650", quantity: 20, unit: "kg", price: 32.99, brand: "Premium Pork" },
       { name: "BBQ Rub Seasoning", quantity: 1, unit: "kg", price: 15.99 },
       { name: "BBQ Sauce", quantity: 4, unit: "litres", price: 24.99 },
       { name: "Apple Cider Vinegar", quantity: 2, unit: "litres", price: 8.99 },
@@ -149,7 +149,7 @@ export const categoryRecipes: CategoryRecipe[] = [
     useCase: "fine-dining",
     season: "spring",
     ingredients: [
-      { name: "Lamb Rack (French Trimmed)", sku: "LAMB-RACK-FRENCH", quantity: 10, unit: "racks", price: 28.99, brand: "Welsh Lamb" },
+      { name: "Lamb Rack (French Trimmed)", sku: "M229158", quantity: 10, unit: "racks", price: 28.99, brand: "Welsh Lamb" },
       { name: "Fresh Rosemary", quantity: 200, unit: "g", price: 6.99 },
       { name: "Fresh Thyme", quantity: 150, unit: "g", price: 5.99 },
       { name: "Panko Breadcrumbs", quantity: 1, unit: "kg", price: 8.99 },
@@ -183,7 +183,7 @@ export const categoryRecipes: CategoryRecipe[] = [
     useCase: "quick-lunch",
     season: "autumn",
     ingredients: [
-      { name: "Whole Chicken (1.5-1.8kg)", sku: "CHICKEN-WHOLE-1-5KG", quantity: 8, unit: "birds", price: 12.99, brand: "Oakham" },
+      { name: "Whole Chicken (1.5-1.8kg)", sku: "M295283", quantity: 8, unit: "birds", price: 12.99, brand: "Oakham" },
       { name: "Lemons", quantity: 16, unit: "pieces", price: 8.99 },
       { name: "Fresh Thyme", quantity: 200, unit: "g", price: 5.99 },
       { name: "Garlic Bulbs", quantity: 16, unit: "bulbs", price: 6.99 },

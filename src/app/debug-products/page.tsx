@@ -1,21 +1,49 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { getProducts } from "@/lib/data/products";
 import productsData from "@/data/products.json";
+import { getUser } from "@/lib/mock-auth";
 
 export default function DebugProductsPage() {
-  // Test various scenarios
-  const allProductsResult = getProducts({});
-  const withBranchResult = getProducts({ branchCode: "MAN001" });
-  const inStockResult = getProducts({ branchCode: "MAN001", inStockOnly: true });
-
-  // Count by category
-  const activeProducts = productsData.filter((p: any) => p.active);
-  const categoryCounts: Record<string, number> = {};
-  activeProducts.forEach((p: any) => {
-    const cat = p.category || "NONE";
-    categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
-  });
+  const [results, setResults] = useState<any>(null);
+  
+  useEffect(() => {
+    const user = getUser();
+    const branchCode = user?.primary_branch_code;
+    
+    // Test various scenarios
+    const allProductsResult = getProducts({});
+    const withBranchResult = getProducts({ branchCode: "MAN001" });
+    const withUserBranch = getProducts({ branchCode });
+    const inStockResult = getProducts({ branchCode: "MAN001", inStockOnly: true });
+    
+    // Count by category
+    const activeProducts = productsData.filter((p: any) => p.active);
+    const categoryCounts: Record<string, number> = {};
+    activeProducts.forEach((p: any) => {
+      const cat = p.category || "NONE";
+      categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+    });
+    
+    setResults({
+      allProducts: allProductsResult,
+      withBranch: withBranchResult,
+      withUserBranch,
+      inStockOnly: inStockResult,
+      userBranchCode: branchCode,
+      rawDataCount: productsData.length,
+      activeCount: activeProducts.length,
+      categoryCounts,
+    });
+  }, []);
+  
+  if (!results) {
+    return <div className="min-h-screen bg-gray-50 p-8">Loading debug data...</div>;
+  }
+  
+  const { allProducts, withBranch, withUserBranch, inStockOnly, userBranchCode, rawDataCount, activeCount, categoryCounts } = results;
+  const missingCount = activeCount - allProducts.total;
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
@@ -26,10 +54,10 @@ export default function DebugProductsPage() {
           <h2 className="text-xl font-bold mb-4">📊 Raw Data Counts</h2>
           <div className="space-y-2">
             <p className="text-lg">
-              <strong>Total in products.json:</strong> {productsData.length}
+              <strong>Total in products.json:</strong> {rawDataCount}
             </p>
             <p className="text-lg">
-              <strong>Active products:</strong> {activeProducts.length}
+              <strong>Active products:</strong> {activeCount}
             </p>
           </div>
         </div>
@@ -38,16 +66,47 @@ export default function DebugProductsPage() {
           <h2 className="text-xl font-bold mb-4">🔍 getProducts() Tests</h2>
           <div className="space-y-2">
             <p className="text-lg">
-              <strong>No filters:</strong> {allProductsResult.total} products
+              <strong>No filters:</strong> {allProducts.total} products
             </p>
             <p className="text-lg">
-              <strong>With MAN001 branch:</strong> {withBranchResult.total}{" "}
-              products
+              <strong>With MAN001 branch:</strong> {withBranch.total} products
             </p>
             <p className="text-lg">
-              <strong>In stock at MAN001:</strong> {inStockResult.total}{" "}
-              products
+              <strong>With user branch ({userBranchCode || 'none'}):</strong> {withUserBranch.total} products
             </p>
+            <p className="text-lg">
+              <strong>In stock at MAN001:</strong> {inStockOnly.total} products
+            </p>
+          </div>
+        </div>
+        
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-6">
+          <h2 className="text-xl font-bold mb-4 text-yellow-800">🔍 Detailed Analysis</h2>
+          <div className="space-y-2 text-sm">
+            <p><strong>Raw JSON count:</strong> {rawDataCount}</p>
+            <p><strong>Active products:</strong> {activeCount}</p>
+            <p><strong>getProducts() with no params:</strong> {allProducts.total}</p>
+            <p className={missingCount > 0 ? "text-red-700 font-bold" : "text-green-700 font-bold"}>
+              <strong>Missing products:</strong> {missingCount}
+            </p>
+            {missingCount > 0 && (
+              <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded">
+                <p className="text-red-800 font-bold">⚠️ ISSUE DETECTED!</p>
+                <p className="text-red-700">
+                  {missingCount} products are being filtered out by getProducts() with no parameters.
+                  This indicates a bug in the filtering logic.
+                </p>
+              </div>
+            )}
+            {missingCount === 0 && (
+              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded">
+                <p className="text-green-800 font-bold">✅ NO ISSUE FOUND!</p>
+                <p className="text-green-700">
+                  All {activeCount} active products are being returned correctly.
+                  If you're seeing 304 on the PLP, check for URL parameters or browser cache.
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -73,30 +132,6 @@ export default function DebugProductsPage() {
           </div>
         </div>
 
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-          <h2 className="text-xl font-bold mb-4 text-yellow-800">
-            💡 Diagnosis
-          </h2>
-          {allProductsResult.total === 444 ? (
-            <p className="text-green-700">
-              ✅ <strong>Everything looks good!</strong> All 444 products are
-              being returned by getProducts(). If you're seeing 304 on the PLP,
-              please:
-              <ol className="list-decimal ml-6 mt-2 space-y-1">
-                <li>Check the URL bar for any query parameters</li>
-                <li>Clear your browser cache (Ctrl+Shift+R)</li>
-                <li>Check if you're on a category page vs. main PLP</li>
-              </ol>
-            </p>
-          ) : (
-            <p className="text-red-700">
-              ⚠️ <strong>Issue found:</strong> getProducts() is returning{" "}
-              {allProductsResult.total} instead of 444. This needs
-              investigation.
-            </p>
-          )}
-        </div>
-
         <div className="mt-6 text-center">
           <a
             href="/butchery/shop"
@@ -109,4 +144,3 @@ export default function DebugProductsPage() {
     </div>
   );
 }
-

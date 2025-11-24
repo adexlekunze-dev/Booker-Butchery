@@ -89,7 +89,7 @@ function BrandShopPageContent() {
       branchCode,
       sortBy,
       page,
-      perPage: 24,
+      perPage: 40,
     });
 
     setData(result);
@@ -112,7 +112,7 @@ function BrandShopPageContent() {
   }
 
   const hasResults = data.products.length > 0;
-  const totalPages = Math.ceil(data.total / (data.perPage || 24));
+  const totalPages = Math.ceil(data.total / (data.perPage || 40));
   
   // Build pagination params
   const buildParams = () => {
@@ -221,7 +221,7 @@ function BrandShopPageContent() {
             {hasResults ? (
               <>
                 {/* Render products with content injections every 24 */}
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 items-stretch">
                   {data.products.map((product: any, idx: number) => {
                     const showInjection = idx > 0 && idx % 24 === 0;
                     const injectionType = idx % 72 === 0 ? "educational" : idx % 48 === 0 ? "promotional" : "cross-category";

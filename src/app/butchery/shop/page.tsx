@@ -178,8 +178,8 @@ function ButcheryListingContent() {
     const storageType = searchParams.get("storage_type") || undefined;
     const attributes = searchParams.getAll("attributes");
     const brands = searchParams.getAll("brand");
-    const bestSeller = searchParams.get("best_seller") === "true";
-    const onOffer = searchParams.get("on_offer") === "true";
+    const bestSeller = searchParams.get("best_seller") === "true" ? true : searchParams.get("best_seller") === "false" ? false : undefined;
+    const onOffer = searchParams.get("on_offer") === "true" ? true : searchParams.get("on_offer") === "false" ? false : undefined;
     const inStockOnly = searchParams.get("in_stock") === "true";
     const stockLevel = searchParams.get("stock_level") || undefined;
     const sortBy = searchParams.get("sort") || "name_az";
@@ -209,7 +209,7 @@ function ButcheryListingContent() {
       branchCode,
       sortBy,
       page,
-      perPage: 24,
+      perPage: 40,
     });
 
     setData(result);
@@ -249,7 +249,7 @@ function ButcheryListingContent() {
   }
 
   const hasResults = data.products.length > 0;
-  const totalPages = Math.ceil(data.total / (data.perPage || 24));
+  const totalPages = Math.ceil(data.total / (data.perPage || 40));
 
   // Build pagination params
   const buildParams = () => {
@@ -329,7 +329,7 @@ function ButcheryListingContent() {
             Showing {data.products.length} of {data.total} products {locationText}
           </p>
           <p className="text-gray-600 mt-2">
-            Browse our complete range of premium butchery products at wholesale prices. Order by 3pm for next-day delivery from Manchester Central.
+            Browse our complete range of premium butchery products at wholesale prices. Order by 3pm for next-day delivery {session?.user && branchName ? `from ${branchName.replace('at ', '')}` : 'across all branches'}.
           </p>
         </div>
       </div>
@@ -350,7 +350,7 @@ function ButcheryListingContent() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div className="text-sm text-gray-600">
                   {hasResults ? (
-                    <>Showing {((data.page || 1) - 1) * (data.perPage || 24) + 1}-{Math.min((data.page || 1) * (data.perPage || 24), data.total)} of {data.total} products</>
+                    <>Showing {((data.page || 1) - 1) * (data.perPage || 40) + 1}-{Math.min((data.page || 1) * (data.perPage || 40), data.total)} of {data.total} products</>
                   ) : (
                     <>No products found</>
                   )}
@@ -370,17 +370,35 @@ function ButcheryListingContent() {
             {hasResults ? (
               <>
                 {/* Render products with content injections every 24 */}
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 items-stretch">
                   {data.products.map((product: any, idx: number) => {
-                    const showInjection = idx > 0 && idx % 24 === 0;
-                    const injectionType = idx % 72 === 0 ? "educational" : idx % 48 === 0 ? "promotional" : "cross-category";
-
+                    // Only show injections on range PLP (when category is selected), every 8 products
+                    // Normalize category to uppercase (handle compound categories like "POULTRY & GAME")
+                    const selectedCategory = category 
+                      ? (category.includes("&") ? category : category.toUpperCase())
+                      : undefined;
+                    const isRangePLP = !!selectedCategory;
+                    const showInjection = isRangePLP && idx > 0 && idx % 8 === 0;
+                    
+                    // Rotate through: promotional, educational, cross-sell, recipe
+                    // First injection at idx=8 should be promotional (index 0)
+                    const injectionTypes: Array<"promotional" | "educational" | "cross-sell" | "recipe"> = [
+                      "promotional",
+                      "educational",
+                      "cross-sell",
+                      "recipe"
+                    ];
+                    // Adjust calculation: idx=8 → index 0, idx=16 → index 1, etc.
+                    const injectionType = injectionTypes[(Math.floor(idx / 8) - 1) % injectionTypes.length];
+                    
                     return (
                       <div key={product.id || product.sku} className="contents">
                         {showInjection && (
                           <ContentInjection
                             type={injectionType}
-                            index={Math.floor(idx / 24)}
+                            category={selectedCategory}
+                            products={data.products}
+                            index={Math.floor(idx / 8)}
                           />
                         )}
                         <ProductCard product={product} />

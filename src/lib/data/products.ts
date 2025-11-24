@@ -149,7 +149,7 @@ export function getProducts(params: ProductQueryParams = {}) {
 
   // Category filter (case-insensitive matching)
   if (category) {
-    // Case-insensitive matching - all categories exist in data, no normalization needed
+    const before = filtered.length;
     filtered = filtered.filter(p => 
       p.category.toUpperCase() === category.toUpperCase()
     );
@@ -157,17 +157,17 @@ export function getProducts(params: ProductQueryParams = {}) {
 
   // Subcategory filter (case-insensitive, handle URL decoding)
   if (subcategory) {
-    // Decode URL-encoded subcategory and normalize
+    const before = filtered.length;
     const normalizedSubcategory = decodeURIComponent(subcategory).trim();
     filtered = filtered.filter(p => {
       if (!p.subcategory) return false;
-      // Case-insensitive comparison
       return p.subcategory.trim().toLowerCase() === normalizedSubcategory.toLowerCase();
     });
   }
 
   // Sector filter
   if (sectors) {
+    const before = filtered.length;
     const sectorArray = Array.isArray(sectors) ? sectors : [sectors];
     filtered = filtered.filter(p => {
       const productSectors = Array.isArray(p.sectors) ? p.sectors : [];
@@ -177,6 +177,7 @@ export function getProducts(params: ProductQueryParams = {}) {
 
   // Meat type filter (from attributes)
   if (meatType) {
+    const before = filtered.length;
     const meatTypes = Array.isArray(meatType) ? meatType : [meatType];
     filtered = filtered.filter(p => {
       const productAttributes = Array.isArray(p.attributes) ? p.attributes : [];
@@ -188,6 +189,7 @@ export function getProducts(params: ProductQueryParams = {}) {
 
   // Attributes filter
   if (attributes.length > 0) {
+    const before = filtered.length;
     filtered = filtered.filter(p => {
       const productAttributes = Array.isArray(p.attributes) ? p.attributes : [];
       return attributes.every(attr => 
@@ -198,64 +200,77 @@ export function getProducts(params: ProductQueryParams = {}) {
 
   // Brand filter
   if (brands.length > 0) {
+    const before = filtered.length;
     filtered = filtered.filter(p => brands.includes(p.brand));
   }
 
   // Best seller filter
   if (bestSeller !== undefined) {
+    const before = filtered.length;
     filtered = filtered.filter(p => p.best_seller === bestSeller);
   }
 
   // On offer filter
   if (on_offer !== undefined) {
+    const before = filtered.length;
     filtered = filtered.filter(p => p.on_offer === on_offer);
   }
 
   // Seasonal filter
   if (seasonal !== undefined) {
+    const before = filtered.length;
     filtered = filtered.filter(p => p.seasonal === seasonal);
   }
 
   // Quality tier filter
   if (quality_tier !== undefined) {
+    const before = filtered.length;
     filtered = filtered.filter(p => p.quality_tier === quality_tier);
   }
 
   // Halal filter
   if (halal !== undefined) {
+    const before = filtered.length;
     filtered = filtered.filter(p => p.halal === halal);
   }
 
   // Origin filter
   if (origin !== undefined) {
+    const before = filtered.length;
     filtered = filtered.filter(p => (p as any).origin === origin);
   }
 
   // Aging method filter
   if (aging_method !== undefined) {
+    const before = filtered.length;
     filtered = filtered.filter(p => p.aging_method === aging_method);
   }
 
   // Aging days filter
   if (aging_days !== undefined) {
+    const before = filtered.length;
     filtered = filtered.filter(p => p.aging_days === aging_days);
   }
 
   // Storage type filter
   if (storage_type !== undefined) {
+    const before = filtered.length;
     filtered = filtered.filter(p => p.storage_info === storage_type);
   }
 
   // Price range filter
   if (minPrice !== undefined) {
+    const before = filtered.length;
     filtered = filtered.filter(p => p.base_price >= minPrice);
   }
   if (maxPrice !== undefined) {
+    const before = filtered.length;
     filtered = filtered.filter(p => p.base_price <= maxPrice);
   }
 
   // Stock level filter
   if (stock_level) {
+    const before = filtered.length;
     filtered = filtered.filter(p => {
       const inventory = p.inventory || {};
       // Get the first (and only) inventory entry
@@ -266,7 +281,7 @@ export function getProducts(params: ProductQueryParams = {}) {
       return inventoryEntry.stock_level === stock_level;
     });
   }
-
+  
   // Apply inventory filtering and attach availability
   const productsWithAvailability = filtered.map(p => {
     const branchInventory = branchCode && p.inventory[branchCode];

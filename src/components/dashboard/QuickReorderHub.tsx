@@ -9,10 +9,11 @@ import { getPreviousOrdersByDay, getLastOrder } from "@/lib/data/mock-order-patt
 import { getOrderPatterns, getSmartOrderSuggestions, getOrderFrequencyAnalysis, getTrendingProducts } from "@/lib/data/mock-order-patterns";
 import { getShoppingLists } from "@/lib/data/mock-shopping-lists";
 import type { SmartOrderSuggestion, OrderFrequencyInsight, ProductTrend } from "@/lib/data/mock-order-patterns";
-import { getProducts } from "@/lib/data/products";
+import { getProducts, getProductBySku } from "@/lib/data/products";
 import { ProductCard } from "@/components/product/ProductCard";
 import Link from "next/link";
 import productsData from '@/data/products.json';
+import { getRecentlyViewed } from "@/lib/recently-viewed";
 
 // Get all unique categories from products
 const getAllCategories = (): string[] => {
@@ -79,6 +80,9 @@ export function QuickReorderHub() {
   const [smartSuggestions, setSmartSuggestions] = useState<SmartOrderSuggestion[]>([]);
   const [frequencyInsights, setFrequencyInsights] = useState<OrderFrequencyInsight[]>([]);
   const [trendingProducts, setTrendingProducts] = useState<ProductTrend[]>([]);
+  const [recommendedProducts, setRecommendedProducts] = useState<any[]>([]);
+  const [recommendationScrollPosition, setRecommendationScrollPosition] = useState(0);
+  const [canScrollRecommendationsRight, setCanScrollRecommendationsRight] = useState(false);
 
   useEffect(() => {
     const currentSession = getSession();
@@ -151,7 +155,6 @@ export function QuickReorderHub() {
       const result = getProducts({
         category: category,
         branchCode,
-        bestSeller: true,
         perPage: 8,
       });
       productsByCategory[category] = result.products;
@@ -191,6 +194,87 @@ export function QuickReorderHub() {
       }, 100);
     }
   }, [activeCategoryTab, categoryProducts]);
+
+  // Generate recommendations based on ordering patterns and recently viewed
+  useEffect(() => {
+    const currentUser = getUser();
+    const branchCode = currentUser?.primary_branch_code;
+    const recommendations: any[] = [];
+    const seenProductIds = new Set<string>();
+
+    // Get recently viewed products
+    const recentlyViewed = getRecentlyViewed();
+    recentlyViewed.forEach((item) => {
+      if (!seenProductIds.has(item.id)) {
+        const product = getProductBySku(item.sku, branchCode);
+        if (product && product.active) {
+          recommendations.push(product);
+          seenProductIds.add(product.id);
+        }
+      }
+    });
+
+    // Get products from ordering patterns (frequent products)
+    if (orderPatterns?.frequent_products) {
+      orderPatterns.frequent_products.forEach((freqProduct) => {
+        if (!seenProductIds.has(freqProduct.product_id)) {
+          // Try to find product by name or ID
+          const product = (productsData as any[]).find(
+            (p) => (p.id === freqProduct.product_id || 
+                    p.name.toLowerCase().includes(freqProduct.product_name.toLowerCase())) &&
+                    p.active
+          );
+          if (product) {
+            const fullProduct = getProductBySku(product.sku, branchCode);
+            if (fullProduct && !seenProductIds.has(fullProduct.id)) {
+              recommendations.push(fullProduct);
+              seenProductIds.add(fullProduct.id);
+            }
+          }
+        }
+      });
+    }
+
+    // If no recommendations yet, get products from typical categories
+    if (recommendations.length === 0 && orderPatterns?.typical_categories) {
+      orderPatterns.typical_categories.forEach((category) => {
+        if (recommendations.length >= 20) return;
+        const categoryProducts = getProducts({
+          category: category,
+          branchCode,
+          perPage: 5,
+        });
+        categoryProducts.products.forEach((product) => {
+          if (!seenProductIds.has(product.id) && recommendations.length < 20) {
+            recommendations.push(product);
+            seenProductIds.add(product.id);
+          }
+        });
+      });
+    }
+
+    // Final fallback: get best sellers from any category
+    if (recommendations.length === 0) {
+      const fallbackProducts = getProducts({
+        branchCode,
+        bestSeller: true,
+        perPage: 20,
+      });
+      setRecommendedProducts(fallbackProducts.products);
+    } else {
+      // Limit to 20 products for performance
+      setRecommendedProducts(recommendations.slice(0, 20));
+    }
+
+    // Check scroll capability
+    setTimeout(() => {
+      const container = document.getElementById('recommendations-scroll');
+      if (container) {
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        setCanScrollRecommendationsRight(maxScroll > 10);
+      }
+    }, 100);
+  }, [orderPatterns]);
 
   if (!session?.user) {
     return null;
@@ -374,7 +458,7 @@ export function QuickReorderHub() {
         </div>
 
         {/* Smart Suggestions Section */}
-        {smartSuggestions.length > 0 && (
+        {/* {smartSuggestions.length > 0 && (
           <div className="mb-8">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-5 h-5 text-purple-500" />
@@ -449,10 +533,10 @@ export function QuickReorderHub() {
               })}
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Order Insights Panel */}
-        {frequencyInsights.length > 0 && (
+        {/* {frequencyInsights.length > 0 && (
           <div className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">
             <div className="flex items-center gap-2 mb-4">
               <BarChart3 className="w-5 h-5 text-blue-600" />
@@ -482,7 +566,7 @@ export function QuickReorderHub() {
               ({frequencyInsights[0]?.percentage_of_total.toFixed(0)}% of your orders)
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Category Tabs - Add More Items */}
         <div className="mb-6">
@@ -520,11 +604,11 @@ export function QuickReorderHub() {
                 })}
               </div>
 
-              {/* Tab Content - Best Sellers */}
+              {/* Tab Content - Products */}
               {activeCategoryTab && (
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h4 className="font-semibold text-gray-900">Best Sellers in {activeCategoryTab}</h4>
+                    <h4 className="font-semibold text-gray-900">{activeCategoryTab}</h4>
                     <Link
                       href={categoryRouteMap[activeCategoryTab] || "/search"}
                       className="flex items-center gap-1 text-primary hover:text-primary font-medium text-sm"
@@ -556,7 +640,7 @@ export function QuickReorderHub() {
                     {/* Products Container */}
                     <div
                       id={`products-scroll-${activeCategoryTab}`}
-                      className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4"
+                      className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 items-stretch"
                       style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                       onScroll={(e) => {
                         const container = e.currentTarget;
@@ -576,7 +660,7 @@ export function QuickReorderHub() {
                     >
                       {categoryProducts[activeCategoryTab]?.length > 0 ? (
                         categoryProducts[activeCategoryTab].map((product) => (
-                          <div key={product.id} className="flex-shrink-0 w-64">
+                          <div key={product.id} className="flex-shrink-0 w-64 flex items-stretch">
                             <ProductCard product={product} />
                           </div>
                         ))
@@ -609,6 +693,78 @@ export function QuickReorderHub() {
             </>
           )}
         </div>
+
+        {/* Recommendations Section - Based on Ordering Patterns and Recently Viewed */}
+        <div className="mb-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-gray-900">Recommended for You</h3>
+              <Link
+                href="/butchery/shop"
+                className="flex items-center gap-1 text-primary hover:text-primary font-medium text-sm"
+              >
+                View All
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            
+            {/* Products Scrollable Line */}
+            <div className="relative">
+              {/* Left Scroll Button */}
+              {recommendationScrollPosition > 0 && (
+                <button
+                  onClick={() => {
+                    const container = document.getElementById('recommendations-scroll');
+                    if (!container) return;
+                    const newPosition = Math.max(0, recommendationScrollPosition - 400);
+                    container.scrollTo({ left: newPosition, behavior: "smooth" });
+                    setRecommendationScrollPosition(newPosition);
+                  }}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white border border-gray-200 rounded-full shadow-md hover:bg-gray-50 transition-all"
+                  aria-label="Scroll left"
+                >
+                  <ChevronLeft className="w-5 h-5 text-gray-700" strokeWidth={2} />
+                </button>
+              )}
+
+              {/* Products Container */}
+              <div
+                id="recommendations-scroll"
+                className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-4 px-4 items-stretch"
+                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                onScroll={(e) => {
+                  const container = e.currentTarget;
+                  const currentScroll = container.scrollLeft;
+                  const maxScroll = container.scrollWidth - container.clientWidth;
+                  
+                  setRecommendationScrollPosition(currentScroll);
+                  setCanScrollRecommendationsRight(currentScroll < maxScroll - 10);
+                }}
+              >
+                {recommendedProducts.map((product) => (
+                  <div key={product.id} className="flex-shrink-0 w-64 flex items-stretch">
+                    <ProductCard product={product} />
+                  </div>
+                ))}
+              </div>
+
+              {/* Right Scroll Button */}
+              {canScrollRecommendationsRight && (
+                <button
+                  onClick={() => {
+                    const container = document.getElementById('recommendations-scroll');
+                    if (!container) return;
+                    const newPosition = recommendationScrollPosition + 400;
+                    container.scrollTo({ left: newPosition, behavior: "smooth" });
+                    setRecommendationScrollPosition(newPosition);
+                  }}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-white border border-gray-200 rounded-full shadow-md hover:bg-gray-50 transition-all"
+                  aria-label="Scroll right"
+                >
+                  <ChevronRight className="w-5 h-5 text-gray-700" strokeWidth={2} />
+                </button>
+              )}
+            </div>
+          </div>
       </div>
     </section>
   );

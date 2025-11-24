@@ -24,9 +24,9 @@ export function UpsellProducts({ products }: UpsellProductsProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 items-stretch">
         {products.slice(0, 4).map((product) => (
-          <div key={product.id}>
+          <div key={product.id} className="h-full">
             <ProductCard product={product} />
           </div>
         ))}

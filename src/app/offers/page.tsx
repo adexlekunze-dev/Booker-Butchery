@@ -11,7 +11,6 @@ import { ActiveFiltersBar } from "@/components/product/ActiveFiltersBar";
 import { NoResultsState } from "@/components/product/NoResultsState";
 import { SortDropdown } from "@/components/product/SortDropdown";
 import { MobileFilterButton } from "@/components/product/MobileFilterButton";
-import { ContentInjection } from "@/components/product/ContentInjection";
 import Link from "next/link";
 import { Grid, List, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -32,7 +31,7 @@ function ViewToggle() {
 function OffersContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [data, setData] = useState<{ products: any[]; total: number; page: number; perPage: number }>({ products: [], total: 0, page: 1, perPage: 24 });
+  const [data, setData] = useState<{ products: any[]; total: number; page: number; perPage: number }>({ products: [], total: 0, page: 1, perPage: 40 });
   const [session, setSession] = useState<any>(null);
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -43,8 +42,17 @@ function OffersContent() {
     setSession(currentSession);
     setUser(currentUser);
 
-    // Auto-add on_offer=true to URL if not present
-    if (searchParams.get("on_offer") !== "true") {
+    // Auto-add on_offer=true to URL if not present (but only if it wasn't explicitly removed)
+    // Check if on_offer was explicitly set to false (user unselected it)
+    const onOfferParam = searchParams.get("on_offer");
+    if (onOfferParam === "false") {
+      // User explicitly unselected, redirect to main shop
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("on_offer");
+      router.replace(`/butchery/shop?${params.toString()}`);
+      return;
+    }
+    if (onOfferParam !== "true") {
       const params = new URLSearchParams(searchParams.toString());
       params.set("on_offer", "true");
       router.replace(`/offers?${params.toString()}`);
@@ -73,7 +81,7 @@ function OffersContent() {
       branchCode,
       sortBy,
       page,
-      perPage: 24,
+      perPage: 40,
     });
 
     setData(result);
@@ -167,24 +175,10 @@ function OffersContent() {
             {/* Products or No Results */}
             {hasResults ? (
               <>
-                {/* Render products with content injections every 24 */}
                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
-                  {data.products.map((product: any, idx: number) => {
-                    const showInjection = idx > 0 && idx % 24 === 0;
-                    const injectionType = idx % 72 === 0 ? "educational" : idx % 48 === 0 ? "promotional" : "cross-category";
-                    
-                    return (
-                      <div key={product.id || product.sku} className="contents">
-                        {showInjection && (
-                          <ContentInjection
-                            type={injectionType}
-                            index={Math.floor(idx / 24)}
-                          />
-                        )}
-                        <ProductCard product={product} />
-                      </div>
-                    );
-                  })}
+                  {data.products.map((product: any) => (
+                    <ProductCard key={product.id || product.sku} product={product} />
+                  ))}
                 </div>
 
                 {/* Pagination */}

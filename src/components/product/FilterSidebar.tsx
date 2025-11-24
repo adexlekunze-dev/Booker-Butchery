@@ -84,6 +84,27 @@ export function FilterSidebar() {
     }
 
     const currentValues = params.getAll(key);
+    const isCurrentlyActive = multiple ? currentValues.includes(value) : params.get(key) === value;
+
+    // Special handling for best_seller and on_offer filters
+    // If unchecking on their dedicated pages, redirect to main shop
+    if (!multiple && isCurrentlyActive) {
+      // User is unchecking the filter
+      if (key === "best_seller" && pathname === "/best-sellers") {
+        // Remove best_seller filter and redirect to main shop
+        params.delete("best_seller");
+        params.set("page", "1");
+        router.push(`/butchery/shop?${params.toString()}`);
+        return;
+      }
+      if (key === "on_offer" && pathname === "/offers") {
+        // Remove on_offer filter and redirect to main shop
+        params.delete("on_offer");
+        params.set("page", "1");
+        router.push(`/butchery/shop?${params.toString()}`);
+        return;
+      }
+    }
 
     if (multiple) {
       if (currentValues.includes(value)) {

@@ -1,7 +1,7 @@
 "use client";
 import { BranchProvider } from "@/lib/branch-context";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+// import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/ui/BackToTop";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -15,7 +15,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </div>
       <Header />
       <main id="main" className="min-h-screen">{children}</main>
-      <Footer />
+      {/* <Footer /> */}
       <BackToTop />
     </BranchProvider>
   );
