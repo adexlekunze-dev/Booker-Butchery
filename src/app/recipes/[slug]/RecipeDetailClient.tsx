@@ -388,7 +388,7 @@ export function RecipeDetailClient({ recipe }: { recipe: CategoryRecipe }) {
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="relative h-[400px] md:h-[500px] w-full">
+      <div className="relative h-[300px] sm:h-[400px] md:h-[500px] w-full">
         <Image
           src={recipe.image}
           alt={recipe.title}
@@ -400,10 +400,10 @@ export function RecipeDetailClient({ recipe }: { recipe: CategoryRecipe }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
         {/* Back Button */}
-        <div className="absolute top-6 left-4 md:left-12 z-10">
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 md:left-12 z-10">
           <Link
             href="/recipes"
-            className="flex items-center gap-2 px-4 py-2 bg-white/90 hover:bg-white rounded-lg shadow-lg transition-colors text-gray-900 font-medium"
+            className="flex items-center gap-2 px-3 py-2 sm:px-4 bg-white/90 hover:bg-white rounded-lg shadow-lg transition-colors text-gray-900 font-medium text-sm sm:text-base"
           >
             <ArrowLeft className="w-4 h-4" />
             <span className="hidden sm:inline">Back to Recipes</span>
@@ -412,32 +412,32 @@ export function RecipeDetailClient({ recipe }: { recipe: CategoryRecipe }) {
         </div>
 
         {/* Title Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 z-10">
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-12 z-10">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-wrap items-center gap-3 mb-4">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
               {recipe.difficulty && (
-                <span className={`px-3 py-1 rounded-full text-sm font-semibold ${difficultyColors[recipe.difficulty as keyof typeof difficultyColors]}`}>
+                <span className={`px-2 py-1 sm:px-3 rounded-full text-xs sm:text-sm font-semibold ${difficultyColors[recipe.difficulty as keyof typeof difficultyColors]}`}>
                   {recipe.difficulty}
                 </span>
               )}
               {recipe.useCase && (
-                <span className="px-3 py-1 rounded-full text-sm font-semibold bg-white/20 text-white backdrop-blur">
+                <span className="px-2 py-1 sm:px-3 rounded-full text-xs sm:text-sm font-semibold bg-white/20 text-white backdrop-blur">
                   {useCaseLabels[recipe.useCase]}
                 </span>
               )}
               {recipe.season && (
-                <span className="px-3 py-1 rounded-full text-sm font-semibold bg-white/20 text-white backdrop-blur">
+                <span className="px-2 py-1 sm:px-3 rounded-full text-xs sm:text-sm font-semibold bg-white/20 text-white backdrop-blur">
                   {seasonLabels[recipe.season]}
                 </span>
               )}
-              <span className="px-3 py-1 rounded-full text-sm font-semibold bg-white/20 text-white backdrop-blur">
+              <span className="px-2 py-1 sm:px-3 rounded-full text-xs sm:text-sm font-semibold bg-white/20 text-white backdrop-blur">
                 {recipe.category}
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg" style={{ color: '#ffffff' }}>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4 drop-shadow-lg leading-tight" style={{ color: '#ffffff' }}>
               {recipe.title}
             </h1>
-            <p className="text-xl text-white max-w-3xl drop-shadow-md" style={{ color: '#ffffff' }}>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white max-w-3xl drop-shadow-md" style={{ color: '#ffffff' }}>
               {recipe.description}
             </p>
           </div>
@@ -445,38 +445,38 @@ export function RecipeDetailClient({ recipe }: { recipe: CategoryRecipe }) {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
         {hasFullDetails ? (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Left Column - Recipe Details */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-2 space-y-6 sm:space-y-8">
               {/* Quick Stats */}
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                   {recipe.cookTime && (
-                    <div className="flex items-center gap-3">
-                      <Clock className="w-6 h-6 text-primary" />
-                      <div>
-                        <div className="text-sm text-gray-600">Cook Time</div>
-                        <div className="font-semibold text-gray-900">{recipe.cookTime}</div>
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
+                      <div className="min-w-0">
+                        <div className="text-xs sm:text-sm text-gray-600">Cook Time</div>
+                        <div className="font-semibold text-sm sm:text-base text-gray-900 truncate">{recipe.cookTime}</div>
                       </div>
                     </div>
                   )}
                   {recipe.serves && (
-                    <div className="flex items-center gap-3">
-                      <Users className="w-6 h-6 text-primary" />
-                      <div>
-                        <div className="text-sm text-gray-600">Serves</div>
-                        <div className="font-semibold text-gray-900">{recipe.serves} portions</div>
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <Users className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
+                      <div className="min-w-0">
+                        <div className="text-xs sm:text-sm text-gray-600">Serves</div>
+                        <div className="font-semibold text-sm sm:text-base text-gray-900">{recipe.serves} portions</div>
                       </div>
                     </div>
                   )}
                   {recipe.difficulty && (
-                    <div className="flex items-center gap-3">
-                      <TrendingUp className="w-6 h-6 text-primary" />
-                      <div>
-                        <div className="text-sm text-gray-600">Difficulty</div>
-                        <div className="font-semibold text-gray-900">{recipe.difficulty}</div>
+                    <div className="flex items-center gap-2 sm:gap-3 col-span-2 md:col-span-1">
+                      <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-primary flex-shrink-0" />
+                      <div className="min-w-0">
+                        <div className="text-xs sm:text-sm text-gray-600">Difficulty</div>
+                        <div className="font-semibold text-sm sm:text-base text-gray-900">{recipe.difficulty}</div>
                       </div>
                     </div>
                   )}
@@ -485,24 +485,25 @@ export function RecipeDetailClient({ recipe }: { recipe: CategoryRecipe }) {
 
               {/* Instructions */}
               {recipe.instructions && recipe.instructions.length > 0 && (
-                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-2xl font-bold text-gray-900">Instructions</h2>
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6 md:p-8">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Instructions</h2>
                     <button
                       onClick={handleDownloadPDF}
-                      className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                      className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-primary hover:bg-primary/10 rounded-lg transition-colors self-start sm:self-auto"
                     >
                       <Download className="w-4 h-4" />
-                      Download PDF
+                      <span className="hidden xs:inline">Download PDF</span>
+                      <span className="xs:hidden">PDF</span>
                     </button>
                   </div>
-                  <ol className="space-y-6">
+                  <ol className="space-y-4 sm:space-y-6">
                     {recipe.instructions.map((step, idx) => (
-                      <li key={idx} className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">
+                      <li key={idx} className="flex gap-3 sm:gap-4">
+                        <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xs sm:text-sm">
                           {idx + 1}
                         </div>
-                        <p className="text-gray-700 leading-relaxed pt-1">{step}</p>
+                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed pt-0.5 sm:pt-1">{step}</p>
                       </li>
                     ))}
                   </ol>
@@ -510,22 +511,22 @@ export function RecipeDetailClient({ recipe }: { recipe: CategoryRecipe }) {
               )}
 
               {/* Chef's Tips */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                <div className="flex items-start gap-3">
-                  <Lightbulb className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 sm:p-6">
+                <div className="flex items-start gap-2 sm:gap-3">
+                  <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 flex-shrink-0 mt-0.5 sm:mt-1" />
                   <div>
-                    <h3 className="font-bold text-blue-900 mb-2">Chef's Tips</h3>
-                    <ul className="text-blue-800 space-y-2">
+                    <h3 className="font-bold text-sm sm:text-base text-blue-900 mb-2">Chef's Tips</h3>
+                    <ul className="text-sm sm:text-base text-blue-800 space-y-2">
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-1" />
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 sm:mt-1" />
                         <span>All ingredients available for next-day delivery from your branch</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-1" />
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 sm:mt-1" />
                         <span>Bulk pricing automatically applied on large orders</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-1" />
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5 sm:mt-1" />
                         <span>Scale portions up or down based on your service requirements</span>
                       </li>
                     </ul>
@@ -536,7 +537,7 @@ export function RecipeDetailClient({ recipe }: { recipe: CategoryRecipe }) {
 
             {/* Right Column - Ingredients */}
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 lg:sticky lg:top-4">
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6 lg:sticky lg:top-4">
                 {recipe.ingredients && (
                   <RecipeIngredients
                     ingredients={recipe.ingredients}
@@ -550,17 +551,17 @@ export function RecipeDetailClient({ recipe }: { recipe: CategoryRecipe }) {
           </div>
         ) : (
           // Placeholder content for recipes without full details
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sm:p-8 md:p-12">
             <div className="text-center max-w-2xl mx-auto">
-              <ChefHat className="w-16 h-16 text-orange-600 mx-auto mb-6" />
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <ChefHat className="w-12 h-12 sm:w-16 sm:h-16 text-orange-600 mx-auto mb-4 sm:mb-6" />
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
                 Full Recipe Coming Soon
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8">
                 We're working on adding detailed ingredients, instructions, and shopping integration for this recipe. 
                 Check back soon or browse our other featured recipes with full details.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <Link href="/recipes">
                   <Button variant="primary">
                     Browse All Recipes

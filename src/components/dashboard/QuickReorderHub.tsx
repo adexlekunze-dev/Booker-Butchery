@@ -216,7 +216,7 @@ export function QuickReorderHub() {
 
     // Get products from ordering patterns (frequent products)
     if (orderPatterns?.frequent_products) {
-      orderPatterns.frequent_products.forEach((freqProduct) => {
+      orderPatterns.frequent_products.forEach((freqProduct: any) => {
         if (!seenProductIds.has(freqProduct.product_id)) {
           // Try to find product by name or ID
           const product = (productsData as any[]).find(
@@ -235,9 +235,9 @@ export function QuickReorderHub() {
       });
     }
 
-    // If no recommendations yet, get products from typical categories
+    // If no recommendations yet, get products from typical categories  
     if (recommendations.length === 0 && orderPatterns?.typical_categories) {
-      orderPatterns.typical_categories.forEach((category) => {
+      orderPatterns.typical_categories.forEach((category: any) => {
         if (recommendations.length >= 20) return;
         const categoryProducts = getProducts({
           category: category,

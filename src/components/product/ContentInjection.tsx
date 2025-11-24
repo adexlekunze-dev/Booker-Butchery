@@ -16,7 +16,7 @@ export function ContentInjection({ type, category, products, index = 0 }: Conten
     if (!products || products.length === 0) return null;
     
     let maxDiscount = 0;
-    let bestTier = null;
+    let bestTier: any = null;
     
     products.forEach((product: any) => {
       if (product.bulk_pricing && Array.isArray(product.bulk_pricing)) {
@@ -29,7 +29,7 @@ export function ContentInjection({ type, category, products, index = 0 }: Conten
         });
       }
     });
-    
+
     return bestTier ? { discount: maxDiscount, minQuantity: bestTier.min_quantity } : null;
   };
 

@@ -114,11 +114,11 @@ export default function DebugProductsPage() {
           <h2 className="text-xl font-bold mb-4">📂 Products by Category</h2>
           <div className="grid grid-cols-2 gap-4">
             {Object.entries(categoryCounts)
-              .sort((a, b) => b[1] - a[1])
+              .sort((a, b) => (b[1] as number) - (a[1] as number))
               .map(([cat, count]) => (
                 <div key={cat} className="flex justify-between border-b pb-2">
                   <span className="font-medium">{cat}:</span>
-                  <span className="text-gray-600">{count}</span>
+                  <span className="text-gray-600">{count as number}</span>
                 </div>
               ))}
           </div>
@@ -126,7 +126,7 @@ export default function DebugProductsPage() {
             <div className="flex justify-between font-bold">
               <span>TOTAL:</span>
               <span>
-                {Object.values(categoryCounts).reduce((a, b) => a + b, 0)}
+                {(Object.values(categoryCounts) as number[]).reduce((a, b) => a + b, 0)}
               </span>
             </div>
           </div>

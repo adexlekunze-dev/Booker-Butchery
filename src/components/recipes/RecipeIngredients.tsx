@@ -212,56 +212,57 @@ export function RecipeIngredients({
   const otherIngredients = ingredientsWithProducts.filter(ing => !ing.sku);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Ingredients</h2>
-          <p className="text-gray-600">For {serves} portions (commercial scale)</p>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">Ingredients</h2>
+          <p className="text-xs sm:text-sm text-gray-600">For {serves} portions (commercial scale)</p>
         </div>
         {onCustomizePortions && (
           <button
             onClick={onCustomizePortions}
-            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/10 rounded-lg transition-colors"
+            className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-primary hover:bg-primary/10 rounded-lg transition-colors self-start sm:self-auto"
           >
             <Scale className="w-4 h-4" />
-            Customize Portions
+            <span className="hidden xs:inline">Customize Portions</span>
+            <span className="xs:hidden">Customize</span>
           </button>
         )}
       </div>
 
       {/* Product Ingredients (with SKU) */}
       {productIngredients.length > 0 && (
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-            <Package className="w-5 h-5 text-primary" />
+        <div className="space-y-3 sm:space-y-4">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 flex items-center gap-2">
+            <Package className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             Booker Products
           </h3>
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 gap-3 sm:gap-4">
             {productIngredients.map((ingredient, idx) => (
               <div
                 key={idx}
-                className="bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-primary transition-colors"
+                className="bg-white border-2 border-gray-200 rounded-lg p-3 sm:p-4 hover:border-primary transition-colors"
               >
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-start gap-3">
-                      <div className="w-16 h-16 bg-gray-100 rounded flex items-center justify-center flex-shrink-0">
-                        <Package className="w-8 h-8 text-gray-400" />
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gray-100 rounded flex items-center justify-center flex-shrink-0">
+                        <Package className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />
                       </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900">
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-sm sm:text-base text-gray-900 break-words">
                           {ingredient.product?.name || ingredient.name}
                         </h4>
                         {(ingredient.product?.brand || ingredient.brand) && (
-                          <p className="text-sm text-gray-600">
+                          <p className="text-xs sm:text-sm text-gray-600 mt-0.5">
                             {ingredient.product?.brand || ingredient.brand}
                           </p>
                         )}
                         {ingredient.sku && (
                           <p className="text-xs text-gray-500 mt-1">SKU: {ingredient.sku}</p>
                         )}
-                        <div className="mt-2 flex items-center gap-4 text-sm flex-wrap">
+                        <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm">
                           <span className="text-gray-700">
                             <span className="font-medium">Quantity:</span> {ingredient.quantity} {ingredient.unit}
                             {ingredient.packsNeeded && ingredient.packsNeeded > 1 && (
@@ -301,7 +302,7 @@ export function RecipeIngredients({
                   {ingredient.sku && (
                     <Link
                       href={`/products/${ingredient.sku}`}
-                      className="text-sm text-primary hover:text-primary/80 font-medium whitespace-nowrap"
+                      className="text-xs sm:text-sm text-primary hover:text-primary/80 font-medium whitespace-nowrap self-start sm:self-auto"
                     >
                       View Product →
                     </Link>
@@ -315,14 +316,14 @@ export function RecipeIngredients({
 
       {/* Other Ingredients (without SKU) */}
       {otherIngredients.length > 0 && (
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold text-gray-900">Additional Ingredients</h3>
-          <div className="bg-gray-50 rounded-lg p-4">
+        <div className="space-y-3 sm:space-y-4">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900">Additional Ingredients</h3>
+          <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
             <ul className="space-y-2">
               {otherIngredients.map((ingredient, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-gray-700">
-                  <span className="text-primary mt-1">•</span>
-                  <span>
+                <li key={idx} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-700">
+                  <span className="text-primary mt-0.5 sm:mt-1 flex-shrink-0">•</span>
+                  <span className="break-words">
                     {ingredient.quantity} {ingredient.unit} {ingredient.name}
                     {ingredient.price && (
                       <span className="text-gray-600 ml-2">
@@ -338,24 +339,24 @@ export function RecipeIngredients({
       )}
 
       {/* Total Cost and CTA */}
-      <div className="bg-gradient-to-r from-primary/10 to-primary/5 border-2 border-primary/20 rounded-lg p-6">
-        <div className="flex items-center justify-between mb-4">
+      <div className="bg-gradient-to-r from-primary/10 to-primary/5 border-2 border-primary/20 rounded-lg p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">Total Cost</h3>
-            <p className="text-sm text-gray-600">For {serves} portions</p>
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900">Total Cost</h3>
+            <p className="text-xs sm:text-sm text-gray-600">For {serves} portions</p>
           </div>
           {hasAllPrices ? (
-            <div className="text-right">
-              <div className="text-3xl font-bold text-primary">
+            <div className="text-left sm:text-right">
+              <div className="text-2xl sm:text-3xl font-bold text-primary">
                 £{totalCost.toFixed(2)}
               </div>
-              <div className="text-sm text-gray-600">
+              <div className="text-xs sm:text-sm text-gray-600">
                 £{(totalCost / serves).toFixed(2)} per portion
               </div>
             </div>
           ) : (
-            <div className="text-right">
-              <div className="text-2xl font-bold text-gray-600">
+            <div className="text-left sm:text-right">
+              <div className="text-xl sm:text-2xl font-bold text-gray-600">
                 Contact for pricing
               </div>
             </div>
@@ -363,15 +364,15 @@ export function RecipeIngredients({
         </div>
 
         {onAddAllToBasket && productIngredients.length > 0 && (
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             <Button
               variant="primary"
               size="lg"
               block
-              icon={<ShoppingCart className="w-5 h-5" />}
+              icon={<ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />}
               onClick={onAddAllToBasket}
             >
-              Add All Ingredients to Basket
+              <span className="text-sm sm:text-base">Add All Ingredients to Basket</span>
             </Button>
             <p className="text-xs text-center text-gray-600">
               All {productIngredients.length} Booker products will be added to your basket
@@ -381,9 +382,9 @@ export function RecipeIngredients({
       </div>
 
       {/* Helpful Notes */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h4 className="font-semibold text-gray-900 mb-2">💡 Chef's Tips</h4>
-        <ul className="text-sm text-gray-700 space-y-1">
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4">
+        <h4 className="font-semibold text-sm sm:text-base text-gray-900 mb-2">💡 Chef's Tips</h4>
+        <ul className="text-xs sm:text-sm text-gray-700 space-y-1">
           <li>• All quantities calculated for commercial kitchen scale ({serves} portions)</li>
           <li>• Bulk pricing automatically applied where available</li>
           <li>• Fresh products delivered next-day from your branch</li>
