@@ -214,7 +214,13 @@ function SectorShopPageContent() {
                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 items-stretch">
                   {data.products.map((product: any, idx: number) => {
                     const showInjection = idx > 0 && idx % 24 === 0;
-                    const injectionType = idx % 72 === 0 ? "educational" : idx % 48 === 0 ? "promotional" : "cross-category";
+                    const injectionTypes: Array<"promotional" | "educational" | "cross-sell" | "recipe"> = [
+                      "promotional",
+                      "educational",
+                      "cross-sell",
+                      "recipe"
+                    ];
+                    const injectionType = injectionTypes[Math.floor(idx / 24) % injectionTypes.length];
                     
                     return (
                       <div key={product.id || product.sku} className="contents">
