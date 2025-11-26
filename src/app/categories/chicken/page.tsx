@@ -7,8 +7,8 @@ import { getSEOContentForCategory } from '@/data/category-seo-content';
 import { Button } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Chicken Suppliers | Fresh British Chicken Breast, Thighs, Wings | Free-Range, Organic | Booker',
-  description: 'Premium wholesale chicken supplier UK. Fresh British chicken including chicken breast, chicken thighs, chicken wings, whole chickens for restaurants, pubs, catering. Free-range, organic, halal options. Next-day delivery from Booker wholesale.',
+  title: 'Wholesale Chicken Suppliers | Fresh British Chicken Breast, Thighs, Wings | Free-Range, Organic | Booker Demo',
+  description: 'Premium wholesale chicken supplier UK. Fresh British chicken including chicken breast, chicken thighs, chicken wings, whole chickens for restaurants, pubs, catering. Free-range, organic, halal options. Next-day delivery from Booker Demo wholesale.',
   keywords: 'wholesale chicken supplier, British chicken, chicken breast, chicken thighs, chicken wings, whole chicken, free-range chicken, organic chicken, halal chicken, restaurant chicken supplier, wholesale chicken UK, chicken drumsticks, chicken supremes',
 };
 
@@ -158,7 +158,7 @@ export default function ChickenCategoryPage() {
       {/* Why Choose Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Why Choose Booker for Wholesale Chicken?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Why Choose Booker Demo for Wholesale Chicken?</h2>
           <p className="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
             Trusted quality, expert support, and reliable delivery for UK restaurants and foodservice businesses
           </p>

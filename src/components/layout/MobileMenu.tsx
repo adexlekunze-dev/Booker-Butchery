@@ -56,7 +56,13 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
       <div className="fixed left-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 lg:hidden flex flex-col shadow-xl">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
-          <h2 className="text-lg font-bold text-primary">BOOKER</h2>
+          <Link 
+            href="/" 
+            onClick={handleLinkClick}
+            className="text-lg font-bold text-primary hover:opacity-90 transition-opacity"
+          >
+            BOOKER DEMO
+          </Link>
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-full transition-colors touch-manipulation"

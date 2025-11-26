@@ -36,6 +36,21 @@ export function ActiveFiltersBar() {
   const pathname = usePathname();
 
   const removeFilter = (key: string, value?: string) => {
+    // Special handling for search query - redirect to shop
+    if (key === "q") {
+      const newParams = new URLSearchParams();
+      if (searchParams.get("category")) {
+        newParams.set("category", searchParams.get("category")!);
+      }
+      if (searchParams.get("branch_code")) {
+        newParams.set("branch_code", searchParams.get("branch_code")!);
+      }
+      const queryString = newParams.toString();
+      const newUrl = queryString ? `/butchery/shop?${queryString}` : '/butchery/shop';
+      router.replace(newUrl);
+      return;
+    }
+    
     const params = new URLSearchParams(searchParams.toString());
     
     if (value) {
@@ -55,7 +70,27 @@ export function ActiveFiltersBar() {
   };
 
   const clearAll = () => {
+    // If on search page, redirect to butchery shop instead of staying on empty search
+    if (pathname === '/search') {
+      const params = new URLSearchParams();
+      
+      // Keep category and branch if they exist
+      if (searchParams.get("category")) {
+        params.set("category", searchParams.get("category")!);
+      }
+      if (searchParams.get("branch_code")) {
+        params.set("branch_code", searchParams.get("branch_code")!);
+      }
+      
+      const queryString = params.toString();
+      const newUrl = queryString ? `/butchery/shop?${queryString}` : '/butchery/shop';
+      router.replace(newUrl);
+      return;
+    }
+    
+    // For other pages, clear filters but stay on same page
     const params = new URLSearchParams();
+    
     // Keep category and branch if they exist
     if (searchParams.get("category")) {
       params.set("category", searchParams.get("category")!);
@@ -68,11 +103,23 @@ export function ActiveFiltersBar() {
 
   const activeFilters: { key: string; value: string; label: string }[] = [];
   
+  // Add search query as a filter when on search page
+  if (pathname === '/search') {
+    const searchQuery = searchParams.get("q");
+    if (searchQuery) {
+      activeFilters.push({ 
+        key: "q", 
+        value: searchQuery, 
+        label: `"${searchQuery}"` 
+      });
+    }
+  }
+  
   searchParams.forEach((value, key) => {
     // Skip stock_level in forEach - handle it separately as multi-value
     if (key === "stock_level") return;
     
-    if (!["category", "branch_code", "page", "per_page", "in_stock"].includes(key)) {
+    if (!["category", "branch_code", "page", "per_page", "in_stock", "q", "sort"].includes(key)) {
       const label = filterLabels[key]?.[value] || value;
       activeFilters.push({ key, value, label });
     }
@@ -85,6 +132,7 @@ export function ActiveFiltersBar() {
     activeFilters.push({ key: "stock_level", value: level, label });
   });
 
+  // Show the bar if there are filters OR if we're on search page with a query
   if (activeFilters.length === 0) return null;
 
   return (
@@ -97,7 +145,10 @@ export function ActiveFiltersBar() {
           className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-medium hover:bg-primary/20 transition-colors"
         >
           <span>
-            {filter.key === "meat_type" ? "Type" : filter.key === "attributes" ? "Attribute" : filter.key}: {filter.label}
+            {filter.key === "q" ? `Search: ${filter.label}` :
+             filter.key === "meat_type" ? `Type: ${filter.label}` : 
+             filter.key === "attributes" ? `Attribute: ${filter.label}` : 
+             `${filter.key}: ${filter.label}`}
           </span>
           <X className="w-3.5 h-3.5" strokeWidth={2} />
         </button>

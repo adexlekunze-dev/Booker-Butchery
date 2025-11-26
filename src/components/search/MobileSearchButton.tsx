@@ -24,7 +24,7 @@ export function MobileSearchButton() {
 
         {/* Search Content */}
         <div className="flex-1 overflow-y-auto p-4">
-          <SearchBar />
+          <SearchBar onResultClick={() => setIsOpen(false)} />
         </div>
       </div>
     );

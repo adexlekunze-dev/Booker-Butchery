@@ -11,6 +11,7 @@ import { PopularProductsPreview } from "@/components/category/PopularProductsPre
 import { ICPSection } from "@/components/category/ICPSection";
 import { BuyingGuidesSection } from "@/components/category/BuyingGuidesSection";
 import { RecipeInspirationSection } from "@/components/category/RecipeInspirationSection";
+import { RecipeGuidesSection } from "@/components/category/RecipeGuidesSection";
 import { SEOContentSection } from "@/components/sectors/SEOContentSection";
 import { getSEOContentForCategory } from "@/data/category-seo-content";
 import { useState, useEffect } from "react";
@@ -162,7 +163,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Category Navigation */}
+      {/* 2. Why Choose Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Booker Demo?</h2>
+          <p className="text-lg text-gray-600 mb-12">The trusted partner for quality, delivery, and expert support.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <Award className="w-16 h-16 text-primary mx-auto mb-4" strokeWidth={1.5} />
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Quality Assured</h3>
+              <p className="text-gray-600">British-sourced, quality-certified products from trusted suppliers. Every item meets rigorous standards.</p>
+            </div>
+            <div className="text-center">
+              <Truck className="w-16 h-16 text-primary mx-auto mb-4" strokeWidth={1.5} />
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Next-Day Delivery</h3>
+              <p className="text-gray-600">Order by 3pm for next-day delivery. Temperature-controlled delivery ensures freshness.</p>
+            </div>
+            <div className="text-center">
+              <Users className="w-16 h-16 text-primary mx-auto mb-4" strokeWidth={1.5} />
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Expert Support</h3>
+              <p className="text-gray-600">Local branch teams with expert knowledge. Custom cuts and personalized service.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Category Navigation */}
       <section className="py-12 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Shop by Category</h2>
@@ -200,44 +226,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Popular Products Preview */}
+      {/* 4. Popular Products Preview */}
       <PopularProductsPreview category="Meat, Fish & Poultry" limit={8} />
 
-      {/* 4. ICP Persona Tiles (PROMINENT) */}
+      {/* 5. ICP Persona Tiles (PROMINENT) */}
       <div className="bg-gradient-to-b from-gray-50 to-white">
         <ICPSection />
       </div>
 
-      {/* 6. Why Choose Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Booker?</h2>
-          <p className="text-lg text-gray-600 mb-12">The trusted partner for quality, delivery, and expert support.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <Award className="w-16 h-16 text-primary mx-auto mb-4" strokeWidth={1.5} />
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Quality Assured</h3>
-              <p className="text-gray-600">British-sourced, quality-certified products from trusted suppliers. Every item meets rigorous standards.</p>
-            </div>
-            <div className="text-center">
-              <Truck className="w-16 h-16 text-primary mx-auto mb-4" strokeWidth={1.5} />
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Next-Day Delivery</h3>
-              <p className="text-gray-600">Order by 3pm for next-day delivery. Temperature-controlled delivery ensures freshness.</p>
-            </div>
-            <div className="text-center">
-              <Users className="w-16 h-16 text-primary mx-auto mb-4" strokeWidth={1.5} />
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Expert Support</h3>
-              <p className="text-gray-600">Local branch teams with expert knowledge. Custom cuts and personalized service.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. TESTIMONIALS */}
+      {/* 6. TESTIMONIALS */}
       <TestimonialsCarousel />
 
       {/* 8. Mid-page CTA */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {session?.user ? (
             <>
@@ -263,13 +264,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. Recipe Inspiration */}
+      {/* 9. Professional Recipe Guides */}
+      <RecipeGuidesSection />
+
+      {/* 10. Recipe Inspiration */}
       <RecipeInspirationSection category="Meat, Fish & Poultry" />
 
-      {/* 10. Professional Butchery Cut Guides */}
+      {/* 11. Professional Butchery Cut Guides */}
       <BuyingGuidesSection category="Meat, Fish & Poultry" />
 
-      {/* 11. Business Services & Support */}
+      {/* 12. Business Services & Support */}
       <section className="bg-white py-12 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-4 text-gray-900">Business Services & Support</h2>
@@ -328,7 +332,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 12. FAQ Section */}
+      {/* 13. FAQ Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
@@ -380,7 +384,7 @@ export default function Home() {
           ) : (
             <>
               <h2 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg" style={{ color: '#FFFFFF' }}>Ready to Become a Member?</h2>
-              <p className="text-xl mb-8 drop-shadow-md max-w-2xl mx-auto" style={{ color: '#FFFFFF' }}>Join Booker today and access wholesale prices on premium butchery products</p>
+              <p className="text-xl mb-8 drop-shadow-md max-w-2xl mx-auto" style={{ color: '#FFFFFF' }}>Join Booker Demo today and access wholesale prices on premium butchery products</p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
                   href="/register"

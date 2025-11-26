@@ -7,8 +7,8 @@ import { getSEOContentForCategory } from '@/data/category-seo-content';
 import { Button } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Sausage Suppliers | British Pork Sausages, Gourmet, Continental | Cumberland, Chorizo | Booker',
-  description: 'Premium wholesale sausage supplier UK. British pork sausages, gourmet sausages, continental varieties (chorizo, Italian, merguez), vegetarian sausages for restaurants, pubs, breakfast menus. Next-day delivery from Booker wholesale.',
+  title: 'Wholesale Sausage Suppliers | British Pork Sausages, Gourmet, Continental | Cumberland, Chorizo | Booker Demo',
+  description: 'Premium wholesale sausage supplier UK. British pork sausages, gourmet sausages, continental varieties (chorizo, Italian, merguez), vegetarian sausages for restaurants, pubs, breakfast menus. Next-day delivery from Booker Demo wholesale.',
   keywords: 'wholesale sausages, British pork sausages, gourmet sausages, Cumberland sausages, Lincolnshire sausages, chorizo, Italian sausages, breakfast sausages, vegetarian sausages, restaurant sausage supplier, wholesale sausages UK, bangers, chipolatas',
 };
 
@@ -158,7 +158,7 @@ export default function SausagesCategoryPage() {
       {/* Why Choose Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Why Choose Booker for Wholesale Sausages?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Why Choose Booker Demo for Wholesale Sausages?</h2>
           <p className="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
             Trusted quality, expert support, and reliable delivery for UK restaurants and foodservice businesses
           </p>

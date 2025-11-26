@@ -387,14 +387,67 @@ export function searchProducts(query: string, branchCode?: string) {
   const searchLower = query.toLowerCase();
   const allProducts = (productsData as Product[]).filter(p => p.active);
   
-  const matching = allProducts.filter(p => 
-    p.name.toLowerCase().includes(searchLower) ||
-    p.brand.toLowerCase().includes(searchLower) ||
-    p.sku.toLowerCase().includes(searchLower) ||
-    (p.descriptions?.short?.toLowerCase().includes(searchLower))
-  );
+  // Score products based on match quality (prioritize startsWith over includes)
+  const scored = allProducts.map(p => {
+    const nameLower = p.name.toLowerCase();
+    const brandLower = p.brand.toLowerCase();
+    const skuLower = p.sku.toLowerCase();
+    const categoryLower = p.category.toLowerCase();
+    const subcategoryLower = p.subcategory?.toLowerCase() || '';
+    const shortDescLower = p.descriptions?.short?.toLowerCase() || '';
+    const longDescLower = p.descriptions?.long?.toLowerCase() || '';
+    
+    let score = 0;
+    let matches = false;
+    
+    // Highest priority: starts with query
+    if (nameLower.startsWith(searchLower)) {
+      score = 1000;
+      matches = true;
+    } else if (brandLower.startsWith(searchLower)) {
+      score = 900;
+      matches = true;
+    } else if (skuLower.startsWith(searchLower)) {
+      score = 800;
+      matches = true;
+    } else if (categoryLower.startsWith(searchLower)) {
+      score = 700;
+      matches = true;
+    } else if (subcategoryLower.startsWith(searchLower)) {
+      score = 600;
+      matches = true;
+    }
+    // Medium priority: contains query
+    else if (nameLower.includes(searchLower)) {
+      score = 500;
+      matches = true;
+    } else if (brandLower.includes(searchLower)) {
+      score = 400;
+      matches = true;
+    } else if (skuLower.includes(searchLower)) {
+      score = 300;
+      matches = true;
+    } else if (categoryLower.includes(searchLower)) {
+      score = 200;
+      matches = true;
+    } else if (subcategoryLower.includes(searchLower)) {
+      score = 100;
+      matches = true;
+    } else if (shortDescLower.includes(searchLower) || longDescLower.includes(searchLower)) {
+      score = 50;
+      matches = true;
+    }
+    
+    return { product: p, score, matches };
+  });
+  
+  // Filter to only matching products and sort by score (highest first)
+  const matching = scored
+    .filter(item => item.matches)
+    .sort((a, b) => b.score - a.score)
+    .map(item => item.product);
 
-  return matching.slice(0, 20).map(p => {
+  return matching.map(p => {
     const branchInventory = branchCode && p.inventory[branchCode];
     if (branchCode && branchInventory) {
       return {
@@ -404,6 +457,9 @@ export function searchProducts(query: string, branchCode?: string) {
           branch_code: branchCode,
           in_stock: branchInventory.in_stock,
           stock_level: branchInventory.stock_level,
+          exact_count: branchInventory.exact_count,
+          available_for_delivery: branchInventory.available_for_delivery,
+          available_for_click_collect: branchInventory.available_for_click_collect,
         },
       };
     } else {

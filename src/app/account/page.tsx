@@ -147,7 +147,7 @@ export default function AccountPage() {
             <AccountCard title="My Business Details">
               <div className="space-y-2">
                 <div>
-                  <span className="text-gray-600">Local Booker Branch: </span>
+                  <span className="text-gray-600">Local Booker Demo Branch: </span>
                   <span className="font-medium text-gray-900">{branchName || "Not set"}</span>
                 </div>
                 <div>

@@ -14,11 +14,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Column 1: Booker/Products/Product Ranges */}
           <div>
-            <h4 className="font-bold text-base mb-4 text-black">Booker</h4>
+            <h4 className="font-bold text-base mb-4 text-black">Booker Demo</h4>
             <ul className="space-y-2 text-sm mb-6">
               <li>
                 <Link href="#" className="hover:text-primary transition-colors text-black">
-                  About Booker
+                  About Booker Demo
                 </Link>
               </li>
             </ul>
@@ -289,7 +289,7 @@ export function Footer() {
 
             {/* Copyright */}
             <div className="text-sm text-black">
-              © Booker 2025 - CD1
+              © Booker Demo 2025 - CD1
             </div>
           </div>
         </div>

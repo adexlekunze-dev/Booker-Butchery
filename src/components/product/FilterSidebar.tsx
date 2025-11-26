@@ -5,6 +5,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { getFilterOptions } from "@/lib/data/filters";
 import { getUser } from "@/lib/mock-auth";
+import { searchProducts } from "@/lib/data/products";
 
 type FilterSection = {
   title: string;
@@ -125,6 +126,25 @@ export function FilterSidebar() {
   };
 
   const clearAllFilters = () => {
+    // If on search page, redirect to butchery shop instead of staying on empty search
+    if (pathname === '/search') {
+      const params = new URLSearchParams();
+      
+      // Keep category and branch if they exist
+      if (searchParams.get("category")) {
+        params.set("category", searchParams.get("category")!);
+      }
+      if (searchParams.get("branch_code")) {
+        params.set("branch_code", searchParams.get("branch_code")!);
+      }
+      
+      const queryString = params.toString();
+      const newUrl = queryString ? `/butchery/shop?${queryString}` : '/butchery/shop';
+      router.replace(newUrl);
+      return;
+    }
+    
+    // For other pages, clear filters but stay on same page
     const params = new URLSearchParams();
     // Keep category if it exists in URL
     if (searchParams.get("category")) {
@@ -162,6 +182,16 @@ export function FilterSidebar() {
         const user = getUser();
         const branchCode = user?.primary_branch_code;
 
+        // Check if we're on search page - scope filters to search results
+        const isSearchPage = pathname === '/search';
+        const searchQuery = searchParams.get("q") || "";
+        let scopedProducts: any[] | undefined = undefined;
+
+        if (isSearchPage && searchQuery) {
+          // Scope filter options to search results only
+          scopedProducts = searchProducts(searchQuery, branchCode);
+        }
+
         // Parse current filters from URL
         const currentFilters: any = {
           category: searchParams.get("category") || undefined,
@@ -190,7 +220,8 @@ export function FilterSidebar() {
 
         // For butchery, pass null as category to get all butchery products
         // The category filter will be shown dynamically from the data
-        const options = getFilterOptions(null, branchCode, currentFilters);
+        // On search page, scope to search results
+        const options = getFilterOptions(null, branchCode, currentFilters, scopedProducts);
 
         setFilterOptions({
           brands: options.brands,

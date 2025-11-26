@@ -7,8 +7,8 @@ import { getSEOContentForCategory } from '@/data/category-seo-content';
 import { Button } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Beef Suppliers | Premium British Beef Cuts, Steaks, Mince | Red Tractor Certified | Booker',
-  description: 'Premium wholesale beef supplier UK. British beef cuts including ribeye, sirloin, fillet steaks, beef brisket, chuck, mince for restaurants, hotels, pubs. Red Tractor certified. Next-day delivery. Expert butchery support from Booker wholesale.',
+  title: 'Wholesale Beef Suppliers | Premium British Beef Cuts, Steaks, Mince | Red Tractor Certified | Booker Demo',
+  description: 'Premium wholesale beef supplier UK. British beef cuts including ribeye, sirloin, fillet steaks, beef brisket, chuck, mince for restaurants, hotels, pubs. Red Tractor certified. Next-day delivery. Expert butchery support from Booker Demo wholesale.',
   keywords: 'wholesale beef supplier, British beef cuts, beef wholesale, ribeye steak, sirloin steak, fillet steak, beef brisket, beef mince, wholesale beef burgers, aged beef, restaurant beef supplier, Red Tractor beef, beef supplier UK, wholesale meat, butcher beef',
 };
 
@@ -156,7 +156,7 @@ export default function BeefCategoryPage() {
       {/* Why Choose Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Why Choose Booker for Wholesale Beef?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Why Choose Booker Demo for Wholesale Beef?</h2>
           <p className="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
             Trusted quality, expert support, and reliable delivery for UK restaurants and foodservice businesses
           </p>

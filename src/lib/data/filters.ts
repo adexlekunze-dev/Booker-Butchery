@@ -45,10 +45,13 @@ type FilterParams = {
 export function getFilterOptions(
   category: string | null, 
   branchCode?: string,
-  currentFilters?: FilterParams
+  currentFilters?: FilterParams,
+  scopedProducts?: Product[] // Optional: scope to specific products (e.g., search results)
 ): FilterOptions {
-  // Start with all active products
-  let baseProducts = (productsData as Product[]).filter(p => p.active);
+  // Start with scoped products if provided, otherwise all active products
+  let baseProducts = scopedProducts && scopedProducts.length > 0 
+    ? scopedProducts.filter(p => p.active)
+    : (productsData as Product[]).filter(p => p.active);
   
   // Apply sector filter first (if provided)
   if (currentFilters?.sectors) {

@@ -107,7 +107,7 @@ export function Header() {
           </Link>
 
           {/* Search bar - Hidden on mobile, show on tablet+ */}
-          <div className="hidden md:flex flex-1 max-w-2xl mx-4 lg:mx-8">
+          <div className="hidden md:flex flex-1 max-w-2xl mx-4 lg:mx-8 relative z-50">
             <SearchBar />
           </div>
 
@@ -174,7 +174,7 @@ export function Header() {
                     />
                     
                     {/* Dropdown content */}
-                    <div className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-20 min-w-[180px] overflow-hidden">
+                    <div className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-[100] min-w-[180px] overflow-hidden">
                       <div className="py-1">
                         <Link
                           href="/dashboard"
@@ -222,7 +222,7 @@ export function Header() {
       </div>
 
       {/* Navigation - Hidden on mobile, show on desktop */}
-      <nav className="hidden lg:block bg-primary">
+      <nav className="hidden lg:block bg-primary relative z-40">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center space-x-8 py-3">
               {/* Dashboard - Only show for authenticated users */}
@@ -259,7 +259,7 @@ export function Header() {
                     />
                     
                     {/* Dropdown content */}
-                    <div className="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-20 min-w-[500px] overflow-hidden">
+                    <div className="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-[100] min-w-[500px] overflow-hidden">
                       <div className="py-4">
                         <div className="grid grid-cols-2 gap-6 px-4">
                           {/* Column 1: Range */}
@@ -506,7 +506,7 @@ export function Header() {
                         />
 
                         {/* Dropdown content */}
-                        <div className="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-20 min-w-[280px] overflow-hidden">
+                        <div className="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-[100] min-w-[280px] overflow-hidden">
                           <div className="py-2">
                             <Link
                               href="/icp/executive-chef"
@@ -591,7 +591,7 @@ export function Header() {
                     />
 
                     {/* Dropdown content - Mega Menu */}
-                    <div className="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-20 min-w-[680px] overflow-hidden">
+                    <div className="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-[100] min-w-[680px] overflow-hidden">
                       <div className="py-4">
                         <div className="grid grid-cols-3 gap-6 px-4">
                           {/* Column 1: Quality & Provenance */}
@@ -821,7 +821,7 @@ export function Header() {
                     />
 
                     {/* Dropdown content */}
-                    <div className="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-20 min-w-[300px] overflow-hidden">
+                    <div className="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-[100] min-w-[300px] overflow-hidden">
                       <div className="py-2">
                         <Link
                           href="/services/hospitality"
@@ -918,7 +918,7 @@ export function Header() {
                       />
                       
                       {/* Dropdown content */}
-                      <div className="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-20 min-w-[240px] overflow-hidden">
+                      <div className="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-[100] min-w-[240px] overflow-hidden">
                         <div className="py-2">
                           <Link
                             href="/dashboard/menus"

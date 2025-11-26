@@ -7,8 +7,8 @@ import { getSEOContentForCategory } from '@/data/category-seo-content';
 import { Button } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Burger Suppliers | British Beef Burgers, Chicken, Vegan | Gourmet Burger Patties | Booker',
-  description: 'Premium wholesale burger supplier UK. British beef burgers (4oz, 6oz, 8oz), gourmet aged beef patties, chicken burgers, plant-based burgers for burger restaurants, pubs, gastropubs. Fresh & frozen. Next-day delivery from Booker wholesale.',
+  title: 'Wholesale Burger Suppliers | British Beef Burgers, Chicken, Vegan | Gourmet Burger Patties | Booker Demo',
+  description: 'Premium wholesale burger supplier UK. British beef burgers (4oz, 6oz, 8oz), gourmet aged beef patties, chicken burgers, plant-based burgers for burger restaurants, pubs, gastropubs. Fresh & frozen. Next-day delivery from Booker Demo wholesale.',
   keywords: 'wholesale burgers, British beef burgers, burger patties, gourmet burgers, aged beef burgers, chicken burgers, vegan burgers, vegetarian burgers, burger supplier UK, restaurant burger supplier, wholesale beef burgers, burger bar supplier, gastropub burgers',
 };
 
@@ -158,7 +158,7 @@ export default function BurgersCategoryPage() {
       {/* Why Choose Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Why Choose Booker for Wholesale Burgers?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Why Choose Booker Demo for Wholesale Burgers?</h2>
           <p className="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
             Trusted quality, expert support, and reliable delivery for UK restaurants and foodservice businesses
           </p>

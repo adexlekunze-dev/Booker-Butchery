@@ -11,7 +11,7 @@ export function ICPSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Solutions Tailored to Your Role
+            Solutions Tailored to Your Needs
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl">
             Find the perfect wholesale butchery solution for your business needs

@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 import { SEOContentSection } from "@/components/sectors/SEOContentSection";
 
 export const metadata: Metadata = {
-  title: "Wholesale Butchery Solutions by Role | Executive Chefs, Head Chefs, Procurement, Butchers | Booker",
+  title: "Wholesale Butchery Solutions by Role | Executive Chefs, Head Chefs, Procurement, Butchers | Booker Demo",
   description: "Find your perfect wholesale butchery solution. Tailored for executive chefs (fine dining), head chefs (casual dining), procurement managers (hotels/catering), and butcher shop owners. Red Tractor certified, competitive pricing, next-day delivery UK-wide.",
   keywords: "wholesale butchery, executive chef meat supplier, head chef supplier, procurement manager wholesale, butcher shop wholesale, fine dining meat supplier, casual dining meat supplier, hotel meat procurement, independent butcher wholesale, Red Tractor beef, premium wholesale meat UK",
 };
@@ -46,7 +46,7 @@ export default function ICPIndexPage() {
               Select Your Business Type
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl">
-              Discover how Booker supports your specific needs with quality products, competitive pricing, and expert service
+              Discover how Booker Demo supports your specific needs with quality products, competitive pricing, and expert service
             </p>
           </div>
 
@@ -111,7 +111,7 @@ export default function ICPIndexPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why Professionals Choose Booker
+              Why Professionals Choose Booker Demo
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Trusted by chefs, procurement managers, and butchers across the UK
@@ -168,7 +168,7 @@ export default function ICPIndexPage() {
             Ready to Find Your Solution?
           </h2>
           <p className="text-xl mb-8 drop-shadow-md max-w-2xl mx-auto" style={{ color: '#FFFFFF' }}>
-            Join thousands of professionals ordering premium wholesale butchery from Booker
+            Join thousands of professionals ordering premium wholesale butchery from Booker Demo
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -188,11 +188,11 @@ export default function ICPIndexPage() {
       </section>
 
       {/* SEO Content Section */}
-      <SEOContentSection content={`<h2>Wholesale Butchery Solutions Tailored to Your Role</h2>
-<p>Finding the right <strong>wholesale butchery supplier</strong> for your specific business needs can transform your operations - whether you're running a Michelin-starred restaurant, managing procurement for a hotel group, operating a multi-site casual dining chain, or running an independent butcher shop. Booker provides role-specific wholesale meat solutions designed around the unique challenges and requirements of executive chefs, head chefs, procurement managers, and butcher shop owners across the UK.</p>
+      <SEOContentSection content={`<h2>Wholesale Butchery Solutions Tailored to Your Needs</h2>
+<p>Finding the right <strong>wholesale butchery supplier</strong> for your specific business needs can transform your operations - whether you're running a Michelin-starred restaurant, managing procurement for a hotel group, operating a multi-site casual dining chain, or running an independent butcher shop. Booker Demo provides role-specific wholesale meat solutions designed around the unique challenges and requirements of executive chefs, head chefs, procurement managers, and butcher shop owners across the UK.</p>
 
 <h3>Executive Chefs: Premium Cuts for Fine Dining Excellence</h3>
-<p>Executive chefs in high-end restaurants and fine dining establishments require more than standard wholesale meat - you need premium quality, consistent portioning, and full traceability for menu storytelling. Our <strong>executive chef solutions</strong> include Red Tractor certified beef, 28-day aged ribeye and sirloin, premium rack of lamb, veal escalopes, and seasonal game birds. Custom cutting services, portion control to your exact specifications, and dedicated account management ensure your tasting menus and signature dishes maintain the quality standards fine dining demands. With next-day delivery and temperature-controlled transport, Booker supports executive chefs with the reliability premium kitchens require.</p>
+<p>Executive chefs in high-end restaurants and fine dining establishments require more than standard wholesale meat - you need premium quality, consistent portioning, and full traceability for menu storytelling. Our <strong>executive chef solutions</strong> include Red Tractor certified beef, 28-day aged ribeye and sirloin, premium rack of lamb, veal escalopes, and seasonal game birds. Custom cutting services, portion control to your exact specifications, and dedicated account management ensure your tasting menus and signature dishes maintain the quality standards fine dining demands. With next-day delivery and temperature-controlled transport, Booker Demo supports executive chefs with the reliability premium kitchens require.</p>
 
 <h3>Head Chefs: Consistent Quality for Multi-Site Operations</h3>
 <p>Head chefs managing casual dining chains, gastropub groups, and multi-location restaurants face a different challenge - maintaining consistent quality and portion sizing across all sites while hitting GP targets. Our <strong>head chef wholesale solutions</strong> provide standardized products with volume discounts, centralized ordering for multiple locations, and single-invoice billing to streamline operations. High-volume essentials like chicken breast fillets, burger patties, sausages, and pork belly maintain the same quality across every delivery, ensuring customers get the same experience whether they visit your Manchester, Birmingham, or London location. Reliable stock availability means no menu disruption from stockouts on signature dishes.</p>
@@ -201,12 +201,12 @@ export default function ICPIndexPage() {
 <p>Procurement managers for hotels, catering companies, and multi-venue hospitality groups need suppliers who understand bulk purchasing, multi-department operations, and financial efficiency. Our <strong>procurement manager solutions</strong> include central billing (single invoice for all departments and locations), competitive volume pricing, dedicated account management, and reliable next-day delivery for events and functions. From banqueting chicken to fine dining beef, room service breakfast sausages to wedding function lamb - one account manages all your butchery procurement with the flexibility each department needs while maintaining centralized financial control.</p>
 
 <h3>Butcher Shop Owners: Quality Wholesale for Independent Retailers</h3>
-<p>Independent butchers and farm shop owners need <strong>wholesale meat suppliers</strong> who understand retail challenges - competitive trade pricing, flexible ordering without large minimums, and quality products customers trust. Our <strong>butcher shop solutions</strong> provide Red Tractor certified beef and lamb with full provenance documentation, competitive wholesale prices with volume discounts to protect retail margins, and flexible ordering (no large minimums required). Whether you're a traditional high street butcher, a farm shop selling local products, or a specialty meat retailer, Booker supports your business with quality wholesale meat that builds your reputation and supports business growth.</p>
+<p>Independent butchers and farm shop owners need <strong>wholesale meat suppliers</strong> who understand retail challenges - competitive trade pricing, flexible ordering without large minimums, and quality products customers trust. Our <strong>butcher shop solutions</strong> provide Red Tractor certified beef and lamb with full provenance documentation, competitive wholesale prices with volume discounts to protect retail margins, and flexible ordering (no large minimums required). Whether you're a traditional high street butcher, a farm shop selling local products, or a specialty meat retailer, Booker Demo supports your business with quality wholesale meat that builds your reputation and supports business growth.</p>
 
-<h3>Why UK Food Service Professionals Choose Booker</h3>
-<p>Across all roles - executive chefs, head chefs, procurement managers, and butcher shop owners - Booker delivers the quality, service, and pricing that UK food service professionals demand. Red Tractor certified beef and lamb, British-sourced chicken, and MSC-certified fish provide the quality assurance customers expect. Competitive wholesale pricing with volume discounts protects your margins whether you're plating fine dining dishes or serving casual dining menus. Next-day delivery UK-wide with temperature-controlled transport ensures peak freshness, while dedicated account management provides custom cutting, menu consultation, and butchery expertise tailored to your role.</p>
+<h3>Why UK Food Service Professionals Choose Booker Demo</h3>
+<p>Across all roles - executive chefs, head chefs, procurement managers, and butcher shop owners - Booker Demo delivers the quality, service, and pricing that UK food service professionals demand. Red Tractor certified beef and lamb, British-sourced chicken, and MSC-certified fish provide the quality assurance customers expect. Competitive wholesale pricing with volume discounts protects your margins whether you're plating fine dining dishes or serving casual dining menus. Next-day delivery UK-wide with temperature-controlled transport ensures peak freshness, while dedicated account management provides custom cutting, menu consultation, and butchery expertise tailored to your role.</p>
 
-<p>From premium cuts for executive chefs to bulk ordering for procurement managers, consistent quality for head chefs to trade pricing for butcher shops - Booker's role-specific wholesale butchery solutions help UK food service professionals succeed. Explore our tailored solutions above to find the perfect match for your business needs.</p>`} />
+<p>From premium cuts for executive chefs to bulk ordering for procurement managers, consistent quality for head chefs to trade pricing for butcher shops - Booker Demo's role-specific wholesale butchery solutions help UK food service professionals succeed. Explore our tailored solutions above to find the perfect match for your business needs.</p>`} />
     </div>
   );
 }

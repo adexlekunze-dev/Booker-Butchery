@@ -219,7 +219,7 @@ function ButcheryListingContent() {
     // Update document title and meta description dynamically
     if (typeof window !== 'undefined') {
       const category = selectedCategory || 'Premium Butchery';
-      document.title = `${category} Products | Wholesale Meat Supplier UK | Booker`;
+      document.title = `${category} Products | Wholesale Meat Supplier UK | Booker Demo`;
 
       let metaDescription = document.querySelector('meta[name="description"]');
       if (!metaDescription) {
@@ -229,7 +229,7 @@ function ButcheryListingContent() {
       }
       metaDescription.setAttribute(
         'content',
-        `Browse ${result.total} ${category.toLowerCase()} products. Premium wholesale meat from British farms. Red Tractor certified. Next-day delivery. Order by 3pm from Booker wholesale butchery.`
+        `Browse ${result.total} ${category.toLowerCase()} products. Premium wholesale meat from British farms. Red Tractor certified. Next-day delivery. Order by 3pm from Booker Demo wholesale butchery.`
       );
     }
   }, [searchParams]);

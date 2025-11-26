@@ -33,7 +33,7 @@ export default function ClickCollectDeliveryPage() {
   const clickCollectFAQs = [
     {
       question: "What is Click & Collect?",
-      answer: "Click & Collect lets you shop our full range online and collect your order from your chosen Booker branch. It's perfect when you need products quickly or want to avoid delivery charges.",
+      answer: "Click & Collect lets you shop our full range online and collect your order from your chosen Booker Demo branch. It's perfect when you need products quickly or want to avoid delivery charges.",
       category: "general" as const,
     },
     {
@@ -66,7 +66,7 @@ export default function ClickCollectDeliveryPage() {
   const deliveryFAQs = [
     {
       question: "What is your delivery policy?",
-      answer: "We offer regular scheduled deliveries from your local Booker branch. You can arrange a standing order for specific days/times that work for your business.",
+      answer: "We offer regular scheduled deliveries from your local Booker Demo branch. You can arrange a standing order for specific days/times that work for your business.",
       category: "delivery" as const,
     },
     {
@@ -151,7 +151,7 @@ export default function ClickCollectDeliveryPage() {
   ];
 
   const testimonial = {
-    quote: "My delivery terms are amazing with Booker, I get six deliveries a week. Now that Booker has upgraded its website to show whether they can guarantee stock - that has been a huge benefit to us.",
+    quote: "My delivery terms are amazing with Booker Demo, I get six deliveries a week. Now that Booker Demo has upgraded its website to show whether they can guarantee stock - that has been a huge benefit to us.",
     name: "Lloyd Gardner",
     business: "Owner, Lloyd's Lounge, Exeter",
     rating: 5,
@@ -289,7 +289,7 @@ export default function ClickCollectDeliveryPage() {
                   Regular Deliveries to Your Door
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  Get reliable deliveries from your local Booker branch
+                  Get reliable deliveries from your local Booker Demo branch
                 </p>
                 <div className="mb-6">
                   <h4 className="font-semibold text-gray-900 mb-3">
@@ -360,7 +360,7 @@ export default function ClickCollectDeliveryPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
-            Find Your Local Booker Branch
+            Find Your Local Booker Demo Branch
           </h2>
           <p className="text-center text-gray-600 mb-8">
             Discover Click & Collect and delivery options near you
@@ -379,7 +379,7 @@ export default function ClickCollectDeliveryPage() {
                   {session?.user && user?.primary_branch_code ? (
                     (() => {
                       const branch = getBranchByCode(user.primary_branch_code);
-                      return branch ? `Booker ${branch.name}` : "Booker Manchester Central";
+                      return branch ? `Booker Demo ${branch.name}` : "Booker Demo Manchester Central";
                     })()
                   ) : (
                     "Use our branch finder to locate your nearest branch"

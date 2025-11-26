@@ -5,6 +5,7 @@ type Availability = {
   in_stock?: boolean;
   stock_level?: "high" | "medium" | "low" | "out";
   branch_name?: string;
+  exact_count?: number;
 };
 
 export function StockBadge({ availability }: { availability?: Availability }) {
@@ -31,20 +32,29 @@ export function StockBadge({ availability }: { availability?: Availability }) {
     medium: "bg-gray-100 text-gray-900",
     low: "bg-gray-200 text-gray-800"
   };
-  const labels: Record<"high" | "medium" | "low", string> = {
-    high: "In stock - High availability",
-    medium: "In stock - Medium",
-    low: "Limited stock"
-  };
   const stockLevel = (availability.stock_level === "out" ? "high" : availability.stock_level) || "high";
   const style = styles[stockLevel as "high" | "medium" | "low"];
-  const label = labels[stockLevel as "high" | "medium" | "low"];
   const Icon = availability.stock_level === "low" ? AlertTriangle : CheckCircle2;
   
+  // Build label with exact count if available
+  let label = "";
+  let useUppercase = true;
+  if (availability.exact_count !== undefined && availability.exact_count !== null) {
+    label = `${availability.exact_count} in stock`;
+    useUppercase = false; // Don't uppercase numbers
+  } else {
+    const labels: Record<"high" | "medium" | "low", string> = {
+      high: "In stock - High availability",
+      medium: "In stock - Medium",
+      low: "Limited stock"
+    };
+    label = labels[stockLevel as "high" | "medium" | "low"];
+  }
+  
   return (
-    <span className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-semibold uppercase tracking-wide ${style}`}>
-      <Icon className="w-3 h-3" strokeWidth={2} />
-      {label}
+    <span className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-semibold whitespace-nowrap ${useUppercase ? 'uppercase tracking-wide' : ''} ${style}`}>
+      <Icon className="w-3 h-3 flex-shrink-0" strokeWidth={2} />
+      <span className="truncate">{label}</span>
     </span>
   );
 }

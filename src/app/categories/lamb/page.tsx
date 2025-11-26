@@ -7,8 +7,8 @@ import { getSEOContentForCategory } from '@/data/category-seo-content';
 import { Button } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Lamb Suppliers | Premium British Lamb Rack, Leg, Shoulder, Chops | Fine Dining Lamb | Booker',
-  description: 'Premium wholesale lamb supplier UK. British lamb including lamb rack, lamb leg, lamb shoulder, lamb chops for fine dining, hotels, special events. Spring lamb, hogget. Next-day delivery. Expert support from Booker wholesale.',
+  title: 'Wholesale Lamb Suppliers | Premium British Lamb Rack, Leg, Shoulder, Chops | Fine Dining Lamb | Booker Demo',
+  description: 'Premium wholesale lamb supplier UK. British lamb including lamb rack, lamb leg, lamb shoulder, lamb chops for fine dining, hotels, special events. Spring lamb, hogget. Next-day delivery. Expert support from Booker Demo wholesale.',
   keywords: 'wholesale lamb supplier, British lamb, lamb rack, lamb leg, lamb shoulder, lamb chops, spring lamb, hogget, fine dining lamb, wholesale lamb UK, restaurant lamb supplier, lamb cutlets, lamb shanks, butcher lamb',
 };
 
@@ -158,7 +158,7 @@ export default function LambCategoryPage() {
       {/* Why Choose Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Why Choose Booker for Wholesale Lamb?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Why Choose Booker Demo for Wholesale Lamb?</h2>
           <p className="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
             Trusted quality, expert support, and reliable delivery for UK restaurants and foodservice businesses
           </p>
