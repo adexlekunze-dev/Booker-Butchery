@@ -155,10 +155,7 @@ export function ProductDetailClient({ sku }: { sku: string }) {
         )}
 
         {relatedProducts.upsells.products.length > 0 && (
-          <UpsellProducts 
-            products={relatedProducts.upsells.products} 
-            currentProduct={product}
-          />
+          <UpsellProducts products={relatedProducts.upsells.products} />
         )}
 
         {/* Recipe Integration - After Upgrade Your Choice */}

@@ -262,6 +262,14 @@ export function MobileMenu({ isOpen, onClose, session, onSignOut }: MobileMenuPr
             {/* Quick Links - Main Menu Items */}
             <div className="border-b border-gray-200 pb-2 mb-2">
               <Link
+                href="/methodology"
+                className="flex items-center justify-between px-4 py-3 text-gray-900 hover:bg-gray-50 active:bg-gray-100 transition-colors font-medium"
+                onClick={handleLinkClick}
+              >
+                <span>Discovery Methodology</span>
+                <ChevronRight className="w-5 h-5 text-gray-400" />
+              </Link>
+              <Link
                 href="/recipes"
                 className="flex items-center justify-between px-4 py-3 text-gray-900 hover:bg-gray-50 active:bg-gray-100 transition-colors font-medium"
                 onClick={handleLinkClick}
