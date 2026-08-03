@@ -25,7 +25,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">Adekunle Okubena</h2>
-            <p className="text-lg sm:text-xl font-semibold text-white">Product Manager - Ecommerce Optimization and Growth</p>
+            <p className="text-lg sm:text-xl font-semibold text-white">Senior Ecommerce Specialist</p>
           </div>
         </div>
       </section>
